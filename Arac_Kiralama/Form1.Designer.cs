@@ -41,6 +41,7 @@
             button1 = new Button();
             button2 = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            label1 = new Label();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -149,6 +150,15 @@
             button2.Text = "Yönetici Giriş";
             button2.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(284, 335);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 31);
+            label1.TabIndex = 18;
+            label1.Text = "label1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 31F);
@@ -156,6 +166,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1634, 960);
+            Controls.Add(label1);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(panel2);
@@ -168,6 +179,7 @@
             Text = "Form1";
             panel2.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -181,5 +193,6 @@
         private ComboBox comboBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private ComboBox comboBox2;
+        private Label label1;
     }
 }
