@@ -1,3 +1,6 @@
+using Guna.UI2.WinForms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 namespace Arac_Kiralama
 {
     public partial class FrmAnaSayfa : Form
@@ -6,6 +9,9 @@ namespace Arac_Kiralama
         {
             InitializeComponent();
         }
+        public static Guna2ComboBox combo;
+
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -44,9 +50,14 @@ namespace Arac_Kiralama
 
         private void button5_Click(object sender, EventArgs e)
         {
-            FrmOfisler fr=new FrmOfisler();
+            FrmOfisler fr = new FrmOfisler();
             fr.Show();
             this.Hide();
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

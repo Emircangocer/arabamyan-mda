@@ -41,7 +41,15 @@
             label1 = new Label();
             txtSifre = new TextBox();
             label7 = new Label();
-            btnDevamEt = new Button();
+            cmbEhliyetSınıfı = new ComboBox();
+            btnÜyeOl = new Button();
+            dateTimePicker2 = new DateTimePicker();
+            txtEhliyetYer = new TextBox();
+            txtEhliyetNo = new TextBox();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            label12 = new Label();
             SuspendLayout();
             // 
             // label2
@@ -157,24 +165,100 @@
             label7.TabIndex = 7;
             label7.Text = "arabamyanımda ile Rahat ve Hızlı\r\n Araç Kiralamak İçin Hemen Üye Ol!\r\n";
             // 
-            // btnDevamEt
+            // cmbEhliyetSınıfı
             // 
-            btnDevamEt.BackColor = Color.Wheat;
-            btnDevamEt.Location = new Point(26, 476);
-            btnDevamEt.Name = "btnDevamEt";
-            btnDevamEt.Size = new Size(408, 41);
-            btnDevamEt.TabIndex = 9;
-            btnDevamEt.Text = "Devam Et";
-            btnDevamEt.UseVisualStyleBackColor = false;
-            btnDevamEt.Click += btnDevamEt_Click;
+            cmbEhliyetSınıfı.FormattingEnabled = true;
+            cmbEhliyetSınıfı.Location = new Point(559, 278);
+            cmbEhliyetSınıfı.Name = "cmbEhliyetSınıfı";
+            cmbEhliyetSınıfı.Size = new Size(341, 33);
+            cmbEhliyetSınıfı.TabIndex = 34;
+            // 
+            // btnÜyeOl
+            // 
+            btnÜyeOl.BackColor = Color.Wheat;
+            btnÜyeOl.Location = new Point(319, 499);
+            btnÜyeOl.Name = "btnÜyeOl";
+            btnÜyeOl.Size = new Size(341, 41);
+            btnÜyeOl.TabIndex = 33;
+            btnÜyeOl.Text = "Üyeliği Tamamla";
+            btnÜyeOl.UseVisualStyleBackColor = false;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(559, 352);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(341, 31);
+            dateTimePicker2.TabIndex = 31;
+            // 
+            // txtEhliyetYer
+            // 
+            txtEhliyetYer.Location = new Point(559, 207);
+            txtEhliyetYer.Name = "txtEhliyetYer";
+            txtEhliyetYer.Size = new Size(341, 31);
+            txtEhliyetYer.TabIndex = 29;
+            // 
+            // txtEhliyetNo
+            // 
+            txtEhliyetNo.Location = new Point(559, 133);
+            txtEhliyetNo.Name = "txtEhliyetNo";
+            txtEhliyetNo.Size = new Size(341, 31);
+            txtEhliyetNo.TabIndex = 30;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(559, 324);
+            label9.Margin = new Padding(2, 0, 2, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(167, 25);
+            label9.TabIndex = 25;
+            label9.Text = "Ehliyet Alma Tarihi *";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(559, 250);
+            label10.Margin = new Padding(2, 0, 2, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(119, 25);
+            label10.TabIndex = 26;
+            label10.Text = "Ehliyet Sınıfı *";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(559, 177);
+            label11.Margin = new Padding(2, 0, 2, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(104, 25);
+            label11.TabIndex = 27;
+            label11.Text = "Ehliyet Yer *";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(559, 105);
+            label12.Margin = new Padding(2, 0, 2, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(105, 25);
+            label12.TabIndex = 28;
+            label12.Text = "Ehliyet No *";
             // 
             // FrmMusteriKayıt
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(481, 529);
-            Controls.Add(btnDevamEt);
+            ClientSize = new Size(1025, 702);
+            Controls.Add(cmbEhliyetSınıfı);
+            Controls.Add(btnÜyeOl);
+            Controls.Add(dateTimePicker2);
+            Controls.Add(txtEhliyetYer);
+            Controls.Add(txtEhliyetNo);
+            Controls.Add(label9);
+            Controls.Add(label10);
+            Controls.Add(label11);
+            Controls.Add(label12);
             Controls.Add(label7);
             Controls.Add(txtSifre);
             Controls.Add(label1);
@@ -211,6 +295,14 @@
         private Label label1;
         private TextBox txtSifre;
         private Label label7;
-        private Button btnDevamEt;
+        private ComboBox cmbEhliyetSınıfı;
+        private Button btnÜyeOl;
+        private DateTimePicker dateTimePicker2;
+        private TextBox txtEhliyetYer;
+        private TextBox txtEhliyetNo;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
     }
 }

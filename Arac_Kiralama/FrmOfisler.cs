@@ -19,9 +19,16 @@ namespace Arac_Kiralama
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            FrmAnaSayfa fr=new FrmAnaSayfa();
+            FrmAnaSayfa fr = new FrmAnaSayfa();
             fr.Show();
             this.Hide();
+        }
+
+        private void lnkLblMersin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
+            
+       
         }
     }
 }

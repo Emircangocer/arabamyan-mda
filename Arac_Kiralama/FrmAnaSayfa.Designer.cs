@@ -246,11 +246,13 @@
             guna2ComboBox1.Font = new Font("Segoe UI", 10F);
             guna2ComboBox1.ForeColor = Color.FromArgb(68, 88, 112);
             guna2ComboBox1.ItemHeight = 30;
+            guna2ComboBox1.Items.AddRange(new object[] { "Mersin Erdemli Şubesi", "İstanbul Sabiha Gökçen Havalimanı", "Konya Havalimanı", "Sakarya Serdivan Şubesi", "Ankara Esenboğa Havalimanı", "Kahramanmaraş Göksun Şubesi" });
             guna2ComboBox1.Location = new Point(6, 44);
             guna2ComboBox1.Name = "guna2ComboBox1";
             guna2ComboBox1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2ComboBox1.Size = new Size(210, 36);
             guna2ComboBox1.TabIndex = 31;
+            guna2ComboBox1.SelectedIndexChanged += guna2ComboBox1_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -430,7 +432,7 @@
             button2.Text = "Yönetici Giriş";
             button2.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // FrmAnaSayfa
             // 
             AutoScaleDimensions = new SizeF(13F, 31F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -445,7 +447,7 @@
             Controls.Add(button2);
             Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(5);
-            Name = "Form1";
+            Name = "FrmAnaSayfa";
             Text = "Form1";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

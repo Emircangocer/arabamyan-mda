@@ -73,6 +73,12 @@
             label36 = new Label();
             label37 = new Label();
             pictureBox1 = new PictureBox();
+            lnkLblMersin = new LinkLabel();
+            lnkLblSabiha = new LinkLabel();
+            lnkLblKonya = new LinkLabel();
+            lnkLblGoksun = new LinkLabel();
+            lnkLblAnkara = new LinkLabel();
+            lnkLblSakarya = new LinkLabel();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -84,6 +90,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(lnkLblMersin);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label4);
@@ -159,6 +166,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(lnkLblSabiha);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(label9);
@@ -234,6 +242,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(lnkLblKonya);
             groupBox3.Controls.Add(label13);
             groupBox3.Controls.Add(label14);
             groupBox3.Controls.Add(label15);
@@ -309,6 +318,7 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(lnkLblSakarya);
             groupBox4.Controls.Add(label19);
             groupBox4.Controls.Add(label20);
             groupBox4.Controls.Add(label21);
@@ -384,6 +394,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(lnkLblAnkara);
             groupBox5.Controls.Add(label25);
             groupBox5.Controls.Add(label26);
             groupBox5.Controls.Add(label27);
@@ -459,6 +470,7 @@
             // 
             // groupBox6
             // 
+            groupBox6.Controls.Add(lnkLblGoksun);
             groupBox6.Controls.Add(label31);
             groupBox6.Controls.Add(label32);
             groupBox6.Controls.Add(label33);
@@ -554,6 +566,73 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // lnkLblMersin
+            // 
+            lnkLblMersin.AutoSize = true;
+            lnkLblMersin.LinkColor = Color.Red;
+            lnkLblMersin.Location = new Point(246, 298);
+            lnkLblMersin.Name = "lnkLblMersin";
+            lnkLblMersin.Size = new Size(156, 28);
+            lnkLblMersin.TabIndex = 6;
+            lnkLblMersin.TabStop = true;
+            lnkLblMersin.Text = "Rezervasyon Yap";
+            lnkLblMersin.LinkClicked += lnkLblMersin_LinkClicked;
+            // 
+            // lnkLblSabiha
+            // 
+            lnkLblSabiha.AutoSize = true;
+            lnkLblSabiha.LinkColor = Color.Red;
+            lnkLblSabiha.Location = new Point(252, 298);
+            lnkLblSabiha.Name = "lnkLblSabiha";
+            lnkLblSabiha.Size = new Size(156, 28);
+            lnkLblSabiha.TabIndex = 6;
+            lnkLblSabiha.TabStop = true;
+            lnkLblSabiha.Text = "Rezervasyon Yap";
+            // 
+            // lnkLblKonya
+            // 
+            lnkLblKonya.AutoSize = true;
+            lnkLblKonya.LinkColor = Color.Red;
+            lnkLblKonya.Location = new Point(250, 298);
+            lnkLblKonya.Name = "lnkLblKonya";
+            lnkLblKonya.Size = new Size(156, 28);
+            lnkLblKonya.TabIndex = 6;
+            lnkLblKonya.TabStop = true;
+            lnkLblKonya.Text = "Rezervasyon Yap";
+            // 
+            // lnkLblGoksun
+            // 
+            lnkLblGoksun.AutoSize = true;
+            lnkLblGoksun.LinkColor = Color.Red;
+            lnkLblGoksun.Location = new Point(250, 301);
+            lnkLblGoksun.Name = "lnkLblGoksun";
+            lnkLblGoksun.Size = new Size(156, 28);
+            lnkLblGoksun.TabIndex = 6;
+            lnkLblGoksun.TabStop = true;
+            lnkLblGoksun.Text = "Rezervasyon Yap";
+            // 
+            // lnkLblAnkara
+            // 
+            lnkLblAnkara.AutoSize = true;
+            lnkLblAnkara.LinkColor = Color.Red;
+            lnkLblAnkara.Location = new Point(252, 301);
+            lnkLblAnkara.Name = "lnkLblAnkara";
+            lnkLblAnkara.Size = new Size(156, 28);
+            lnkLblAnkara.TabIndex = 6;
+            lnkLblAnkara.TabStop = true;
+            lnkLblAnkara.Text = "Rezervasyon Yap";
+            // 
+            // lnkLblSakarya
+            // 
+            lnkLblSakarya.AutoSize = true;
+            lnkLblSakarya.LinkColor = Color.Red;
+            lnkLblSakarya.Location = new Point(250, 301);
+            lnkLblSakarya.Name = "lnkLblSakarya";
+            lnkLblSakarya.Size = new Size(156, 28);
+            lnkLblSakarya.TabIndex = 6;
+            lnkLblSakarya.TabStop = true;
+            lnkLblSakarya.Text = "Rezervasyon Yap";
+            // 
             // FrmOfisler
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -635,5 +714,11 @@
         private Label label36;
         private Label label37;
         private PictureBox pictureBox1;
+        private LinkLabel lnkLblMersin;
+        private LinkLabel lnkLblSabiha;
+        private LinkLabel lnkLblKonya;
+        private LinkLabel lnkLblSakarya;
+        private LinkLabel lnkLblAnkara;
+        private LinkLabel lnkLblGoksun;
     }
 }
