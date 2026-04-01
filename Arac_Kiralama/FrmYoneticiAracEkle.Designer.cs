@@ -46,6 +46,7 @@
             cmbSanzıman = new ComboBox();
             btnAracEkle = new Button();
             pictureBox1 = new PictureBox();
+            btnListele = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -53,16 +54,17 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(433, 329);
+            dataGridView1.Location = new Point(394, 185);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1783, 706);
+            dataGridView1.Size = new Size(1195, 706);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(81, 364);
+            label1.Location = new Point(75, 226);
             label1.Name = "label1";
             label1.Size = new Size(62, 28);
             label1.TabIndex = 1;
@@ -70,14 +72,14 @@
             // 
             // txtPlaka
             // 
-            txtPlaka.Location = new Point(153, 358);
+            txtPlaka.Location = new Point(147, 220);
             txtPlaka.Name = "txtPlaka";
             txtPlaka.Size = new Size(182, 34);
             txtPlaka.TabIndex = 2;
             // 
             // txtMarka
             // 
-            txtMarka.Location = new Point(153, 410);
+            txtMarka.Location = new Point(147, 272);
             txtMarka.Name = "txtMarka";
             txtMarka.Size = new Size(182, 34);
             txtMarka.TabIndex = 4;
@@ -85,7 +87,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(70, 413);
+            label2.Location = new Point(64, 275);
             label2.Name = "label2";
             label2.Size = new Size(71, 28);
             label2.TabIndex = 3;
@@ -93,7 +95,7 @@
             // 
             // txtModel
             // 
-            txtModel.Location = new Point(153, 462);
+            txtModel.Location = new Point(147, 324);
             txtModel.Name = "txtModel";
             txtModel.Size = new Size(182, 34);
             txtModel.TabIndex = 6;
@@ -101,7 +103,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(70, 465);
+            label3.Location = new Point(64, 327);
             label3.Name = "label3";
             label3.Size = new Size(73, 28);
             label3.TabIndex = 5;
@@ -109,7 +111,7 @@
             // 
             // txtGunlukUcret
             // 
-            txtGunlukUcret.Location = new Point(153, 515);
+            txtGunlukUcret.Location = new Point(147, 377);
             txtGunlukUcret.Name = "txtGunlukUcret";
             txtGunlukUcret.Size = new Size(182, 34);
             txtGunlukUcret.TabIndex = 8;
@@ -117,7 +119,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(13, 515);
+            label4.Location = new Point(7, 377);
             label4.Name = "label4";
             label4.Size = new Size(130, 28);
             label4.TabIndex = 7;
@@ -126,7 +128,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(49, 570);
+            label5.Location = new Point(43, 432);
             label5.Name = "label5";
             label5.Size = new Size(94, 28);
             label5.TabIndex = 9;
@@ -135,7 +137,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(43, 622);
+            label6.Location = new Point(37, 484);
             label6.Name = "label6";
             label6.Size = new Size(100, 28);
             label6.TabIndex = 11;
@@ -143,7 +145,7 @@
             // 
             // txtKm
             // 
-            txtKm.Location = new Point(153, 677);
+            txtKm.Location = new Point(147, 539);
             txtKm.Name = "txtKm";
             txtKm.Size = new Size(182, 34);
             txtKm.TabIndex = 14;
@@ -151,7 +153,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(98, 677);
+            label7.Location = new Point(92, 539);
             label7.Name = "label7";
             label7.Size = new Size(45, 28);
             label7.TabIndex = 13;
@@ -161,7 +163,7 @@
             // 
             cmbYakitTipi.FormattingEnabled = true;
             cmbYakitTipi.Items.AddRange(new object[] { "Benzin", "Dizel", "Hibrit" });
-            cmbYakitTipi.Location = new Point(153, 570);
+            cmbYakitTipi.Location = new Point(147, 432);
             cmbYakitTipi.Name = "cmbYakitTipi";
             cmbYakitTipi.Size = new Size(182, 36);
             cmbYakitTipi.TabIndex = 15;
@@ -170,14 +172,14 @@
             // 
             cmbSanzıman.FormattingEnabled = true;
             cmbSanzıman.Items.AddRange(new object[] { "Otomatik", "Manuel" });
-            cmbSanzıman.Location = new Point(153, 622);
+            cmbSanzıman.Location = new Point(147, 484);
             cmbSanzıman.Name = "cmbSanzıman";
             cmbSanzıman.Size = new Size(182, 36);
             cmbSanzıman.TabIndex = 15;
             // 
             // btnAracEkle
             // 
-            btnAracEkle.Location = new Point(153, 731);
+            btnAracEkle.Location = new Point(147, 593);
             btnAracEkle.Name = "btnAracEkle";
             btnAracEkle.Size = new Size(182, 36);
             btnAracEkle.TabIndex = 16;
@@ -188,19 +190,30 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(13, 73);
+            pictureBox1.Location = new Point(13, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(281, 159);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 17;
             pictureBox1.TabStop = false;
             // 
-            // YöneticiAracEkle
+            // btnListele
+            // 
+            btnListele.Location = new Point(147, 646);
+            btnListele.Name = "btnListele";
+            btnListele.Size = new Size(182, 34);
+            btnListele.TabIndex = 18;
+            btnListele.Text = "Listele";
+            btnListele.UseVisualStyleBackColor = true;
+            btnListele.Click += button1_Click;
+            // 
+            // FrmYoneticiAracEkle
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1924, 1055);
+            Controls.Add(btnListele);
             Controls.Add(pictureBox1);
             Controls.Add(btnAracEkle);
             Controls.Add(cmbSanzıman);
@@ -219,9 +232,10 @@
             Controls.Add(label1);
             Controls.Add(dataGridView1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            Margin = new Padding(4, 4, 4, 4);
-            Name = "YöneticiAracEkle";
+            Margin = new Padding(4);
+            Name = "FrmYoneticiAracEkle";
             Text = "YöneticiAracEkle";
+            Load += FrmYoneticiAracEkle_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -247,5 +261,6 @@
         private ComboBox cmbSanzıman;
         private Button btnAracEkle;
         private PictureBox pictureBox1;
+        private Button btnListele;
     }
 }
