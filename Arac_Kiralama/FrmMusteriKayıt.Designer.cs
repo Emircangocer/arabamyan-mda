@@ -191,7 +191,7 @@
             Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "FrmMusteriKayıt";
-            Text = "Müşteri Kayıt";
+            Text = " ";
             ResumeLayout(false);
             PerformLayout();
         }
