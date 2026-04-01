@@ -395,6 +395,7 @@
             button4.TabIndex = 12;
             button4.Text = "Araçlar";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button3
             // 

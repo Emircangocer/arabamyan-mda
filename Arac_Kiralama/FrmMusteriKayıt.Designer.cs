@@ -276,6 +276,7 @@
             Margin = new Padding(4);
             Name = "FrmMusteriKayıt";
             Text = "Müşteri Kayıt";
+            Load += FrmMusteriKayıt_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -11,7 +11,7 @@ namespace Arac_Kiralama
         }
         public static Guna2ComboBox combo;
 
-        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -58,6 +58,13 @@ namespace Arac_Kiralama
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FrmYoneticiAracEkle fr=new FrmYoneticiAracEkle();
+            fr.Show();
+            this.Hide();
         }
     }
 }
