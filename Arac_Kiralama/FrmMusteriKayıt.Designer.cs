@@ -280,7 +280,6 @@
 
             Text = "Müşteri Kayıt";
             Load += FrmMusteriKayıt_Load;
- f77d5bb0109f2ef78f2fc27abc7e2fb7c8024833
             ResumeLayout(false);
             PerformLayout();
         }
