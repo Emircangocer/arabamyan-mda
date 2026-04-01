@@ -22,9 +22,12 @@ namespace Arac_Kiralama
 
         private void btnDevamEt_Click(object sender, EventArgs e)
         {
-            FrmMusteriKayit2 fr =new FrmMusteriKayit2();
-            fr.Show();
-            this.Hide();
+           
+
+        }
+
+        private void FrmMusteriKayıt_Load(object sender, EventArgs e)
+        {
 
         }
     }
