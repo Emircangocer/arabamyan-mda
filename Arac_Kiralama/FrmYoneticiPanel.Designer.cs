@@ -33,7 +33,7 @@
             button6 = new Button();
             button5 = new Button();
             button4 = new Button();
-            button3 = new Button();
+            btnMusteri = new Button();
             button2 = new Button();
             button1 = new Button();
             panel1.SuspendLayout();
@@ -45,7 +45,7 @@
             panel1.Controls.Add(button6);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button4);
-            panel1.Controls.Add(button3);
+            panel1.Controls.Add(btnMusteri);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Left;
@@ -94,15 +94,16 @@
             button4.TextAlign = ContentAlignment.TopLeft;
             button4.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnMusteri
             // 
-            button3.Location = new Point(0, 247);
-            button3.Name = "button3";
-            button3.Size = new Size(189, 37);
-            button3.TabIndex = 3;
-            button3.Text = "👥 Müşteriler";
-            button3.TextAlign = ContentAlignment.TopLeft;
-            button3.UseVisualStyleBackColor = true;
+            btnMusteri.Location = new Point(0, 247);
+            btnMusteri.Name = "btnMusteri";
+            btnMusteri.Size = new Size(189, 37);
+            btnMusteri.TabIndex = 3;
+            btnMusteri.Text = "👥 Müşteriler";
+            btnMusteri.TextAlign = ContentAlignment.TopLeft;
+            btnMusteri.UseVisualStyleBackColor = true;
+            btnMusteri.Click += btnMusteri_Click;
             // 
             // button2
             // 
@@ -143,7 +144,7 @@
 
         private Panel panel1;
         private Button button1;
-        private Button button3;
+        private Button btnMusteri;
         private Button button2;
         private Button button5;
         private Button button4;

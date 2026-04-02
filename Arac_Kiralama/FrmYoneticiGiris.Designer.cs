@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmYoneticiGiris));
             pictureBox1 = new PictureBox();
-            button1 = new Button();
-            maskedTextBox1 = new MaskedTextBox();
-            textBox1 = new TextBox();
+            btnGirisYap = new Button();
+            mskTC = new MaskedTextBox();
+            txtSifre = new TextBox();
             label2 = new Label();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -42,39 +42,40 @@
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(26, 13);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(439, 179);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnGirisYap
             // 
-            button1.Location = new Point(272, 326);
-            button1.Margin = new Padding(5, 5, 5, 5);
-            button1.Name = "button1";
-            button1.Size = new Size(129, 41);
-            button1.TabIndex = 10;
-            button1.Text = "Giriş Yap";
-            button1.UseVisualStyleBackColor = true;
+            btnGirisYap.Location = new Point(272, 326);
+            btnGirisYap.Margin = new Padding(5);
+            btnGirisYap.Name = "btnGirisYap";
+            btnGirisYap.Size = new Size(129, 41);
+            btnGirisYap.TabIndex = 3;
+            btnGirisYap.Text = "Giriş Yap";
+            btnGirisYap.UseVisualStyleBackColor = true;
+            btnGirisYap.Click += btnGirisYap_Click;
             // 
-            // maskedTextBox1
+            // mskTC
             // 
-            maskedTextBox1.Location = new Point(190, 220);
-            maskedTextBox1.Margin = new Padding(5, 5, 5, 5);
-            maskedTextBox1.Mask = "00000000000";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(211, 38);
-            maskedTextBox1.TabIndex = 9;
+            mskTC.Location = new Point(190, 220);
+            mskTC.Margin = new Padding(5);
+            mskTC.Mask = "00000000000";
+            mskTC.Name = "mskTC";
+            mskTC.Size = new Size(211, 38);
+            mskTC.TabIndex = 1;
             // 
-            // textBox1
+            // txtSifre
             // 
-            textBox1.Location = new Point(190, 278);
-            textBox1.Margin = new Padding(5, 5, 5, 5);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(211, 38);
-            textBox1.TabIndex = 8;
+            txtSifre.Location = new Point(190, 278);
+            txtSifre.Margin = new Padding(5);
+            txtSifre.Name = "txtSifre";
+            txtSifre.Size = new Size(211, 38);
+            txtSifre.TabIndex = 2;
             // 
             // label2
             // 
@@ -98,18 +99,19 @@
             // 
             // FrmYoneticiGiris
             // 
+            AcceptButton = btnGirisYap;
             AutoScaleDimensions = new SizeF(13F, 31F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(497, 460);
             Controls.Add(pictureBox1);
-            Controls.Add(button1);
-            Controls.Add(maskedTextBox1);
-            Controls.Add(textBox1);
+            Controls.Add(btnGirisYap);
+            Controls.Add(mskTC);
+            Controls.Add(txtSifre);
             Controls.Add(label2);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "FrmYoneticiGiris";
             Text = "FrmYoneticiGiris";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -120,9 +122,9 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private Button button1;
-        private MaskedTextBox maskedTextBox1;
-        private TextBox textBox1;
+        private Button btnGirisYap;
+        private MaskedTextBox mskTC;
+        private TextBox txtSifre;
         private Label label2;
         private Label label1;
     }

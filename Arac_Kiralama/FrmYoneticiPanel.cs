@@ -16,5 +16,12 @@ namespace Arac_Kiralama
         {
             InitializeComponent();
         }
+
+        private void btnMusteri_Click(object sender, EventArgs e)
+        {
+            FrmYoneticiPanel_Musteriler fr=new FrmYoneticiPanel_Musteriler();
+            fr.Show();
+            this.Hide();
+        }
     }
 }

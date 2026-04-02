@@ -28,11 +28,11 @@ namespace Arac_Kiralama
             komut.Parameters.AddWithValue("@p1", txtPlaka.Text);
             komut.Parameters.AddWithValue("@p2", txtMarka.Text);
             komut.Parameters.AddWithValue("@p3", txtModel.Text);
-            komut.Parameters.AddWithValue("@p4", decimal.Parse(txtGunlukUcret.Text)); // Decimal kuralını hatırladın mı?
+            komut.Parameters.AddWithValue("@p4", decimal.Parse(txtGunlukUcret.Text)); 
             komut.Parameters.AddWithValue("@p5", cmbYakitTipi.Text);
             komut.Parameters.AddWithValue("@p6", cmbSanzıman.Text);
             komut.Parameters.AddWithValue("@p7", int.Parse(txtKm.Text));
-            komut.Parameters.AddWithValue("@p8", "Müsait"); // Yeni eklenen araç direkt müsait başlar
+            komut.Parameters.AddWithValue("@p8", "Müsait"); 
 
             komut.ExecuteNonQuery();
             bgl.baglanti().Close();

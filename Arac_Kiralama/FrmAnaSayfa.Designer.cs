@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel2 = new Panel();
             label7 = new Label();
             guna2ToggleSwitch1 = new Guna.UI2.WinForms.Guna2ToggleSwitch();
@@ -111,10 +111,10 @@
             guna2ToggleSwitch1.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
             guna2ToggleSwitch1.CheckedState.InnerBorderColor = Color.White;
             guna2ToggleSwitch1.CheckedState.InnerColor = Color.White;
-            guna2ToggleSwitch1.CustomizableEdges = customizableEdges15;
+            guna2ToggleSwitch1.CustomizableEdges = customizableEdges1;
             guna2ToggleSwitch1.Location = new Point(666, 92);
             guna2ToggleSwitch1.Name = "guna2ToggleSwitch1";
-            guna2ToggleSwitch1.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2ToggleSwitch1.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2ToggleSwitch1.Size = new Size(50, 25);
             guna2ToggleSwitch1.TabIndex = 33;
             guna2ToggleSwitch1.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
@@ -138,7 +138,7 @@
             // 
             gunacmbİadeNoktasi.BackColor = Color.Transparent;
             gunacmbİadeNoktasi.BorderThickness = 0;
-            gunacmbİadeNoktasi.CustomizableEdges = customizableEdges17;
+            gunacmbİadeNoktasi.CustomizableEdges = customizableEdges3;
             gunacmbİadeNoktasi.DrawMode = DrawMode.OwnerDrawFixed;
             gunacmbİadeNoktasi.DropDownStyle = ComboBoxStyle.DropDownList;
             gunacmbİadeNoktasi.FillColor = Color.WhiteSmoke;
@@ -149,7 +149,7 @@
             gunacmbİadeNoktasi.ItemHeight = 30;
             gunacmbİadeNoktasi.Location = new Point(6, 44);
             gunacmbİadeNoktasi.Name = "gunacmbİadeNoktasi";
-            gunacmbİadeNoktasi.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            gunacmbİadeNoktasi.ShadowDecoration.CustomizableEdges = customizableEdges4;
             gunacmbİadeNoktasi.Size = new Size(210, 36);
             gunacmbİadeNoktasi.TabIndex = 31;
             gunacmbİadeNoktasi.Visible = false;
@@ -179,7 +179,7 @@
             // 
             gunacmbAlisSaati.BackColor = Color.Transparent;
             gunacmbAlisSaati.BorderThickness = 0;
-            gunacmbAlisSaati.CustomizableEdges = customizableEdges19;
+            gunacmbAlisSaati.CustomizableEdges = customizableEdges5;
             gunacmbAlisSaati.DrawMode = DrawMode.OwnerDrawFixed;
             gunacmbAlisSaati.DropDownStyle = ComboBoxStyle.DropDownList;
             gunacmbAlisSaati.FillColor = Color.WhiteSmoke;
@@ -190,7 +190,7 @@
             gunacmbAlisSaati.ItemHeight = 30;
             gunacmbAlisSaati.Location = new Point(3, 47);
             gunacmbAlisSaati.Name = "gunacmbAlisSaati";
-            gunacmbAlisSaati.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            gunacmbAlisSaati.ShadowDecoration.CustomizableEdges = customizableEdges6;
             gunacmbAlisSaati.Size = new Size(104, 36);
             gunacmbAlisSaati.TabIndex = 30;
             // 
@@ -236,7 +236,7 @@
             // 
             gunacmbAlisNoktasi.BackColor = Color.Transparent;
             gunacmbAlisNoktasi.BorderThickness = 0;
-            gunacmbAlisNoktasi.CustomizableEdges = customizableEdges21;
+            gunacmbAlisNoktasi.CustomizableEdges = customizableEdges7;
             gunacmbAlisNoktasi.DrawMode = DrawMode.OwnerDrawFixed;
             gunacmbAlisNoktasi.DropDownStyle = ComboBoxStyle.DropDownList;
             gunacmbAlisNoktasi.FillColor = Color.WhiteSmoke;
@@ -248,7 +248,7 @@
             gunacmbAlisNoktasi.Items.AddRange(new object[] { "Mersin Erdemli Şubesi", "İstanbul Sabiha Gökçen Havalimanı", "Konya Havalimanı", "Sakarya Serdivan Şubesi", "Ankara Esenboğa Havalimanı", "Kahramanmaraş Göksun Şubesi" });
             gunacmbAlisNoktasi.Location = new Point(6, 44);
             gunacmbAlisNoktasi.Name = "gunacmbAlisNoktasi";
-            gunacmbAlisNoktasi.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            gunacmbAlisNoktasi.ShadowDecoration.CustomizableEdges = customizableEdges8;
             gunacmbAlisNoktasi.Size = new Size(210, 36);
             gunacmbAlisNoktasi.TabIndex = 31;
             gunacmbAlisNoktasi.SelectedIndexChanged += guna2ComboBox1_SelectedIndexChanged;
@@ -278,7 +278,7 @@
             // 
             guna2DateTimePicker1.BackColor = Color.Transparent;
             guna2DateTimePicker1.Checked = true;
-            guna2DateTimePicker1.CustomizableEdges = customizableEdges23;
+            guna2DateTimePicker1.CustomizableEdges = customizableEdges9;
             guna2DateTimePicker1.FillColor = Color.White;
             guna2DateTimePicker1.Font = new Font("Segoe UI", 9F);
             guna2DateTimePicker1.Format = DateTimePickerFormat.Long;
@@ -286,7 +286,7 @@
             guna2DateTimePicker1.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             guna2DateTimePicker1.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             guna2DateTimePicker1.Name = "guna2DateTimePicker1";
-            guna2DateTimePicker1.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2DateTimePicker1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2DateTimePicker1.Size = new Size(214, 39);
             guna2DateTimePicker1.TabIndex = 3;
             guna2DateTimePicker1.Value = new DateTime(2026, 3, 26, 14, 12, 8, 57);
@@ -318,7 +318,7 @@
             // 
             gunacmbiadeSaati.BackColor = Color.Transparent;
             gunacmbiadeSaati.BorderThickness = 0;
-            gunacmbiadeSaati.CustomizableEdges = customizableEdges25;
+            gunacmbiadeSaati.CustomizableEdges = customizableEdges11;
             gunacmbiadeSaati.DrawMode = DrawMode.OwnerDrawFixed;
             gunacmbiadeSaati.DropDownStyle = ComboBoxStyle.DropDownList;
             gunacmbiadeSaati.FillColor = Color.WhiteSmoke;
@@ -329,7 +329,7 @@
             gunacmbiadeSaati.ItemHeight = 30;
             gunacmbiadeSaati.Location = new Point(216, 47);
             gunacmbiadeSaati.Name = "gunacmbiadeSaati";
-            gunacmbiadeSaati.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            gunacmbiadeSaati.ShadowDecoration.CustomizableEdges = customizableEdges12;
             gunacmbiadeSaati.Size = new Size(125, 36);
             gunacmbiadeSaati.TabIndex = 30;
             // 
@@ -357,7 +357,7 @@
             // 
             guna2DateTimePicker2.BackColor = Color.Transparent;
             guna2DateTimePicker2.Checked = true;
-            guna2DateTimePicker2.CustomizableEdges = customizableEdges27;
+            guna2DateTimePicker2.CustomizableEdges = customizableEdges13;
             guna2DateTimePicker2.FillColor = Color.White;
             guna2DateTimePicker2.Font = new Font("Segoe UI", 9F);
             guna2DateTimePicker2.Format = DateTimePickerFormat.Long;
@@ -365,7 +365,7 @@
             guna2DateTimePicker2.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             guna2DateTimePicker2.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             guna2DateTimePicker2.Name = "guna2DateTimePicker2";
-            guna2DateTimePicker2.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2DateTimePicker2.ShadowDecoration.CustomizableEdges = customizableEdges14;
             guna2DateTimePicker2.Size = new Size(219, 39);
             guna2DateTimePicker2.TabIndex = 23;
             guna2DateTimePicker2.Value = new DateTime(2026, 3, 26, 14, 12, 8, 57);
@@ -431,6 +431,7 @@
             btnYoneticiGiris.TabIndex = 10;
             btnYoneticiGiris.Text = "Yönetici Giriş";
             btnYoneticiGiris.UseVisualStyleBackColor = false;
+            btnYoneticiGiris.Click += btnYoneticiGiris_Click;
             // 
             // FrmAnaSayfa
             // 

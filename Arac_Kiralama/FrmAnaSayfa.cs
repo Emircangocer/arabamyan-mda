@@ -62,9 +62,15 @@ namespace Arac_Kiralama
 
         private void button4_Click(object sender, EventArgs e)
         {
-            FrmYoneticiAracEkle fr=new FrmYoneticiAracEkle();
+            FrmYoneticiAracEkle fr = new FrmYoneticiAracEkle();
             fr.Show();
             this.Hide();
+        }
+
+        private void btnYoneticiGiris_Click(object sender, EventArgs e)
+        {
+            FrmYoneticiGiris fr=new FrmYoneticiGiris();
+            fr.Show();
         }
     }
 }
