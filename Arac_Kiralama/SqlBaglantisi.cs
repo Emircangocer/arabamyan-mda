@@ -11,10 +11,15 @@ namespace Arac_Kiralama
     {
         public SqlConnection baglanti()
         {
-            // Kendi SQL Server adını (Emircan\SQLEXPRESS gibi) buraya yazmalısın
+            
             SqlConnection baglan = new SqlConnection(@"Data Source=Emircan\SQLEXPRESS; Initial Catalog=AracKiralama; Integrated Security=True; TrustServerCertificate=True");
             baglan.Open();
             return baglan;
         }
+    }
+    public static class KullaniciBilgisi
+    {
+        public static string AdSoyad = "";
+        public static bool GirisYapildiMi = false;
     }
 }

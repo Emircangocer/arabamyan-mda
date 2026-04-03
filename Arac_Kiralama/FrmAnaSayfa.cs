@@ -69,8 +69,30 @@ namespace Arac_Kiralama
 
         private void btnYoneticiGiris_Click(object sender, EventArgs e)
         {
-            FrmYoneticiGiris fr=new FrmYoneticiGiris();
+            FrmYoneticiGiris fr = new FrmYoneticiGiris();
             fr.Show();
+        }
+
+        private void FrmAnaSayfa_Load(object sender, EventArgs e)
+        {
+            if (KullaniciBilgisi.GirisYapildiMi)
+            {
+                // Giriş yapıldıysa Giriş butonlarını gizle
+                btnMusteriGiris.Visible = false;
+                btnYoneticiGiris.Visible = false;
+
+                // Kullanıcı ismini göster
+                lblMusteriAd.Text = "Hoş geldin, " + KullaniciBilgisi.AdSoyad;
+                lblMusteriAd.Visible = true;
+                btnCikis.Visible = true; // İstersen çıkış butonu da koyabilirsin
+            }
+            else
+            {
+                // Giriş yapılmadıysa butonlar görünür kalsın
+                btnMusteriGiris.Visible = true;
+                btnYoneticiGiris.Visible = true;
+                lblMusteriAd.Visible = false;
+            }
         }
     }
 }

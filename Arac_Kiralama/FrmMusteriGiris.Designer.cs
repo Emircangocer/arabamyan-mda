@@ -30,8 +30,8 @@
         {
             label1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
-            maskedTextBox1 = new MaskedTextBox();
+            txtSifre = new TextBox();
+            mskTC = new MaskedTextBox();
             button1 = new Button();
             linkLabel1 = new LinkLabel();
             pictureBox1 = new PictureBox();
@@ -58,22 +58,22 @@
             label2.TabIndex = 0;
             label2.Text = "Şifre:";
             // 
-            // textBox1
+            // txtSifre
             // 
-            textBox1.Location = new Point(151, 275);
-            textBox1.Margin = new Padding(4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(252, 38);
-            textBox1.TabIndex = 1;
+            txtSifre.Location = new Point(151, 275);
+            txtSifre.Margin = new Padding(4);
+            txtSifre.Name = "txtSifre";
+            txtSifre.Size = new Size(252, 38);
+            txtSifre.TabIndex = 2;
             // 
-            // maskedTextBox1
+            // mskTC
             // 
-            maskedTextBox1.Location = new Point(151, 226);
-            maskedTextBox1.Margin = new Padding(4);
-            maskedTextBox1.Mask = "00000000000";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(252, 38);
-            maskedTextBox1.TabIndex = 2;
+            mskTC.Location = new Point(151, 226);
+            mskTC.Margin = new Padding(4);
+            mskTC.Mask = "00000000000";
+            mskTC.Name = "mskTC";
+            mskTC.Size = new Size(252, 38);
+            mskTC.TabIndex = 1;
             // 
             // button1
             // 
@@ -84,6 +84,7 @@
             button1.TabIndex = 3;
             button1.Text = "Giriş Yap";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // linkLabel1
             // 
@@ -115,8 +116,8 @@
             Controls.Add(pictureBox1);
             Controls.Add(linkLabel1);
             Controls.Add(button1);
-            Controls.Add(maskedTextBox1);
-            Controls.Add(textBox1);
+            Controls.Add(mskTC);
+            Controls.Add(txtSifre);
             Controls.Add(label2);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
@@ -132,8 +133,8 @@
 
         private Label label1;
         private Label label2;
-        private TextBox textBox1;
-        private MaskedTextBox maskedTextBox1;
+        private TextBox txtSifre;
+        private MaskedTextBox mskTC;
         private Button button1;
         private LinkLabel linkLabel1;
         private PictureBox pictureBox1;

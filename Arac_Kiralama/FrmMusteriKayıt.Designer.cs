@@ -33,7 +33,7 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            txtad = new TextBox();
+            txtAd = new TextBox();
             txtSoyad = new TextBox();
             mskTC = new MaskedTextBox();
             mskTelefon = new MaskedTextBox();
@@ -103,19 +103,19 @@
             label6.TabIndex = 0;
             label6.Text = "Doğum Tarihi *";
             // 
-            // txtad
+            // txtAd
             // 
-            txtad.Location = new Point(26, 134);
-            txtad.Name = "txtad";
-            txtad.Size = new Size(190, 31);
-            txtad.TabIndex = 1;
+            txtAd.Location = new Point(26, 134);
+            txtAd.Name = "txtAd";
+            txtAd.Size = new Size(190, 31);
+            txtAd.TabIndex = 1;
             // 
             // txtSoyad
             // 
             txtSoyad.Location = new Point(244, 134);
             txtSoyad.Name = "txtSoyad";
             txtSoyad.Size = new Size(190, 31);
-            txtSoyad.TabIndex = 1;
+            txtSoyad.TabIndex = 2;
             // 
             // mskTC
             // 
@@ -123,7 +123,7 @@
             mskTC.Mask = "00000000000";
             mskTC.Name = "mskTC";
             mskTC.Size = new Size(408, 31);
-            mskTC.TabIndex = 2;
+            mskTC.TabIndex = 3;
             // 
             // mskTelefon
             // 
@@ -131,14 +131,14 @@
             mskTelefon.Mask = "(999) 000-0000";
             mskTelefon.Name = "mskTelefon";
             mskTelefon.Size = new Size(408, 31);
-            mskTelefon.TabIndex = 3;
+            mskTelefon.TabIndex = 4;
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.Location = new Point(26, 353);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(408, 31);
-            dateTimePicker1.TabIndex = 4;
+            dateTimePicker1.TabIndex = 5;
             // 
             // label1
             // 
@@ -159,19 +159,21 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(12, 19);
+            label7.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
+            label7.Location = new Point(29, 20);
             label7.Name = "label7";
-            label7.Size = new Size(290, 50);
+            label7.Size = new Size(958, 38);
             label7.TabIndex = 7;
-            label7.Text = "arabamyanımda ile Rahat ve Hızlı\r\n Araç Kiralamak İçin Hemen Üye Ol!\r\n";
+            label7.Text = "arabamyanımda ile Rahat ve Hızlı Araç Kiralamak İçin Hemen Üye Ol!\r\n";
             // 
             // cmbEhliyetSınıfı
             // 
             cmbEhliyetSınıfı.FormattingEnabled = true;
+            cmbEhliyetSınıfı.Items.AddRange(new object[] { "A", "A1", "A2", "M", "B", "B1", "BE", "C", "CE", "C1", "D", "D1", "F", "G" });
             cmbEhliyetSınıfı.Location = new Point(559, 278);
             cmbEhliyetSınıfı.Name = "cmbEhliyetSınıfı";
             cmbEhliyetSınıfı.Size = new Size(341, 33);
-            cmbEhliyetSınıfı.TabIndex = 34;
+            cmbEhliyetSınıfı.TabIndex = 9;
             // 
             // btnÜyeOl
             // 
@@ -179,30 +181,31 @@
             btnÜyeOl.Location = new Point(319, 499);
             btnÜyeOl.Name = "btnÜyeOl";
             btnÜyeOl.Size = new Size(341, 41);
-            btnÜyeOl.TabIndex = 33;
+            btnÜyeOl.TabIndex = 11;
             btnÜyeOl.Text = "Üyeliği Tamamla";
             btnÜyeOl.UseVisualStyleBackColor = false;
+            btnÜyeOl.Click += btnÜyeOl_Click;
             // 
             // dateTimePicker2
             // 
             dateTimePicker2.Location = new Point(559, 352);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(341, 31);
-            dateTimePicker2.TabIndex = 31;
+            dateTimePicker2.TabIndex = 10;
             // 
             // txtEhliyetYer
             // 
             txtEhliyetYer.Location = new Point(559, 207);
             txtEhliyetYer.Name = "txtEhliyetYer";
             txtEhliyetYer.Size = new Size(341, 31);
-            txtEhliyetYer.TabIndex = 29;
+            txtEhliyetYer.TabIndex = 8;
             // 
             // txtEhliyetNo
             // 
-            txtEhliyetNo.Location = new Point(559, 133);
+            txtEhliyetNo.Location = new Point(559, 134);
             txtEhliyetNo.Name = "txtEhliyetNo";
             txtEhliyetNo.Size = new Size(341, 31);
-            txtEhliyetNo.TabIndex = 30;
+            txtEhliyetNo.TabIndex = 7;
             // 
             // label9
             // 
@@ -246,6 +249,7 @@
             // 
             // FrmMusteriKayıt
             // 
+            AcceptButton = btnÜyeOl;
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
@@ -266,7 +270,7 @@
             Controls.Add(mskTelefon);
             Controls.Add(mskTC);
             Controls.Add(txtSoyad);
-            Controls.Add(txtad);
+            Controls.Add(txtAd);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -275,9 +279,6 @@
             Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "FrmMusteriKayıt";
-
-            Text = " ";
-
             Text = "Müşteri Kayıt";
             Load += FrmMusteriKayıt_Load;
             ResumeLayout(false);
@@ -291,7 +292,7 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox txtad;
+        private TextBox txtAd;
         private TextBox txtSoyad;
         private MaskedTextBox mskTC;
         private MaskedTextBox mskTelefon;

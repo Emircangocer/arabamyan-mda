@@ -70,6 +70,8 @@
             btnMusteriGiris = new Button();
             btnYoneticiGiris = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            lblMusteriAd = new Label();
+            btnCikis = new Button();
             panel2.SuspendLayout();
             pnliadeNoktasi.SuspendLayout();
             panel6.SuspendLayout();
@@ -374,7 +376,7 @@
             // 
             btnOfisler.BackColor = Color.Cyan;
             btnOfisler.ForeColor = SystemColors.ControlText;
-            btnOfisler.Location = new Point(1057, 75);
+            btnOfisler.Location = new Point(962, 74);
             btnOfisler.Margin = new Padding(4);
             btnOfisler.Name = "btnOfisler";
             btnOfisler.Size = new Size(157, 53);
@@ -387,7 +389,7 @@
             // 
             btnAraclar.BackColor = Color.Cyan;
             btnAraclar.ForeColor = SystemColors.ControlText;
-            btnAraclar.Location = new Point(892, 75);
+            btnAraclar.Location = new Point(797, 74);
             btnAraclar.Margin = new Padding(4);
             btnAraclar.Name = "btnAraclar";
             btnAraclar.Size = new Size(157, 53);
@@ -400,7 +402,7 @@
             // 
             BtnKilamaKosullari.BackColor = Color.Cyan;
             BtnKilamaKosullari.ForeColor = SystemColors.ControlText;
-            BtnKilamaKosullari.Location = new Point(643, 75);
+            BtnKilamaKosullari.Location = new Point(548, 74);
             BtnKilamaKosullari.Margin = new Padding(4);
             BtnKilamaKosullari.Name = "BtnKilamaKosullari";
             BtnKilamaKosullari.Size = new Size(241, 53);
@@ -412,7 +414,7 @@
             // 
             btnMusteriGiris.BackColor = Color.Cyan;
             btnMusteriGiris.ForeColor = SystemColors.ControlText;
-            btnMusteriGiris.Location = new Point(1222, 75);
+            btnMusteriGiris.Location = new Point(1127, 74);
             btnMusteriGiris.Margin = new Padding(4);
             btnMusteriGiris.Name = "btnMusteriGiris";
             btnMusteriGiris.Size = new Size(157, 53);
@@ -424,7 +426,7 @@
             // btnYoneticiGiris
             // 
             btnYoneticiGiris.BackColor = Color.OrangeRed;
-            btnYoneticiGiris.Location = new Point(1387, 75);
+            btnYoneticiGiris.Location = new Point(1292, 74);
             btnYoneticiGiris.Margin = new Padding(4);
             btnYoneticiGiris.Name = "btnYoneticiGiris";
             btnYoneticiGiris.Size = new Size(157, 53);
@@ -433,6 +435,26 @@
             btnYoneticiGiris.UseVisualStyleBackColor = false;
             btnYoneticiGiris.Click += btnYoneticiGiris_Click;
             // 
+            // lblMusteriAd
+            // 
+            lblMusteriAd.AutoSize = true;
+            lblMusteriAd.Location = new Point(1190, 131);
+            lblMusteriAd.Name = "lblMusteriAd";
+            lblMusteriAd.Size = new Size(104, 31);
+            lblMusteriAd.TabIndex = 18;
+            lblMusteriAd.Text = "Çıkıs Yap";
+            lblMusteriAd.Visible = false;
+            // 
+            // btnCikis
+            // 
+            btnCikis.Location = new Point(1190, 178);
+            btnCikis.Name = "btnCikis";
+            btnCikis.Size = new Size(134, 36);
+            btnCikis.TabIndex = 19;
+            btnCikis.Text = "Çıkıs Yap";
+            btnCikis.UseVisualStyleBackColor = true;
+            btnCikis.Visible = false;
+            // 
             // FrmAnaSayfa
             // 
             AutoScaleDimensions = new SizeF(13F, 31F);
@@ -440,6 +462,8 @@
             BackgroundImage = Properties.Resources.unnamed__6_;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1634, 960);
+            Controls.Add(btnCikis);
+            Controls.Add(lblMusteriAd);
             Controls.Add(btnOfisler);
             Controls.Add(btnAraclar);
             Controls.Add(panel2);
@@ -450,6 +474,7 @@
             Margin = new Padding(5);
             Name = "FrmAnaSayfa";
             Text = "Form1";
+            Load += FrmAnaSayfa_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             pnliadeNoktasi.ResumeLayout(false);
@@ -464,6 +489,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -495,5 +521,7 @@
         private Label lbliadeNoktasi;
         private Label label7;
         private Guna.UI2.WinForms.Guna2ToggleSwitch guna2ToggleSwitch1;
+        private Label lblMusteriAd;
+        private Button btnCikis;
     }
 }
