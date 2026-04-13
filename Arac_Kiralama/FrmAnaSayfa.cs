@@ -26,7 +26,7 @@ namespace Arac_Kiralama
 
         private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            guna2DateTimePicker1.MinDate = DateTime.Today;
+            dtpAlis.MinDate = DateTime.Today;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -93,6 +93,15 @@ namespace Arac_Kiralama
                 btnYoneticiGiris.Visible = true;
                 lblMusteriAd.Visible = false;
             }
+        }
+
+        private void btnAraclariKesfet_Click(object sender, EventArgs e)
+        {
+            FrmAraclar fr = new FrmAraclar();
+            // Ana sayfada seçilen tarihleri öbür forma paslıyoruz
+            fr.baslangicTarihi = dtpAlis.Value;
+            fr.bitisTarihi = dtpIade.Value;
+            fr.Show();
         }
     }
 }

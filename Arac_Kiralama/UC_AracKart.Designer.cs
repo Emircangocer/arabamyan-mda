@@ -1,6 +1,6 @@
 ﻿namespace Arac_Kiralama
 {
-    partial class UserControl1
+    partial class UC_AracKart
     {
         /// <summary> 
         ///Gerekli tasarımcı değişkeni.
@@ -28,51 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl1));
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_AracKart));
+            picArac = new PictureBox();
+            lblMarkaModel = new Label();
+            lblVites = new Label();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
-            label3 = new Label();
-            label4 = new Label();
+            lblYakit = new Label();
+            lblFiyat = new Label();
             button1 = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picArac).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // picArac
             // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(3, 33);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(323, 141);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            picArac.BackColor = Color.Transparent;
+            picArac.Location = new Point(3, 33);
+            picArac.Name = "picArac";
+            picArac.Size = new Size(323, 141);
+            picArac.SizeMode = PictureBoxSizeMode.Zoom;
+            picArac.TabIndex = 0;
+            picArac.TabStop = false;
+            picArac.Click += pictureBox1_Click;
             // 
-            // label1
+            // lblMarkaModel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label1.Location = new Point(3, 2);
-            label1.Name = "label1";
-            label1.Size = new Size(148, 28);
-            label1.TabIndex = 1;
-            label1.Text = "Mercedes c200";
+            lblMarkaModel.AutoSize = true;
+            lblMarkaModel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblMarkaModel.Location = new Point(3, 2);
+            lblMarkaModel.Name = "lblMarkaModel";
+            lblMarkaModel.Size = new Size(148, 28);
+            lblMarkaModel.TabIndex = 1;
+            lblMarkaModel.Text = "Mercedes c200";
             // 
-            // label2
+            // lblVites
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label2.Location = new Point(62, 207);
-            label2.Name = "label2";
-            label2.Size = new Size(87, 25);
-            label2.TabIndex = 2;
-            label2.Text = "Otomatik";
+            lblVites.AutoSize = true;
+            lblVites.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblVites.Location = new Point(62, 207);
+            lblVites.Name = "lblVites";
+            lblVites.Size = new Size(87, 25);
+            lblVites.TabIndex = 2;
+            lblVites.Text = "Otomatik";
             // 
             // pictureBox2
             // 
@@ -94,25 +93,25 @@
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
             // 
-            // label3
+            // lblYakit
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            label3.Location = new Point(235, 207);
-            label3.Name = "label3";
-            label3.Size = new Size(50, 25);
-            label3.TabIndex = 5;
-            label3.Text = "Dizel";
+            lblYakit.AutoSize = true;
+            lblYakit.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblYakit.Location = new Point(235, 207);
+            lblYakit.Name = "lblYakit";
+            lblYakit.Size = new Size(50, 25);
+            lblYakit.TabIndex = 5;
+            lblYakit.Text = "Dizel";
             // 
-            // label4
+            // lblFiyat
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label4.Location = new Point(-1, 267);
-            label4.Name = "label4";
-            label4.Size = new Size(238, 23);
-            label4.TabIndex = 6;
-            label4.Text = "1857 Tl'den başlayan fiyatlarla";
+            lblFiyat.AutoSize = true;
+            lblFiyat.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            lblFiyat.Location = new Point(-1, 267);
+            lblFiyat.Name = "lblFiyat";
+            lblFiyat.Size = new Size(238, 23);
+            lblFiyat.TabIndex = 6;
+            lblFiyat.Text = "1857 Tl'den başlayan fiyatlarla";
             // 
             // button1
             // 
@@ -125,22 +124,22 @@
             button1.Text = "Hemen Kirala";
             button1.UseVisualStyleBackColor = false;
             // 
-            // UserControl1
+            // UC_AracKart
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(button1);
-            Controls.Add(label4);
-            Controls.Add(label3);
+            Controls.Add(lblFiyat);
+            Controls.Add(lblYakit);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(pictureBox1);
-            Name = "UserControl1";
+            Controls.Add(lblVites);
+            Controls.Add(lblMarkaModel);
+            Controls.Add(picArac);
+            Name = "UC_AracKart";
             Size = new Size(360, 385);
             Load += UserControl1_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picArac).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
@@ -149,13 +148,13 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
-        private Label label1;
-        private Label label2;
+        private PictureBox picArac;
+        private Label lblMarkaModel;
+        private Label lblVites;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
-        private Label label3;
-        private Label label4;
+        private Label lblYakit;
+        private Label lblFiyat;
         private Button button1;
     }
 }

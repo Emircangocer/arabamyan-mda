@@ -36,7 +36,7 @@
             userControl31 = new UserControl3();
             userControl21 = new UserControl2();
             userControl41 = new UserControl4();
-            userControl11 = new UserControl1();
+            userControl11 = new UC_AracKart();
             tabPage2 = new TabPage();
             userControl101 = new UserControl10();
             userControl61 = new UserControl6();
@@ -219,7 +219,7 @@
 
         private TabControl FrmAraclar;
         private TabPage tabPage1;
-        private UserControl1 userControl11;
+        private UC_AracKart userControl11;
         private TabPage tabPage2;
         private TabPage tabPage3;
         private UserControl2 userControl21;
