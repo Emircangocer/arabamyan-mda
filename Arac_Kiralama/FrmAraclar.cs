@@ -21,14 +21,15 @@ namespace Arac_Kiralama
         public DateTime bitisTarihi;
         SqlBaglantisi bgl = new SqlBaglantisi();
 
+
         private void FrmAraclar_Load(object sender, EventArgs e)
         {
 
 
             flpAraclar.Controls.Clear(); // Ne olur ne olmaz temiz başla
             UC_AracKart testKart = new UC_AracKart();
-            
-            
+
+
             // Meşhur Müsaitlik Sorgusu
             string sorgu = "SELECT * FROM TblAraclar";
 
@@ -56,10 +57,38 @@ namespace Arac_Kiralama
 
                 flpAraclar.Controls.Add(kart);
 
-                
 
-               
 
+
+
+            }
+            bgl.baglanti().Close();
+        }
+
+        public void AracListele(string filtreSorgusu = "")
+        {
+            flpAraclar.Controls.Clear(); // Önce eskileri bir temizle
+
+            // Temel sorgumuz (Müsait olanlar)
+            string sql = "SELECT * FROM TblAraclar WHERE AracStatu = 'Müsait' " + filtreSorgusu;
+
+            SqlCommand komut = new SqlCommand(sql, bgl.baglanti());
+            SqlDataReader dr = komut.ExecuteReader();
+
+            while (dr.Read())
+            {
+                UC_AracKart kart = new UC_AracKart();
+
+                // Verileri karta doldur
+                kart.BilgiBas(
+                    dr["AracMarka"].ToString() + " " + dr["AracModel"].ToString(),
+                    dr["AracGunlukUcret"].ToString(),
+                    dr["AracSanziman"].ToString(),
+                    dr["AracYakitTipi"].ToString(),
+                    dr["AracResim"].ToString()
+                );
+
+                flpAraclar.Controls.Add(kart);
             }
             bgl.baglanti().Close();
         }
@@ -67,5 +96,31 @@ namespace Arac_Kiralama
         {
 
         }
+
+        private void btnFiltrele_Click(object sender, EventArgs e)
+        {
+            string ekSorgu = "";
+
+            // 1. Vites Filtresi Kontrolü
+            if (cmbVites.Text == "Otomatik")
+                ekSorgu += " AND AracSanziman = 'Otomatik'";
+            else if (cmbVites.Text == "Manuel")
+                ekSorgu += " AND AracSanziman = 'Manuel'";
+
+            // 2. Yakıt Tipi Filtresi Kontrolü (Yeni Eklediğin ComboBox)
+            if (cmbYakit.Text == "Benzin")
+                ekSorgu += " AND AracYakitTipi = 'Benzin'";
+            else if (cmbYakit.Text == "Benzin/LPG")
+                ekSorgu += " AND AracYakitTipi='Benzin/LPG'";
+            else if (cmbYakit.Text == "Dizel")
+                ekSorgu += " AND AracYakitTipi = 'Dizel'";
+
+            else if (cmbYakit.Text == "Hibrit")
+                ekSorgu += " AND AracYakitTipi = 'Hibrit'";
+
+            // Hazırlanan tüm şartları tek seferde metoda gönderiyoruz
+            AracListele(ekSorgu);
+        }
+    
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 namespace Arac_Kiralama
 {
     public partial class UC_AracKart : UserControl
@@ -22,14 +22,32 @@ namespace Arac_Kiralama
             lblFiyat.Text = fiyat + " TL'den başlayan...";
             lblVites.Text = vites;
             lblYakit.Text = yakit;
-            MessageBox.Show("Yüklenmeye çalışılan yol: " + resimYolu);
-            // Resim işini şimdilik geçiyorum, önce metinler gelsin.
-            if (!string.IsNullOrEmpty(resimYolu))
+
+
+            try
             {
-                // Yolu temizleyip öyle yükleyelim
-                picArac.ImageLocation = resimYolu;
-                picArac.SizeMode = PictureBoxSizeMode.Zoom;
+                if (!string.IsNullOrEmpty(resimYolu))
+                {
+                    // Dosyanın gerçekten orada olup olmadığını kodla kontrol et
+                    if (System.IO.File.Exists(resimYolu))
+                    {
+                        // Resmi yükle
+                        picArac.Image = Image.FromFile(resimYolu);
+                        picArac.SizeMode = PictureBoxSizeMode.Zoom;
+                    }
+                    else
+                    {
+                        // DOSYA BULUNAMAZSA SANA MESAJ VERECEK
+                        MessageBox.Show("Sistem şu dosyayı bulamıyor: " + resimYolu);
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                // BAŞKA BİR HATA VARSA (YETKİ VB.) SANA SÖYLEYECEK
+                MessageBox.Show("Resim yükleme hatası: " + ex.Message);
+            
+        }
         }
         private void UserControl1_Load(object sender, EventArgs e)
         {

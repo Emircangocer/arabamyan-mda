@@ -128,6 +128,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(picArac);
             Controls.Add(button1);
             Controls.Add(lblFiyat);
             Controls.Add(lblYakit);
@@ -135,7 +136,6 @@
             Controls.Add(pictureBox2);
             Controls.Add(lblVites);
             Controls.Add(lblMarkaModel);
-            Controls.Add(picArac);
             Name = "UC_AracKart";
             Size = new Size(360, 385);
             Load += UserControl1_Load;
