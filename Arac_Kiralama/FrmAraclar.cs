@@ -46,14 +46,15 @@ namespace Arac_Kiralama
                 UC_AracKart kart = new UC_AracKart();
 
                 // SQL'den verileri değişkenlere alalım
+                int id = Convert.ToInt32(dr["Aracid"]);
                 string ad = dr["AracMarka"].ToString() + " " + dr["AracModel"].ToString();
                 string fiyat = dr["AracGunlukUcret"].ToString();
                 string vites = dr["AracSanziman"].ToString();
                 string yakit = dr["AracYakitTipi"].ToString();
                 string resim = dr["AracResim"].ToString(); // SQL'deki resim yolunu çekiyoruz
-
+                
                 // Karta gönderiyoruz (artık resim parametresi de var!)
-                kart.BilgiBas(ad, fiyat, vites, yakit, resim);
+                kart.BilgiBas(id,ad, fiyat, vites, yakit, resim);
 
                 flpAraclar.Controls.Add(kart);
 
@@ -79,8 +80,12 @@ namespace Arac_Kiralama
             {
                 UC_AracKart kart = new UC_AracKart();
 
-                // Verileri karta doldur
+                // 1. Önce ID'yi alıyoruz (Hata buydu!)
+                int aracID = Convert.ToInt32(dr["Aracid"]);
+
+                // 2. Metoda tam 6 tane bilgiyi sırasıyla gönderiyoruz
                 kart.BilgiBas(
+                    aracID, // Eksik olan birinci parametre
                     dr["AracMarka"].ToString() + " " + dr["AracModel"].ToString(),
                     dr["AracGunlukUcret"].ToString(),
                     dr["AracSanziman"].ToString(),

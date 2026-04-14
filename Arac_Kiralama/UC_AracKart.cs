@@ -12,12 +12,17 @@ namespace Arac_Kiralama
 {
     public partial class UC_AracKart : UserControl
     {
+
+        public int secilenAracID;
+        public string gunlukFiyat;
         public UC_AracKart()
         {
             InitializeComponent();
         }
-        public void BilgiBas(string markaModel, string fiyat, string vites, string yakit,string resimYolu)
+        public void BilgiBas(int id, string markaModel, string fiyat, string vites, string yakit, string resimYolu)
         {
+            this.secilenAracID = id;
+            this.gunlukFiyat = fiyat;
             lblMarkaModel.Text = markaModel;
             lblFiyat.Text = fiyat + " TL'den başlayan...";
             lblVites.Text = vites;
@@ -46,8 +51,8 @@ namespace Arac_Kiralama
             {
                 // BAŞKA BİR HATA VARSA (YETKİ VB.) SANA SÖYLEYECEK
                 MessageBox.Show("Resim yükleme hatası: " + ex.Message);
-            
-        }
+
+            }
         }
         private void UserControl1_Load(object sender, EventArgs e)
         {
@@ -57,6 +62,17 @@ namespace Arac_Kiralama
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmOdeme fr = new FrmOdeme();
+            fr.aracID = this.secilenAracID;
+            fr.fiyat = this.gunlukFiyat;
+
+            // Hatırlarsan Araçlar formunda tarihlerimiz vardı, 
+            // onlara da erişmemiz gerekecek. 
+            fr.ShowDialog();
         }
     }
 }

@@ -97,11 +97,14 @@ namespace Arac_Kiralama
 
         private void btnAraclariKesfet_Click(object sender, EventArgs e)
         {
+            VeriDeposu.AlisTarihi = dtpAlis.Value;
+            VeriDeposu.IadeTarihi = dtpIade.Value;
             FrmAraclar fr = new FrmAraclar();
             // Ana sayfada seçilen tarihleri öbür forma paslıyoruz
             fr.baslangicTarihi = dtpAlis.Value;
             fr.bitisTarihi = dtpIade.Value;
             fr.Show();
+
         }
     }
 }
