@@ -1,4 +1,5 @@
 using Guna.UI2.WinForms;
+using Microsoft.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Arac_Kiralama
@@ -32,7 +33,18 @@ namespace Arac_Kiralama
         private void button1_Click_1(object sender, EventArgs e)
         {
             FrmMusteriGiris fr = new FrmMusteriGiris();
-            fr.Show();
+            if (fr.ShowDialog() == DialogResult.OK) // Giriş başarılı olduysa
+            {
+                // Eski butonları gizle
+                btnMusteriGiris.Visible = false;
+                btnYoneticiGiris.Visible = false;
+
+                // Yeni butonları ve bilgileri göster
+                btnHesabim.Visible = true;
+                lblMusteriAd.BringToFront();
+                lblMusteriAd.Text = VeriDeposu.GirisYapanMusteriAdSoyad;
+                lblBakiye.Text = VeriDeposu.MusteriBakiye.ToString("N2") + " TL";
+            }
 
         }
 
@@ -75,14 +87,14 @@ namespace Arac_Kiralama
 
         private void FrmAnaSayfa_Load(object sender, EventArgs e)
         {
-            if (KullaniciBilgisi.GirisYapildiMi)
+            if (VeriDeposu.GirisYapildiMi)
             {
                 // Giriş yapıldıysa Giriş butonlarını gizle
                 btnMusteriGiris.Visible = false;
                 btnYoneticiGiris.Visible = false;
 
                 // Kullanıcı ismini göster
-                lblMusteriAd.Text = "Hoş geldin, " + KullaniciBilgisi.AdSoyad;
+                lblMusteriAd.Text = "Hoş geldin, " + VeriDeposu.GirisYapanMusteriAdSoyad;
                 lblMusteriAd.Visible = true;
                 btnCikis.Visible = true; // İstersen çıkış butonu da koyabilirsin
             }
@@ -91,20 +103,105 @@ namespace Arac_Kiralama
                 // Giriş yapılmadıysa butonlar görünür kalsın
                 btnMusteriGiris.Visible = true;
                 btnYoneticiGiris.Visible = true;
-                lblMusteriAd.Visible = false;
+                
             }
         }
 
         private void btnAraclariKesfet_Click(object sender, EventArgs e)
         {
-            VeriDeposu.AlisTarihi = dtpAlis.Value;
-            VeriDeposu.IadeTarihi = dtpIade.Value;
-            FrmAraclar fr = new FrmAraclar();
-            // Ana sayfada seçilen tarihleri öbür forma paslıyoruz
-            fr.baslangicTarihi = dtpAlis.Value;
-            fr.bitisTarihi = dtpIade.Value;
-            fr.Show();
+            try
+            {
+                // 1. Alış Tarihini al (Sadece Tarih Kısmı)
+                DateTime alisTarihi = dtpAlis.Value.Date;
 
+                // 2. ComboBox'tan seçilen saati (Örn: "15:00") parçalara ayır
+                // ComboBox'ta tam olarak "15:00" yazdığından emin ol!
+                string[] alisSaatParcalari = cmbAlisSaati.Text.Split(':');
+                int alisSaat = Convert.ToInt32(alisSaatParcalari[0]);
+                int alisDakika = Convert.ToInt32(alisSaatParcalari[1]);
+
+                // 3. Tarih ve Saati güvenli bir şekilde birleştir
+                VeriDeposu.AlisTarihi = new DateTime(alisTarihi.Year, alisTarihi.Month, alisTarihi.Day, alisSaat, alisDakika, 0);
+
+                // --- AYNI İŞLEMİ İADE İÇİN DE YAPIYORUZ ---
+                DateTime iadeTarihi = dtpIade.Value.Date;
+                string[] iadeSaatParcalari = cmbiadeSaati.Text.Split(':');
+                int iadeSaat = Convert.ToInt32(iadeSaatParcalari[0]);
+                int iadeDakika = Convert.ToInt32(iadeSaatParcalari[1]);
+
+                VeriDeposu.IadeTarihi = new DateTime(iadeTarihi.Year, iadeTarihi.Month, iadeTarihi.Day, iadeSaat, iadeDakika, 0);
+
+                // 4. Formu Aç
+                FrmAraclar fr = new FrmAraclar();
+                fr.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Saat seçimi hatalı! Lütfen ComboBox'tan geçerli bir saat (Örn: 15:00) seçin.");
+            }
+        }
+
+        private void btnHesabim_Click(object sender, EventArgs e)
+        {
+            pnlHesabim.Visible = !pnlHesabim.Visible;
+            lblMusteriAd.Text=VeriDeposu.GirisYapanMusteriAdSoyad;
+            lblMusteriAd.BringToFront();
+        }
+
+        private void btnCikis_Click(object sender, EventArgs e)
+        {
+            VeriDeposu.GirisYapildiMi = false;
+            pnlHesabim.Visible = false;
+            btnHesabim.Visible = false;
+
+            // Giriş butonlarını geri getir
+            btnMusteriGiris.Visible = true;
+            btnYoneticiGiris.Visible = true;
+        }
+
+
+
+        SqlBaglantisi bgl=new SqlBaglantisi();
+        private void btnBakiyeEkle_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtYuklenecekTutar.Text))
+            {
+                MessageBox.Show("Lütfen miktar giriniz!");
+                return;
+            }
+
+            try
+            {
+                string girilenMetin = txtYuklenecekTutar.Text.Trim();
+
+                // Eğer virgül yerine nokta girildiyse veya tam tersiyse diye ufak bir ayar
+                girilenMetin = girilenMetin.Replace(".", ",");
+
+                double eklenenTutar = Convert.ToDouble(girilenMetin);
+
+                // 2. SQL'e ekle
+                string sorgu = "UPDATE TblMusteri SET MusteriBakiye = MusteriBakiye + @p1 WHERE Musteriid = @p2";
+                SqlCommand komut = new SqlCommand(sorgu, bgl.baglanti());
+                komut.Parameters.AddWithValue("@p1", eklenenTutar);
+                komut.Parameters.AddWithValue("@p2", VeriDeposu.MusteriID);
+                komut.ExecuteNonQuery();
+                bgl.baglanti().Close();
+
+                // 3. Hafızayı (VeriDeposu) güncelle
+                VeriDeposu.MusteriBakiye += eklenenTutar;
+
+                // 4. Ekrandaki Label'ı hemen güncelle
+                lblBakiye.Text = VeriDeposu.MusteriBakiye.ToString("N2") + " TL";
+
+                // 5. Temizlik ve geri bildirim
+                txtYuklenecekTutar.Clear();
+                MessageBox.Show("Bakiye yüklendi!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata detayı: " + ex.Message);
+            }
         }
     }
-}
+    }
+

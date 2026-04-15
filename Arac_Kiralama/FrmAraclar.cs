@@ -34,9 +34,7 @@ namespace Arac_Kiralama
             string sorgu = "SELECT * FROM TblAraclar";
 
             SqlCommand komut = new SqlCommand(sorgu, bgl.baglanti());
-            komut.Parameters.AddWithValue("@p1", baslangicTarihi);
-            komut.Parameters.AddWithValue("@p2", bitisTarihi);
-
+           
             SqlDataReader dr = komut.ExecuteReader();
 
             while (dr.Read())

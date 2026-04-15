@@ -34,14 +34,14 @@ namespace Arac_Kiralama
 
             if (dr.Read())
             {
-                KullaniciBilgisi.AdSoyad = dr["MusteriAd"].ToString() + " " + dr["MusteriSoyad"].ToString();
-                KullaniciBilgisi.GirisYapildiMi = true;
+                VeriDeposu.GirisYapildiMi = true;
+                VeriDeposu.MusteriID = Convert.ToInt32(dr["Musteriid"]);
+                VeriDeposu.MusteriBakiye = Convert.ToDouble(dr["MusteriBakiye"]);
+                VeriDeposu.GirisYapanMusteriAdSoyad = dr["MusteriAd"].ToString() + " " + dr["MusteriSoyad"].ToString();
+                // Ana sayfadaki metotları tetiklemek için formu kapatmadan önce:
+                this.DialogResult = DialogResult.OK;
+                this.Close();
 
-                MessageBox.Show("Hoş geldiniz!");
-
-                FrmAnaSayfa fr=new FrmAnaSayfa();
-                fr.Show();
-                this.Hide();
 
 
             }

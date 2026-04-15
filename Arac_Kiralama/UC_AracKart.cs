@@ -14,6 +14,7 @@ namespace Arac_Kiralama
     {
 
         public int secilenAracID;
+        public string resimYoluGecici;
         public string gunlukFiyat;
         public UC_AracKart()
         {
@@ -27,7 +28,7 @@ namespace Arac_Kiralama
             lblFiyat.Text = fiyat + " TL'den başlayan...";
             lblVites.Text = vites;
             lblYakit.Text = yakit;
-
+            this.resimYoluGecici = resimYolu;
 
             try
             {
@@ -66,12 +67,16 @@ namespace Arac_Kiralama
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmOdeme fr = new FrmOdeme();
-            fr.aracID = this.secilenAracID;
-            fr.fiyat = this.gunlukFiyat;
+            VeriDeposu.SecilenAracID = this.secilenAracID;
 
-            // Hatırlarsan Araçlar formunda tarihlerimiz vardı, 
-            // onlara da erişmemiz gerekecek. 
+            VeriDeposu.SecilenAracAdi = lblMarkaModel.Text;
+            VeriDeposu.SecilenVites = lblVites.Text;
+            VeriDeposu.SecilenYakit = lblYakit.Text;
+            VeriDeposu.SecilenResimYolu = this.resimYoluGecici;
+            VeriDeposu.GunlukFiyat = lblFiyat.Text.Split(' ')[0];
+
+            // Ödeme formunu aç
+            FrmOdeme fr = new FrmOdeme();
             fr.ShowDialog();
         }
     }
