@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -66,13 +67,14 @@ namespace Arac_Kiralama
             if (gun <= 0) gun = 1;
 
             double aracTutar = gun * Convert.ToDouble(VeriDeposu.GunlukFiyat);
-            double anaToplam = aracTutar + VeriDeposu.GuvenceTutari;
+            double anaToplam = aracTutar + VeriDeposu.GuvenceTutari - VeriDeposu.IndirimTutari;
 
-            // TOPLAM TUTAR = (Arac + Güvence) - İndirim
-            double sonToplam = anaToplam - VeriDeposu.IndirimTutari;
+            // Toplam Ödenecek = Kira Bedeli + Depozito
+            double sonTutar = anaToplam + VeriDeposu.SecilenAracDepozito;
 
             lblGuvenceTutari.Text = VeriDeposu.GuvenceTutari.ToString("N2") + " TL";
-            lblToplamTutar.Text = sonToplam.ToString("N2") + " TL";
+            lblDepozito.Text = VeriDeposu.SecilenAracDepozito.ToString("N2") + " TL"; // Yeni label
+            lblToplamTutar.Text = sonTutar.ToString("N2") + " TL";
         }
 
 
@@ -216,9 +218,63 @@ namespace Arac_Kiralama
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            FrmAnaSayfa fr=new FrmAnaSayfa();
+            FrmAnaSayfa fr = new FrmAnaSayfa();
             fr.Show();
             this.Hide();
+        }
+
+        private void btnKirala_Click(object sender, EventArgs e)
+        {
+            // 1. Bakiye Kontrolü (Kira + Depozito yetiyor mu?)
+            double odenecekTutar = (double.Parse(lblToplamTutar.Text.Replace(" TL", "")));
+            SqlBaglantisi bgl=new SqlBaglantisi();
+            if (VeriDeposu.MusteriBakiye < odenecekTutar)
+            {
+                MessageBox.Show("Bakiye yetersiz! Depozito dahil tutar: " + odenecekTutar + " TL");
+                return;
+            }
+
+            try
+            {
+                // 2. Bakiyeden Düş (SQL)
+                string bakiyeSorgu = "UPDATE TblMusteri SET MusteriBakiye = MusteriBakiye - @fiyat WHERE Musteriid = @id";
+                SqlCommand bakiyeKomut = new SqlCommand(bakiyeSorgu, bgl.baglanti());
+                bakiyeKomut.Parameters.AddWithValue("@fiyat", odenecekTutar);
+                bakiyeKomut.Parameters.AddWithValue("@id", VeriDeposu.MusteriID);
+                bakiyeKomut.ExecuteNonQuery();
+                bgl.baglanti().Close();
+
+                // 3. Rezervasyonu Kaydet
+                string rezSorgu = "INSERT INTO TblRezervasyon (Musteriid, Aracid, AracTeslimTarihi, PlanlananDonusTarihi,AlisKm,AlisYakitMiktar, AlinanDepozito, ToplamKiraBedeli, KiralamaStatu) " +
+                                  "VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7,@p8,@p9)";
+                SqlCommand rezKomut = new SqlCommand(rezSorgu, bgl.baglanti());
+                rezKomut.Parameters.AddWithValue("@p1", VeriDeposu.MusteriID);
+                rezKomut.Parameters.AddWithValue("@p2", VeriDeposu.SecilenAracID);
+                rezKomut.Parameters.AddWithValue("@p3", VeriDeposu.AlisTarihi);
+                rezKomut.Parameters.AddWithValue("@p4", VeriDeposu.IadeTarihi);
+                rezKomut.Parameters.AddWithValue("@p5", VeriDeposu.SecilenAracKm);
+                rezKomut.Parameters.AddWithValue("@p6", VeriDeposu.SecilenAracYakit);
+                rezKomut.Parameters.AddWithValue("@p7", VeriDeposu.SecilenAracDepozito);
+                rezKomut.Parameters.AddWithValue("@p8", odenecekTutar);
+
+                rezKomut.Parameters.AddWithValue("@p9", "Aktif / Depozito Alındı");
+                rezKomut.ExecuteNonQuery();
+                bgl.baglanti().Close();
+
+                // 4. Aracın Durumunu Güncelle (Artık bu araç dolu)
+                string aracGuncelle = "UPDATE TblAraclar SET AracStatu = 'Dolu' WHERE Aracid = @id";
+                SqlCommand aracKomut = new SqlCommand(aracGuncelle, bgl.baglanti());
+                aracKomut.Parameters.AddWithValue("@id", VeriDeposu.SecilenAracID);
+                aracKomut.ExecuteNonQuery();
+                bgl.baglanti().Close();
+
+                MessageBox.Show("Ödeme başarılı! İyi yolculuklar!");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+            }
         }
     }
 }

@@ -37,6 +37,7 @@
             lblYakit = new Label();
             lblFiyat = new Label();
             button1 = new Button();
+            lblKm = new Label();
             ((System.ComponentModel.ISupportInitialize)picArac).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -107,7 +108,7 @@
             // 
             lblFiyat.AutoSize = true;
             lblFiyat.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            lblFiyat.Location = new Point(-1, 267);
+            lblFiyat.Location = new Point(18, 320);
             lblFiyat.Name = "lblFiyat";
             lblFiyat.Size = new Size(238, 23);
             lblFiyat.TabIndex = 6;
@@ -117,7 +118,7 @@
             // 
             button1.BackColor = SystemColors.MenuHighlight;
             button1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button1.Location = new Point(233, 248);
+            button1.Location = new Point(252, 301);
             button1.Name = "button1";
             button1.Size = new Size(89, 59);
             button1.TabIndex = 7;
@@ -125,10 +126,21 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // lblKm
+            // 
+            lblKm.AutoSize = true;
+            lblKm.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            lblKm.Location = new Point(86, 257);
+            lblKm.Name = "lblKm";
+            lblKm.Size = new Size(65, 28);
+            lblKm.TabIndex = 8;
+            lblKm.Text = "label1";
+            // 
             // UC_AracKart
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(lblKm);
             Controls.Add(picArac);
             Controls.Add(button1);
             Controls.Add(lblFiyat);
@@ -157,5 +169,6 @@
         private Label lblYakit;
         private Label lblFiyat;
         private Button button1;
+        private Label lblKm;
     }
 }

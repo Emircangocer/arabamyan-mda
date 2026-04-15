@@ -16,11 +16,12 @@ namespace Arac_Kiralama
         public int secilenAracID;
         public string resimYoluGecici;
         public string gunlukFiyat;
+        
         public UC_AracKart()
         {
             InitializeComponent();
         }
-        public void BilgiBas(int id, string markaModel, string fiyat, string vites, string yakit, string resimYolu)
+        public void BilgiBas(int id, string markaModel, string fiyat, string vites, string yakit, string resimYolu,string km)
         {
             this.secilenAracID = id;
             this.gunlukFiyat = fiyat;
@@ -28,6 +29,7 @@ namespace Arac_Kiralama
             lblFiyat.Text = fiyat + " TL'den başlayan...";
             lblVites.Text = vites;
             lblYakit.Text = yakit;
+            lblKm.Text = km + " KM";
             this.resimYoluGecici = resimYolu;
 
             try
@@ -75,6 +77,21 @@ namespace Arac_Kiralama
             VeriDeposu.SecilenResimYolu = this.resimYoluGecici;
             VeriDeposu.GunlukFiyat = lblFiyat.Text.Split(' ')[0];
 
+            if (lblKm.Text != "label1" && !string.IsNullOrEmpty(lblKm.Text))
+            {
+                // "427300 KM" gibi bir yazı varsa sadece sayı kısmını alalım:
+                string sadeceSayi = lblKm.Text.Replace(" KM", "").Trim();
+                VeriDeposu.SecilenAracKm = Convert.ToInt32(sadeceSayi);
+            }
+            else
+            {
+                // Eğer label dolmadıysa SQL'den gelen orijinal değişkeni kullan (En güvenlisi budur)
+                // VeriDeposu.SecilenAracKm = bu_kartin_sql_km_degiskeni;
+            }
+            VeriDeposu.SecilenAracDepozito = 3000; // Veya SQL'den gelen depozito miktarı
+
+            // Yakıt miktarını da unutma!
+            VeriDeposu.SecilenAracYakit = 100; //
             // Ödeme formunu aç
             FrmOdeme fr = new FrmOdeme();
             fr.ShowDialog();

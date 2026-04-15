@@ -40,6 +40,8 @@
             lblGuvenceTutari = new Label();
             lblIadeTarihi = new Label();
             panel1 = new Panel();
+            lblDepozito = new Label();
+            label16 = new Label();
             btnKupon = new Button();
             label9 = new Label();
             txtKuponKodu = new TextBox();
@@ -193,6 +195,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(lblDepozito);
+            panel1.Controls.Add(label16);
             panel1.Controls.Add(btnKupon);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(txtKuponKodu);
@@ -211,11 +215,31 @@
             panel1.Controls.Add(lblVites);
             panel1.Controls.Add(lblAracAdi);
             panel1.Controls.Add(lblYakit);
-            panel1.Location = new Point(1052, 236);
+            panel1.Location = new Point(984, 68);
             panel1.Name = "panel1";
             panel1.Size = new Size(471, 767);
             panel1.TabIndex = 10;
             panel1.Paint += panel1_Paint;
+            // 
+            // lblDepozito
+            // 
+            lblDepozito.AutoSize = true;
+            lblDepozito.Location = new Point(243, 587);
+            lblDepozito.Margin = new Padding(4, 0, 4, 0);
+            lblDepozito.Name = "lblDepozito";
+            lblDepozito.Size = new Size(155, 28);
+            lblDepozito.TabIndex = 21;
+            lblDepozito.Text = "Depozito Bedeli:";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(91, 587);
+            label16.Margin = new Padding(4, 0, 4, 0);
+            label16.Name = "label16";
+            label16.Size = new Size(155, 28);
+            label16.TabIndex = 20;
+            label16.Text = "Depozito Bedeli:";
             // 
             // btnKupon
             // 
@@ -256,17 +280,18 @@
             // 
             // btnKirala
             // 
-            btnKirala.Location = new Point(131, 645);
+            btnKirala.Location = new Point(131, 708);
             btnKirala.Name = "btnKirala";
             btnKirala.Size = new Size(200, 35);
             btnKirala.TabIndex = 15;
             btnKirala.Text = "Ödemeyi Tamamla";
             btnKirala.UseVisualStyleBackColor = true;
+            btnKirala.Click += btnKirala_Click;
             // 
             // lblToplamTutar
             // 
             lblToplamTutar.AutoSize = true;
-            lblToplamTutar.Location = new Point(243, 573);
+            lblToplamTutar.Location = new Point(243, 636);
             lblToplamTutar.Name = "lblToplamTutar";
             lblToplamTutar.Size = new Size(0, 28);
             lblToplamTutar.TabIndex = 14;
@@ -275,7 +300,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(107, 573);
+            label14.Location = new Point(107, 636);
             label14.Name = "label14";
             label14.Size = new Size(130, 28);
             label14.TabIndex = 13;
@@ -712,5 +737,7 @@
         private Label label9;
         private TextBox txtKuponKodu;
         private PictureBox pictureBox1;
+        private Label label16;
+        private Label lblDepozito;
     }
 }

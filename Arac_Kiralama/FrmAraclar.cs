@@ -31,10 +31,9 @@ namespace Arac_Kiralama
 
 
             // Meşhur Müsaitlik Sorgusu
-            string sorgu = "SELECT * FROM TblAraclar";
+            string sorgu = "SELECT * FROM TblAraclar WHERE AracStatu = 'Müsait'";
 
             SqlCommand komut = new SqlCommand(sorgu, bgl.baglanti());
-           
             SqlDataReader dr = komut.ExecuteReader();
 
             while (dr.Read())
@@ -49,10 +48,12 @@ namespace Arac_Kiralama
                 string fiyat = dr["AracGunlukUcret"].ToString();
                 string vites = dr["AracSanziman"].ToString();
                 string yakit = dr["AracYakitTipi"].ToString();
-                string resim = dr["AracResim"].ToString(); // SQL'deki resim yolunu çekiyoruz
                 
+                string resim = dr["AracResim"].ToString(); // SQL'deki resim yolunu çekiyoruz
+                string km = dr["AracKm"].ToString();
+
                 // Karta gönderiyoruz (artık resim parametresi de var!)
-                kart.BilgiBas(id,ad, fiyat, vites, yakit, resim);
+                kart.BilgiBas(id,ad, fiyat, vites, yakit,resim, km);
 
                 flpAraclar.Controls.Add(kart);
 
@@ -88,7 +89,8 @@ namespace Arac_Kiralama
                     dr["AracGunlukUcret"].ToString(),
                     dr["AracSanziman"].ToString(),
                     dr["AracYakitTipi"].ToString(),
-                    dr["AracResim"].ToString()
+                    dr["AracResim"].ToString(),
+                    dr["AracKm"].ToString()
                 );
 
                 flpAraclar.Controls.Add(kart);

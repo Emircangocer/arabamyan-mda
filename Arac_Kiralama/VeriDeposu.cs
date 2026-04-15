@@ -25,5 +25,9 @@ namespace Arac_Kiralama
         public static double MusteriBakiye;
         public static string GirisYapanMusteriAdSoyad;
         public static bool GirisYapildiMi;
+
+        public static double SecilenAracDepozito = 3000;
+        public static int SecilenAracKm;
+        public static int SecilenAracYakit;
     }
 }
