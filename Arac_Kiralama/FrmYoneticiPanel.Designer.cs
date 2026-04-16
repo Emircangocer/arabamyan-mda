@@ -36,7 +36,10 @@
             btnMusteri = new Button();
             button2 = new Button();
             button1 = new Button();
+            dgvRezervasyonlar = new DataGridView();
+            btnIadeAl = new Button();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvRezervasyonlar).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -56,7 +59,7 @@
             // 
             // button7
             // 
-            button7.Location = new Point(0, 467);
+            button7.Location = new Point(3, 573);
             button7.Name = "button7";
             button7.Size = new Size(189, 37);
             button7.TabIndex = 7;
@@ -66,7 +69,7 @@
             // 
             // button6
             // 
-            button6.Location = new Point(0, 413);
+            button6.Location = new Point(3, 519);
             button6.Name = "button6";
             button6.Size = new Size(189, 37);
             button6.TabIndex = 6;
@@ -76,17 +79,18 @@
             // 
             // button5
             // 
-            button5.Location = new Point(0, 359);
+            button5.Location = new Point(3, 465);
             button5.Name = "button5";
             button5.Size = new Size(189, 37);
             button5.TabIndex = 5;
             button5.Text = "🔄 Teslimat - İade";
             button5.TextAlign = ContentAlignment.TopLeft;
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button4
             // 
-            button4.Location = new Point(0, 302);
+            button4.Location = new Point(3, 408);
             button4.Name = "button4";
             button4.Size = new Size(189, 37);
             button4.TabIndex = 4;
@@ -96,7 +100,7 @@
             // 
             // btnMusteri
             // 
-            btnMusteri.Location = new Point(0, 247);
+            btnMusteri.Location = new Point(3, 353);
             btnMusteri.Name = "btnMusteri";
             btnMusteri.Size = new Size(189, 37);
             btnMusteri.TabIndex = 3;
@@ -107,7 +111,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(0, 187);
+            button2.Location = new Point(3, 293);
             button2.Name = "button2";
             button2.Size = new Size(189, 37);
             button2.TabIndex = 2;
@@ -117,7 +121,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(0, 129);
+            button1.Location = new Point(3, 235);
             button1.Name = "button1";
             button1.Size = new Size(189, 37);
             button1.TabIndex = 1;
@@ -125,18 +129,42 @@
             button1.TextAlign = ContentAlignment.TopLeft;
             button1.UseVisualStyleBackColor = true;
             // 
+            // dgvRezervasyonlar
+            // 
+            dgvRezervasyonlar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRezervasyonlar.Location = new Point(275, 141);
+            dgvRezervasyonlar.Name = "dgvRezervasyonlar";
+            dgvRezervasyonlar.RowHeadersWidth = 51;
+            dgvRezervasyonlar.Size = new Size(861, 469);
+            dgvRezervasyonlar.TabIndex = 1;
+            dgvRezervasyonlar.CellClick += dgvRezervasyonlar_CellClick;
+            dgvRezervasyonlar.CellContentClick += dgvRezervasyonlar_CellContentClick;
+            // 
+            // btnIadeAl
+            // 
+            btnIadeAl.Location = new Point(635, 616);
+            btnIadeAl.Name = "btnIadeAl";
+            btnIadeAl.Size = new Size(156, 38);
+            btnIadeAl.TabIndex = 2;
+            btnIadeAl.Text = "Aracı İade Al";
+            btnIadeAl.UseVisualStyleBackColor = true;
+            // 
             // FrmYoneticiPanel
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1895, 1055);
+            Controls.Add(btnIadeAl);
+            Controls.Add(dgvRezervasyonlar);
             Controls.Add(panel1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "FrmYoneticiPanel";
             Text = "FrmYoneticiPanel";
+            Load += FrmYoneticiPanel_Load;
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvRezervasyonlar).EndInit();
             ResumeLayout(false);
         }
 
@@ -150,5 +178,7 @@
         private Button button4;
         private Button button7;
         private Button button6;
+        private DataGridView dgvRezervasyonlar;
+        private Button btnIadeAl;
     }
 }

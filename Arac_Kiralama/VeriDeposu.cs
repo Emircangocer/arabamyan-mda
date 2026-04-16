@@ -29,5 +29,7 @@ namespace Arac_Kiralama
         public static double SecilenAracDepozito = 3000;
         public static int SecilenAracKm;
         public static int SecilenAracYakit;
+
+        public static int SecilenRezervasyonID;
     }
 }
