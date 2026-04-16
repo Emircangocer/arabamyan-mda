@@ -38,6 +38,7 @@ namespace Arac_Kiralama
                 VeriDeposu.MusteriID = Convert.ToInt32(dr["Musteriid"]);
                 VeriDeposu.MusteriBakiye = Convert.ToDouble(dr["MusteriBakiye"]);
                 VeriDeposu.GirisYapanMusteriAdSoyad = dr["MusteriAd"].ToString() + " " + dr["MusteriSoyad"].ToString();
+                VeriDeposu.MusteriBakiye = (dr["MusteriBakiye"] == DBNull.Value) ? 0 : Convert.ToDouble(dr["MusteriBakiye"]);
                 // Ana sayfadaki metotları tetiklemek için formu kapatmadan önce:
                 this.DialogResult = DialogResult.OK;
                 this.Close();

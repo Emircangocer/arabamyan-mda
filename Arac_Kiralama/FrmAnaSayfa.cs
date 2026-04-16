@@ -44,6 +44,7 @@ namespace Arac_Kiralama
                 lblMusteriAd.BringToFront();
                 lblMusteriAd.Text = VeriDeposu.GirisYapanMusteriAdSoyad;
                 lblBakiye.Text = VeriDeposu.MusteriBakiye.ToString("N2") + " TL";
+                AktifKiralamayiGetir();
             }
 
         }
@@ -87,8 +88,11 @@ namespace Arac_Kiralama
 
         private void FrmAnaSayfa_Load(object sender, EventArgs e)
         {
+            
+
             if (VeriDeposu.GirisYapildiMi)
             {
+               
                 // Giriş yapıldıysa Giriş butonlarını gizle
                 btnMusteriGiris.Visible = false;
                 btnYoneticiGiris.Visible = false;
@@ -103,6 +107,8 @@ namespace Arac_Kiralama
                 // Giriş yapılmadıysa butonlar görünür kalsın
                 btnMusteriGiris.Visible = true;
                 btnYoneticiGiris.Visible = true;
+
+
                 
             }
         }
@@ -202,6 +208,53 @@ namespace Arac_Kiralama
                 MessageBox.Show("Hata detayı: " + ex.Message);
             }
         }
+            
+
+            public void AktifKiralamayiGetir()
+        {
+            MessageBox.Show("Sorgulanan Musteri ID: " + VeriDeposu.MusteriID.ToString());
+            // Önce paneli bir temizleyelim, üst üste binmesinler
+            pnlAktifArac.Controls.Clear();
+            pnlAktifArac.Visible = false;
+
+            // Kiralama detaylarını ve araç bilgilerini çekiyoruz
+            string sorgu = @"SELECT A.AracResim, A.AracPlaka, A.AracMarka, A.AracModel, R.PlanlananDonusTarihi 
+                 FROM TblRezervasyon R
+                 INNER JOIN TblAraclar A ON R.Aracid = A.Aracid
+                 WHERE R.Musteriid = @mid AND R.KiralamaStatu LIKE '%Aktif%'";
+
+            SqlCommand komut = new SqlCommand(sorgu, bgl.baglanti());
+            komut.Parameters.AddWithValue("@mid", VeriDeposu.MusteriID);
+            SqlDataReader dr = komut.ExecuteReader();
+
+            if (dr.Read())
+            {
+                MessageBox.Show("Kanka veri geldi, kartı yüklüyorum!"); // Bu mesaj çıkıyor mu bak
+                
+                pnlAktifArac.Visible = true; // Araç varmış, paneli aç kanka!
+
+                // Yeni bir UC_AktifKiralama nesnesi oluşturuyoruz
+                UC_AktifKiralama aktifKart = new UC_AktifKiralama();
+
+                // Verileri karta basıyoruz
+                string plakaModel = dr["AracPlaka"].ToString() + " - " + dr["AracMarka"].ToString() + " " + dr["AracModel"].ToString();
+                string resimYolu = dr["AracResim"].ToString();
+                DateTime iadeTarihi = Convert.ToDateTime(dr["PlanlananDonusTarihi"]);
+
+                // UC içindeki metodu çağırıyoruz (BilgiBas gibi düşün)
+                aktifKart.KiralamaBilgileriniYukle(plakaModel, resimYolu, iadeTarihi);
+
+                // KARTIN PANELE OTURMASI İÇİN:
+                aktifKart.Dock = DockStyle.Fill; // Paneli tam kaplasın
+                pnlAktifArac.Controls.Add(aktifKart); // Ve bombayı panele bırakıyoruz!
+            }
+            else
+            {
+                MessageBox.Show("Kanka SQL'den veri dönmedi, sorguyu kontrol et.");
+            }
+            bgl.baglanti().Close();
+        }
     }
     }
+    
 

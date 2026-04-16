@@ -56,17 +56,20 @@ namespace Arac_Kiralama
                 decimal hasarMaliyeti = string.IsNullOrEmpty(txtHasarMaliyeti.Text) ? 0 : Convert.ToDecimal(txtHasarMaliyeti.Text);
 
                 // 2. SQL'den başlangıç verilerini çek (Alış yakıtı ve depozito miktarını bilmemiz lazım)
-                string cekSorgu = "SELECT AlisYakitMiktar, AlinanDepozito, Musteriid, Aracid FROM TblRezervasyon WHERE Kiralamaid = @id";
+                string cekSorgu = "SELECT AlisKm, AlisYakitMiktar, AlinanDepozito, Musteriid, Aracid FROM TblRezervasyon WHERE Kiralamaid = @id";
                 SqlCommand cekKomut = new SqlCommand(cekSorgu, bgl.baglanti());
                 cekKomut.Parameters.AddWithValue("@id", VeriDeposu.SecilenRezervasyonID);
                 SqlDataReader dr = cekKomut.ExecuteReader();
 
                 if (dr.Read())
                 {
-                    int alisYakit = Convert.ToInt32(dr["AlisYakitMiktar"]);
-                    double alinanDepozito = Convert.ToDouble(dr["AlinanDepozito"]);
+                    int alisKm = (dr["AlisKm"] == DBNull.Value) ? 0 : Convert.ToInt32(dr["AlisKm"]);
+                    int alisYakit = (dr["AlisYakitMiktar"] == DBNull.Value) ? 100 : Convert.ToInt32(dr["AlisYakitMiktar"]);
+                    double alinanDepozito = (dr["AlinanDepozito"] == DBNull.Value) ? 0 : Convert.ToDouble(dr["AlinanDepozito"]);
+
                     int musteriId = Convert.ToInt32(dr["Musteriid"]);
                     int aracId = Convert.ToInt32(dr["Aracid"]);
+
                     dr.Close(); // Okuma bitti, bağlantıyı diğer işlemler için serbest bırakıyoruz
 
                     // 3. CEZA HESAPLARI
