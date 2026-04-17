@@ -20,9 +20,10 @@ namespace Arac_Kiralama
 
         private void btnMusteri_Click(object sender, EventArgs e)
         {
-            FrmYoneticiPanel_Musteriler fr = new FrmYoneticiPanel_Musteriler();
-            fr.Show();
-            this.Hide();
+            FrmYoneticiPanel_Musteriler frm = new FrmYoneticiPanel_Musteriler();
+            // Eğer bu formun yönetici panelinin içinde (MDI) açılmasını istiyorsan panel ismini kullan
+            // Ama ayrı pencere olsun dersen sadece Show() yeterli:
+            frm.Show();
         }
         SqlBaglantisi bgl = new SqlBaglantisi();
         public void RezervasyonlariGetir()
@@ -138,9 +139,15 @@ namespace Arac_Kiralama
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FrmYoneticiAracEkle fr=new FrmYoneticiAracEkle();
+            FrmYoneticiAracEkle fr = new FrmYoneticiAracEkle();
             fr.Show();
             this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FrmYoneticiPanel_Rezervasyonlar fr=new FrmYoneticiPanel_Rezervasyonlar();
+            fr.Show(); // Yeni pencere olarak açılsın
         }
     }
 }

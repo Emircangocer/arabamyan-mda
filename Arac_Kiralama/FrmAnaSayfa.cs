@@ -75,7 +75,7 @@ namespace Arac_Kiralama
 
         private void button4_Click(object sender, EventArgs e)
         {
-            FrmYoneticiAracEkle fr = new FrmYoneticiAracEkle();
+            FrmAraclar fr=new FrmAraclar();
             fr.Show();
             this.Hide();
         }
@@ -272,6 +272,13 @@ namespace Arac_Kiralama
         {
             FrmMusteriGecmis fr = new FrmMusteriGecmis();
             fr.Show(); // Geçmiş sayfasını aç !
+        }
+
+        private void BtnKilamaKosullari_Click(object sender, EventArgs e)
+        {
+            KiralamaKosullari fr=new KiralamaKosullari();
+            fr.Show();
+            this.Hide();
         }
     }
 }

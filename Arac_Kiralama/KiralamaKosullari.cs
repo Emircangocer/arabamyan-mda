@@ -48,5 +48,12 @@ namespace Arac_Kiralama
         {
             richTextBox1.Text = "Sözleşmede yer alan kiralama süresinden bağımsız olarak, toplam kullanılan kilometre miktarı ilgili araç grubunun aylık kilometre limitiyle sınırlıdır. Rezervasyon esnasında Ek Ürünler alanından ek kilometre paketleri satın alınarak KM limiti artırılabilmektedir. Kiralama başladıktan sonra ek kilometre paketi satın alınamaz. Günlük belirlenen KM limitinin, aylık belirlenen KM limitini aşması durumunda;";
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            FrmAnaSayfa fr=new FrmAnaSayfa();
+            fr.Show();
+            this.Hide();
+        }
     }
 }

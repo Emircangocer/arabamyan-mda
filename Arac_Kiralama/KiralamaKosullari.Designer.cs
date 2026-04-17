@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KiralamaKosullari));
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
@@ -35,6 +36,8 @@
             button5 = new Button();
             button6 = new Button();
             richTextBox1 = new RichTextBox();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -117,12 +120,25 @@
             richTextBox1.TabIndex = 6;
             richTextBox1.Text = "";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.ActiveCaption;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(284, 120);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // KiralamaKosullari
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1924, 1055);
+            Controls.Add(pictureBox1);
             Controls.Add(richTextBox1);
             Controls.Add(button6);
             Controls.Add(button5);
@@ -134,6 +150,7 @@
             Margin = new Padding(4);
             Name = "KiralamaKosullari";
             Text = "Form2";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -146,5 +163,6 @@
         private Button button5;
         private Button button6;
         private RichTextBox richTextBox1;
+        private PictureBox pictureBox1;
     }
 }

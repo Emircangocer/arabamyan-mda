@@ -109,6 +109,7 @@
             button4.Text = "📅 Rezervasyonlar";
             button4.TextAlign = ContentAlignment.TopLeft;
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // label1
             // 
@@ -166,7 +167,7 @@
             dgvRezervasyonlar.Location = new Point(228, 95);
             dgvRezervasyonlar.Name = "dgvRezervasyonlar";
             dgvRezervasyonlar.RowHeadersWidth = 51;
-            dgvRezervasyonlar.Size = new Size(1111, 438);
+            dgvRezervasyonlar.Size = new Size(1295, 438);
             dgvRezervasyonlar.TabIndex = 1;
             dgvRezervasyonlar.CellClick += dgvRezervasyonlar_CellClick;
             dgvRezervasyonlar.CellContentClick += dgvRezervasyonlar_CellContentClick;
@@ -174,7 +175,7 @@
             // lblYoldakiAraclar
             // 
             lblYoldakiAraclar.AutoSize = true;
-            lblYoldakiAraclar.Location = new Point(1372, 142);
+            lblYoldakiAraclar.Location = new Point(1606, 198);
             lblYoldakiAraclar.Name = "lblYoldakiAraclar";
             lblYoldakiAraclar.Size = new Size(65, 28);
             lblYoldakiAraclar.TabIndex = 4;
@@ -183,7 +184,7 @@
             // lblMusaitAraclar
             // 
             lblMusaitAraclar.AutoSize = true;
-            lblMusaitAraclar.Location = new Point(1372, 325);
+            lblMusaitAraclar.Location = new Point(1606, 381);
             lblMusaitAraclar.Name = "lblMusaitAraclar";
             lblMusaitAraclar.Size = new Size(65, 28);
             lblMusaitAraclar.TabIndex = 5;
@@ -192,7 +193,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(1372, 111);
+            label2.Location = new Point(1606, 167);
             label2.Name = "label2";
             label2.Size = new Size(181, 28);
             label2.TabIndex = 7;
@@ -201,7 +202,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(1372, 297);
+            label3.Location = new Point(1606, 353);
             label3.Name = "label3";
             label3.Size = new Size(169, 28);
             label3.TabIndex = 8;

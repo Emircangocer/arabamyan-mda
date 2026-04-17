@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace Arac_Kiralama
 {
@@ -17,37 +18,51 @@ namespace Arac_Kiralama
         {
             InitializeComponent();
         }
-        SqlBaglantisi bgl=new SqlBaglantisi();
+        SqlBaglantisi bgl = new SqlBaglantisi();
         void MusteriListele()
         {
-            
+            // Kanka burada sadece yöneticiye lazım olan 4-5 kolonu çekersen daha şık durur
+            string sorgu = "SELECT Musteriid, MusteriAd, MusteriSoyad, MusteriTc, MusteriTelefon FROM TblMusteri";
+            SqlDataAdapter da = new SqlDataAdapter(sorgu, bgl.baglanti());
             DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("Select * From TblMusteri", bgl.baglanti());
             da.Fill(dt);
-            dataGridView1.DataSource = dt;
-
-            
-            dataGridView1.Columns["MusteriAd"].HeaderText = "Ad";
-            dataGridView1.Columns["MusteriSoyad"].HeaderText = "Soyad";
-            dataGridView1.Columns["MusteriTC"].HeaderText = "TC Kimlik";
-            dataGridView1.Columns["MusteriTelefon"].HeaderText = "Telefon";
-            dataGridView1.Columns["MusteriDogumTarihi"].HeaderText = "Doğum Tarihi";
-            dataGridView1.Columns["MusteriSifre"].HeaderText = "Şifre";
-            dataGridView1.Columns["MusteriEhliyetNo"].HeaderText = "Ehliyet No";
-            dataGridView1.Columns["MusteriEhliyetYer"].HeaderText = "Ehliyet Yer";
-            dataGridView1.Columns["MusteriEhliyetSinif"].HeaderText = "Ehliyet Sınıfı";
-            dataGridView1.Columns["MusteriEhliyetTarihi"].HeaderText = "Ehliyet Alınma Tarihi";
-            dataGridView1.Columns["MusteriHesap"].HeaderText = "Hesap";
-
+            dgvMusteriler.DataSource = dt;
+            bgl.baglanti().Close();
         }
 
         private void FrmMusteriKayit_Load(object sender, EventArgs e)
         {
-          
+
         }
         private void FrmYoneticiPanel_Musteriler_Load(object sender, EventArgs e)
         {
             MusteriListele();
+            dgvMusteriler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+
+        private void txtMusteriAra_TextChanged(object sender, EventArgs e)
+        {
+            string sorgu = "SELECT * FROM TblMusteri WHERE MusteriAd LIKE @p1 + '%'";
+            SqlDataAdapter da = new SqlDataAdapter(sorgu, bgl.baglanti());
+            da.SelectCommand.Parameters.AddWithValue("@p1", txtMusteriAra.Text);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgvMusteriler.DataSource = dt;
+            bgl.baglanti().Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmYoneticiPanel fr=new FrmYoneticiPanel();
+            fr.Show();
+            this.Hide();
         }
     }
 }
