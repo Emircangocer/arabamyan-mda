@@ -21,30 +21,37 @@ namespace Arac_Kiralama
 
         public void RezervasyonlariGetir()
         {
-            // Inner Join kullanarak tabloları birleştiriyoruz
             string sorgu = @"SELECT 
-                        R.Kiralamaid, 
-                        M.MusteriAd + ' ' + M.MusteriSoyad AS [Müşteri], 
-                        A.AracPlaka AS [Plaka], 
-                        A.AracMarka + ' ' + A.AracModel AS [Araç], 
-                        R.AracTeslimTarihi AS [Alış Tarihi], 
-                        R.PlanlananDonusTarihi AS [İade Tarihi], 
-                        R.AlisKm AS [Alış KM],
-                        R.AlinanDepozito AS [Depozito], 
-                        R.KiralamaStatu AS [Durum]
-                     FROM TblRezervasyon R
-                     INNER JOIN TblMusteri M ON R.Musteriid = M.Musteriid
-                     INNER JOIN TblAraclar A ON R.Aracid = A.Aracid
-                     WHERE R.KiralamaStatu = 'Aktif / Depozito Alındı'"; // Sadece aktifleri görelim
+                R.Kiralamaid, 
+                R.Musteriid, 
+                R.Aracid, 
+                M.MusteriAd + ' ' + M.MusteriSoyad AS [Müşteri], 
+                A.AracPlaka AS [Plaka], 
+                A.AracMarka + ' ' + A.AracModel AS [Araç], 
+                R.AracTeslimTarihi AS [Alış Tarihi], 
+                R.PlanlananDonusTarihi AS [İade Tarihi], 
+                R.AlisKm AS [Alış KM],
+                R.AlinanDepozito AS [Depozito], 
+                R.KiralamaStatu AS [Durum]
+             FROM TblRezervasyon R
+             INNER JOIN TblMusteri M ON R.Musteriid = M.Musteriid
+             INNER JOIN TblAraclar A ON R.Aracid = A.Aracid
+             WHERE R.KiralamaStatu = 'Aktif / Depozito Alındı'";
 
             SqlDataAdapter da = new SqlDataAdapter(sorgu, bgl.baglanti());
             DataTable dt = new DataTable();
             da.Fill(dt);
             dgvRezervasyonlar.DataSource = dt;
+
+            // Kanka bu ID'ler tabloda çirkin durmasın dersen gizleyebilirsin:
+            dgvRezervasyonlar.Columns["Musteriid"].Visible = false;
+            dgvRezervasyonlar.Columns["Aracid"].Visible = false;
+
             bgl.baglanti().Close();
         }
         private void btnIadeOnayla_Click(object sender, EventArgs e)
         {
+
             try
             {
                 // 1. Formdaki verileri güvenli bir şekilde alalım
@@ -148,7 +155,7 @@ namespace Arac_Kiralama
                 VeriDeposu.SecilenRezervasyonID = Convert.ToInt32(dgvRezervasyonlar.Rows[e.RowIndex].Cells[0].Value);
 
                 // Bu ID'yi aldık, artık iade butonuna bastığımızda hangisini iade edeceğimizi biliyoruz!
-                MessageBox.Show("Rezervasyon seçildi kanka, iade işlemine hazırız!");
+                MessageBox.Show("Rezervasyon seçildi, iade işlemine hazırız!");
             }
         }
     }

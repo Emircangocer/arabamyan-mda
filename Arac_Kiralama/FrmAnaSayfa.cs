@@ -88,11 +88,11 @@ namespace Arac_Kiralama
 
         private void FrmAnaSayfa_Load(object sender, EventArgs e)
         {
-            
+
 
             if (VeriDeposu.GirisYapildiMi)
             {
-               
+
                 // Giriş yapıldıysa Giriş butonlarını gizle
                 btnMusteriGiris.Visible = false;
                 btnYoneticiGiris.Visible = false;
@@ -109,7 +109,7 @@ namespace Arac_Kiralama
                 btnYoneticiGiris.Visible = true;
 
 
-                
+
             }
         }
 
@@ -150,24 +150,37 @@ namespace Arac_Kiralama
         private void btnHesabim_Click(object sender, EventArgs e)
         {
             pnlHesabim.Visible = !pnlHesabim.Visible;
-            lblMusteriAd.Text=VeriDeposu.GirisYapanMusteriAdSoyad;
+            lblMusteriAd.Text = VeriDeposu.GirisYapanMusteriAdSoyad;
             lblMusteriAd.BringToFront();
         }
 
         private void btnCikis_Click(object sender, EventArgs e)
         {
+            // 1. Giriş durumunu sıfırla
             VeriDeposu.GirisYapildiMi = false;
+            VeriDeposu.MusteriID = 0; // ID'yi de sıfırla ki çakışma olmasın kanka
+
+            // 2. Panelleri gizle
             pnlHesabim.Visible = false;
             btnHesabim.Visible = false;
 
-            // Giriş butonlarını geri getir
+            // 🔥 İŞTE BURASI: Aktif araç panelini temizle ve gizle
+            pnlAktifArac.Controls.Clear(); // İçindeki kartı siliyoruz
+            pnlAktifArac.Visible = false;   // Paneli komple saklıyoruz
+
+            // 3. Giriş butonlarını geri getir
             btnMusteriGiris.Visible = true;
             btnYoneticiGiris.Visible = true;
+
+            // İstersen kullanıcı adını da temizle
+            lblMusteriAd.Text = "";
+
+            MessageBox.Show("Başarıyla çıkış yapıldı, yine bekleriz!");
         }
 
 
 
-        SqlBaglantisi bgl=new SqlBaglantisi();
+        SqlBaglantisi bgl = new SqlBaglantisi();
         private void btnBakiyeEkle_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtYuklenecekTutar.Text))
@@ -208,9 +221,9 @@ namespace Arac_Kiralama
                 MessageBox.Show("Hata detayı: " + ex.Message);
             }
         }
-            
 
-            public void AktifKiralamayiGetir()
+
+        public void AktifKiralamayiGetir()
         {
             MessageBox.Show("Sorgulanan Musteri ID: " + VeriDeposu.MusteriID.ToString());
             // Önce paneli bir temizleyelim, üst üste binmesinler
@@ -230,7 +243,7 @@ namespace Arac_Kiralama
             if (dr.Read())
             {
                 MessageBox.Show("Kanka veri geldi, kartı yüklüyorum!"); // Bu mesaj çıkıyor mu bak
-                
+
                 pnlAktifArac.Visible = true; // Araç varmış, paneli aç kanka!
 
                 // Yeni bir UC_AktifKiralama nesnesi oluşturuyoruz
@@ -254,7 +267,13 @@ namespace Arac_Kiralama
             }
             bgl.baglanti().Close();
         }
+
+        private void btnGecmisKiralamalar_Click(object sender, EventArgs e)
+        {
+            FrmMusteriGecmis fr = new FrmMusteriGecmis();
+            fr.Show(); // Geçmiş sayfasını aç !
+        }
     }
-    }
+}
     
 

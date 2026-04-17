@@ -47,6 +47,7 @@
             btnAracEkle = new Button();
             pictureBox1 = new PictureBox();
             btnListele = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -207,12 +208,23 @@
             btnListele.UseVisualStyleBackColor = true;
             btnListele.Click += button1_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(75, 941);
+            button1.Name = "button1";
+            button1.Size = new Size(206, 48);
+            button1.TabIndex = 19;
+            button1.Text = "Ana Sayfaya Dön";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
             // FrmYoneticiAracEkle
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1924, 1055);
+            Controls.Add(button1);
             Controls.Add(btnListele);
             Controls.Add(pictureBox1);
             Controls.Add(btnAracEkle);
@@ -262,5 +274,6 @@
         private Button btnAracEkle;
         private PictureBox pictureBox1;
         private Button btnListele;
+        private Button button1;
     }
 }

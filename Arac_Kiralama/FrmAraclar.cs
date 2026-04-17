@@ -92,6 +92,9 @@ namespace Arac_Kiralama
                     dr["AracResim"].ToString(),
                     dr["AracKm"].ToString()
                 );
+                string sorgu = @"SELECT * FROM TblAraclar 
+                 WHERE AracStatu = 'Müsait' 
+                 AND (GelecekBakimTarihi > GETDATE() OR GelecekBakimTarihi IS NULL)";
 
                 flpAraclar.Controls.Add(kart);
             }

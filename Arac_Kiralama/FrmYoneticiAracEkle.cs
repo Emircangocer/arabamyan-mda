@@ -28,11 +28,11 @@ namespace Arac_Kiralama
             komut.Parameters.AddWithValue("@p1", txtPlaka.Text);
             komut.Parameters.AddWithValue("@p2", txtMarka.Text);
             komut.Parameters.AddWithValue("@p3", txtModel.Text);
-            komut.Parameters.AddWithValue("@p4", decimal.Parse(txtGunlukUcret.Text)); 
+            komut.Parameters.AddWithValue("@p4", decimal.Parse(txtGunlukUcret.Text));
             komut.Parameters.AddWithValue("@p5", cmbYakitTipi.Text);
             komut.Parameters.AddWithValue("@p6", cmbSanzıman.Text);
             komut.Parameters.AddWithValue("@p7", int.Parse(txtKm.Text));
-            komut.Parameters.AddWithValue("@p8", "Müsait"); 
+            komut.Parameters.AddWithValue("@p8", "Müsait");
 
             komut.ExecuteNonQuery();
             bgl.baglanti().Close();
@@ -70,6 +70,13 @@ namespace Arac_Kiralama
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            FrmYoneticiPanel fr=new FrmYoneticiPanel();
+            fr.Show();
+            this.Hide();
         }
     }
 }

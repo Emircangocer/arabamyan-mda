@@ -52,6 +52,8 @@ namespace Arac_Kiralama
         private void FrmYoneticiPanel_Load(object sender, EventArgs e)
         {
             RezervasyonlariGetir();
+            IstatistikleriYukle();
+            YaklasanBakimListesi();
         }
 
         private void dgvRezervasyonlar_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -78,6 +80,67 @@ namespace Arac_Kiralama
 
             // İade formu kapandığı an, bu satır çalışır ve listeyi tazeler:
             RezervasyonlariGetir();
+        }
+
+        public void IstatistikleriYukle()
+        {
+            try
+            {
+                // 1. TOPLAM KAZANÇ (Tamamlanmış kiralamalardan gelen ciro)
+                // NOT: Eğer tablonuzda 'KiralamaTutari' yerine farklı bir isim varsa onu yazın kanka.
+                string ciroSorgu = @"SELECT 
+                (SELECT ISNULL(SUM(ToplamKiraBedeli), 0) FROM TblRezervasyon WHERE KiralamaStatu = 'Tamamlandı') - 
+                (SELECT ISNULL(SUM(BakimMaaliyeti), 0) FROM TblBakim) AS NetKazanc";
+
+                SqlCommand cmd = new SqlCommand(ciroSorgu, bgl.baglanti());
+                object sonuc = cmd.ExecuteScalar();
+                lblToplamKazanc.Text = Convert.ToDouble(sonuc).ToString("N2") + " TL";
+
+                // 2. KAÇ ARAÇ MÜŞTERİDE? (Aktif veya İade Bekleyen durumdakiler)
+                string sorguYoldaki = "SELECT COUNT(*) FROM TblRezervasyon WHERE KiralamaStatu LIKE '%Aktif%' OR KiralamaStatu = 'İade Bekliyor'";
+                SqlCommand cmd2 = new SqlCommand(sorguYoldaki, bgl.baglanti());
+                lblYoldakiAraclar.Text = cmd2.ExecuteScalar().ToString() + " Araç Yolda";
+
+                // 3. KAÇ ARAÇ DÜKKANDA? (Müsait olanlar)
+                string sorguMusait = "SELECT COUNT(*) FROM TblAraclar WHERE AracStatu = 'Müsait'";
+                SqlCommand cmd3 = new SqlCommand(sorguMusait, bgl.baglanti());
+                lblMusaitAraclar.Text = cmd3.ExecuteScalar().ToString() + " Araç Müsait";
+
+                bgl.baglanti().Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("İstatistik hatası: " + ex.Message);
+            }
+
+
+        }
+        public void YaklasanBakimListesi()
+        {
+            // Bugün ile 7 gün sonrasını kapsayan araçları çeker
+            string sorgu = @"SELECT AracPlaka, AracMarka, AracModel, GelecekBakimTarihi 
+                     FROM TblAraclar 
+                     WHERE GelecekBakimTarihi BETWEEN GETDATE() AND DATEADD(day, 7, GETDATE())
+                     ORDER BY GelecekBakimTarihi ASC";
+
+            SqlDataAdapter da = new SqlDataAdapter(sorgu, bgl.baglanti());
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgvYaklasanBakimlar.DataSource = dt;
+            bgl.baglanti().Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FrmBakimTakvimi fr = new FrmBakimTakvimi();
+            fr.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FrmYoneticiAracEkle fr=new FrmYoneticiAracEkle();
+            fr.Show();
+            this.Hide();
         }
     }
 }

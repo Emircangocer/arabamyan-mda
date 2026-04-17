@@ -41,6 +41,7 @@
             pbAracResim.Margin = new Padding(4);
             pbAracResim.Name = "pbAracResim";
             pbAracResim.Size = new Size(219, 106);
+            pbAracResim.SizeMode = PictureBoxSizeMode.StretchImage;
             pbAracResim.TabIndex = 0;
             pbAracResim.TabStop = false;
             // 
@@ -68,7 +69,7 @@
             btnIadeTalebi.Name = "btnIadeTalebi";
             btnIadeTalebi.Size = new Size(163, 38);
             btnIadeTalebi.TabIndex = 3;
-            btnIadeTalebi.Text = "button1";
+            btnIadeTalebi.Text = "İade Et";
             btnIadeTalebi.UseVisualStyleBackColor = true;
             btnIadeTalebi.Click += btnIadeTalebi_Click;
             // 
