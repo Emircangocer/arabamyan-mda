@@ -31,5 +31,13 @@ namespace Arac_Kiralama
         public static int SecilenAracYakit;
 
         public static int SecilenRezervasyonID;
+
+        public static bool FarkliLokasyonVarMi = false;
+        public static string AlisOfisi = "";
+        public static string IadeOfisi = "";
+
+        public static string YoneticiAdSoyad;
+
+        public static string YoneticiResimYolu;
     }
 }

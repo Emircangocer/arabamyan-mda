@@ -35,6 +35,8 @@ namespace Arac_Kiralama
             lblAracAdi.Text = VeriDeposu.SecilenAracAdi;
             lblVites.Text = "Vites: " + VeriDeposu.SecilenVites;
             lblYakit.Text = "Yakıt: " + VeriDeposu.SecilenYakit;
+            lblAlisOfis.Text = VeriDeposu.AlisOfisi;
+            lblIadeOfis.Text = VeriDeposu.IadeOfisi;
 
             if (!string.IsNullOrEmpty(VeriDeposu.SecilenResimYolu))
             {
@@ -50,7 +52,7 @@ namespace Arac_Kiralama
             // Tarihleri ve Saatleri yazdır
             lblAlisTarihi.Text = VeriDeposu.AlisTarihi.ToString("dd.MM.yyyy HH:mm");
             lblIadeTarihi.Text = VeriDeposu.IadeTarihi.ToString("dd.MM.yyyy HH:mm");
-
+            
             // Fiyat hesabını yap (Gün x Fiyat)
             int gun = (VeriDeposu.IadeTarihi - VeriDeposu.AlisTarihi).Days;
             if (gun <= 0) gun = 1;
@@ -69,8 +71,15 @@ namespace Arac_Kiralama
             double aracTutar = gun * Convert.ToDouble(VeriDeposu.GunlukFiyat);
             double anaToplam = aracTutar + VeriDeposu.GuvenceTutari - VeriDeposu.IndirimTutari;
 
+            double farkliLokasyonBedeli = 0;
+            if (VeriDeposu.FarkliLokasyonVarMi)
+            {
+                farkliLokasyonBedeli = 500; // Ek ücret
+                lblEkUcret.Text = "500 TL Farklı Şehir Ücreti Eklendi";                            // Eğer formunda bir label varsa "500 TL Farklı Şehir Ücreti Eklendi" diye yazdırabilirsin
+            }
+
             // Toplam Ödenecek = Kira Bedeli + Depozito
-            double sonTutar = anaToplam + VeriDeposu.SecilenAracDepozito;
+            double sonTutar = anaToplam + VeriDeposu.SecilenAracDepozito+farkliLokasyonBedeli;
 
             lblGuvenceTutari.Text = VeriDeposu.GuvenceTutari.ToString("N2") + " TL";
             lblDepozito.Text = VeriDeposu.SecilenAracDepozito.ToString("N2") + " TL"; // Yeni label
@@ -222,15 +231,15 @@ namespace Arac_Kiralama
             fr.Show();
             this.Hide();
         }
-
+        SqlBaglantisi bgl= new SqlBaglantisi();
         private void btnKirala_Click(object sender, EventArgs e)
         {
-            // 1. Bakiye Kontrolü (Kira + Depozito yetiyor mu?)
-            double odenecekTutar = (double.Parse(lblToplamTutar.Text.Replace(" TL", "")));
-            SqlBaglantisi bgl=new SqlBaglantisi();
+            // 1. Bakiye Kontrolü (Ekrandaki 500 TL dahil son tutarı alıyoruz)
+            double odenecekTutar = Convert.ToDouble(lblToplamTutar.Text.Replace(" TL", ""));
+
             if (VeriDeposu.MusteriBakiye < odenecekTutar)
             {
-                MessageBox.Show("Bakiye yetersiz! Depozito dahil tutar: " + odenecekTutar + " TL");
+                MessageBox.Show("Bakiye yetersiz! Depozito dahil toplam tutar: " + odenecekTutar + " TL");
                 return;
             }
 
@@ -244,24 +253,34 @@ namespace Arac_Kiralama
                 bakiyeKomut.ExecuteNonQuery();
                 bgl.baglanti().Close();
 
-                // 3. Rezervasyonu Kaydet
-                string rezSorgu = "INSERT INTO TblRezervasyon (Musteriid, Aracid, AracTeslimTarihi, PlanlananDonusTarihi,AlisKm,AlisYakitMiktar, AlinanDepozito, ToplamKiraBedeli, KiralamaStatu) " +
-                                  "VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7,@p8,@p9)";
+                // 3. Rezervasyonu Kaydet (AlisOfis ve DonusOfis eklendi)
+                string rezSorgu = @"INSERT INTO TblRezervasyon 
+                (Musteriid, Aracid, AlisOfis, DonusOfis, AracTeslimTarihi, PlanlananDonusTarihi, AlisKm, AlisYakitMiktar, AlinanDepozito, ToplamKiraBedeli, KiralamaStatu) 
+                 VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11)";
+
                 SqlCommand rezKomut = new SqlCommand(rezSorgu, bgl.baglanti());
                 rezKomut.Parameters.AddWithValue("@p1", VeriDeposu.MusteriID);
                 rezKomut.Parameters.AddWithValue("@p2", VeriDeposu.SecilenAracID);
-                rezKomut.Parameters.AddWithValue("@p3", VeriDeposu.AlisTarihi);
-                rezKomut.Parameters.AddWithValue("@p4", VeriDeposu.IadeTarihi);
-                rezKomut.Parameters.AddWithValue("@p5", VeriDeposu.SecilenAracKm);
-                rezKomut.Parameters.AddWithValue("@p6", VeriDeposu.SecilenAracYakit);
-                rezKomut.Parameters.AddWithValue("@p7", VeriDeposu.SecilenAracDepozito);
-                rezKomut.Parameters.AddWithValue("@p8", odenecekTutar);
 
-                rezKomut.Parameters.AddWithValue("@p9", "Aktif / Depozito Alındı");
+                // --- OFİS BİLGİLERİ ---
+                rezKomut.Parameters.AddWithValue("@p3", VeriDeposu.AlisOfisi);
+                rezKomut.Parameters.AddWithValue("@p4", VeriDeposu.IadeOfisi);
+
+                rezKomut.Parameters.AddWithValue("@p5", VeriDeposu.AlisTarihi);
+                rezKomut.Parameters.AddWithValue("@p6", VeriDeposu.IadeTarihi);
+                rezKomut.Parameters.AddWithValue("@p7", VeriDeposu.SecilenAracKm);
+                rezKomut.Parameters.AddWithValue("@p8", VeriDeposu.SecilenAracYakit);
+                rezKomut.Parameters.AddWithValue("@p9", VeriDeposu.SecilenAracDepozito);
+
+                // --- 500 TL DAHİL TOPLAM TUTAR ---
+                rezKomut.Parameters.AddWithValue("@p10", odenecekTutar);
+
+                rezKomut.Parameters.AddWithValue("@p11", "Aktif / Depozito Alındı");
+
                 rezKomut.ExecuteNonQuery();
                 bgl.baglanti().Close();
 
-                // 4. Aracın Durumunu Güncelle (Artık bu araç dolu)
+                // 4. Aracın Durumunu Güncelle
                 string aracGuncelle = "UPDATE TblAraclar SET AracStatu = 'Dolu' WHERE Aracid = @id";
                 SqlCommand aracKomut = new SqlCommand(aracGuncelle, bgl.baglanti());
                 aracKomut.Parameters.AddWithValue("@id", VeriDeposu.SecilenAracID);
@@ -269,7 +288,17 @@ namespace Arac_Kiralama
                 bgl.baglanti().Close();
 
                 MessageBox.Show("Ödeme başarılı! İyi yolculuklar!");
-                this.Close();
+
+               
+                VeriDeposu.MusteriBakiye -= odenecekTutar;
+
+                FrmAnaSayfa frmAna = (FrmAnaSayfa)Application.OpenForms["FrmAnaSayfa"];
+                if (frmAna != null)
+                {
+                    frmAna.BilgileriGuncelle(); // İşte bu metod her şeyi anında ekrana getirir!
+                }
+
+                this.Close(); // Ödeme formunu kapat
             }
             catch (Exception ex)
             {

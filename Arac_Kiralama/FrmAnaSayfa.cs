@@ -56,9 +56,9 @@ namespace Arac_Kiralama
 
         private void guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
         {
-            pnliadeNoktasi.Visible = guna2ToggleSwitch1.Checked;
-            lbliadeNoktasi.Visible = guna2ToggleSwitch1.Checked;
-            gunacmbİadeNoktasi.Visible = (guna2ToggleSwitch1.Checked);
+            pnliadeNoktasi.Visible = swFarkliLokasyon.Checked;
+            lbliadeNoktasi.Visible = swFarkliLokasyon.Checked;
+            cmbIadeNoktasi.Visible = (swFarkliLokasyon.Checked);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -85,7 +85,16 @@ namespace Arac_Kiralama
             FrmYoneticiGiris fr = new FrmYoneticiGiris();
             fr.Show();
         }
+        public void BilgileriGuncelle()
+        {
+            // 1. Bakiyeyi SQL'den tekrar çekip label'a yaz
+            // Not: VeriDeposu'ndaki bakiye düştüğü için direkt oradan da yazdırabilirsin
+            lblBakiye.Text = VeriDeposu.MusteriBakiye.ToString("N2") + " TL";
 
+            // 2. Aktif kiralama panelini (o beyaz kartı) getiren metodunu buraya ekle
+            // Muhtemelen adı şöyledir (adını kontrol et kanka):
+            AktifKiralamayiGetir();
+        }
         private void FrmAnaSayfa_Load(object sender, EventArgs e)
         {
 
@@ -107,10 +116,10 @@ namespace Arac_Kiralama
                 // Giriş yapılmadıysa butonlar görünür kalsın
                 btnMusteriGiris.Visible = true;
                 btnYoneticiGiris.Visible = true;
-
-
-
             }
+
+                BilgileriGuncelle();
+            
         }
 
         private void btnAraclariKesfet_Click(object sender, EventArgs e)
@@ -134,6 +143,12 @@ namespace Arac_Kiralama
                 string[] iadeSaatParcalari = cmbiadeSaati.Text.Split(':');
                 int iadeSaat = Convert.ToInt32(iadeSaatParcalari[0]);
                 int iadeDakika = Convert.ToInt32(iadeSaatParcalari[1]);
+
+                VeriDeposu.AlisOfisi = cmbAlisNoktasi.Text;
+                VeriDeposu.FarkliLokasyonVarMi = swFarkliLokasyon.Checked;
+
+                // Eğer farklı yer seçildiyse ComboBox'taki şehri al, seçilmediyse alış yerini al
+                VeriDeposu.IadeOfisi = swFarkliLokasyon.Checked ? cmbIadeNoktasi.Text : cmbAlisNoktasi.Text;
 
                 VeriDeposu.IadeTarihi = new DateTime(iadeTarihi.Year, iadeTarihi.Month, iadeTarihi.Day, iadeSaat, iadeDakika, 0);
 
@@ -225,7 +240,7 @@ namespace Arac_Kiralama
 
         public void AktifKiralamayiGetir()
         {
-            MessageBox.Show("Sorgulanan Musteri ID: " + VeriDeposu.MusteriID.ToString());
+           
             // Önce paneli bir temizleyelim, üst üste binmesinler
             pnlAktifArac.Controls.Clear();
             pnlAktifArac.Visible = false;
@@ -242,7 +257,7 @@ namespace Arac_Kiralama
 
             if (dr.Read())
             {
-                MessageBox.Show("Kanka veri geldi, kartı yüklüyorum!"); // Bu mesaj çıkıyor mu bak
+                
 
                 pnlAktifArac.Visible = true; // Araç varmış, paneli aç kanka!
 
@@ -261,10 +276,7 @@ namespace Arac_Kiralama
                 aktifKart.Dock = DockStyle.Fill; // Paneli tam kaplasın
                 pnlAktifArac.Controls.Add(aktifKart); // Ve bombayı panele bırakıyoruz!
             }
-            else
-            {
-                MessageBox.Show("Kanka SQL'den veri dönmedi, sorguyu kontrol et.");
-            }
+            
             bgl.baglanti().Close();
         }
 

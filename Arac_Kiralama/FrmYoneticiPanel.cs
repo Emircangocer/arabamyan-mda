@@ -52,6 +52,19 @@ namespace Arac_Kiralama
         }
         private void FrmYoneticiPanel_Load(object sender, EventArgs e)
         {
+            lblYoneticiAd.Text = VeriDeposu.YoneticiAdSoyad;
+
+            // 2. 🔥 Resmi Yükle
+            if (!string.IsNullOrEmpty(VeriDeposu.YoneticiResimYolu) && File.Exists(VeriDeposu.YoneticiResimYolu))
+            {
+                // Eğer veritabanında resim yolu varsa ve dosya gerçekten oradaysa yükle
+                pbYoneticiResim.Image = Image.FromFile(VeriDeposu.YoneticiResimYolu);
+            }
+            else
+            {
+                // Eğer resim yoksa varsayılan bir "profil" resmi koyabilirsin (Resources'tan)
+                // pbYoneticiResim.Image = Properties.Resources.default_profile;
+            }
             RezervasyonlariGetir();
             IstatistikleriYukle();
             YaklasanBakimListesi();
@@ -146,8 +159,30 @@ namespace Arac_Kiralama
 
         private void button4_Click(object sender, EventArgs e)
         {
-            FrmYoneticiPanel_Rezervasyonlar fr=new FrmYoneticiPanel_Rezervasyonlar();
+            FrmYoneticiPanel_Rezervasyonlar fr = new FrmYoneticiPanel_Rezervasyonlar();
             fr.Show(); // Yeni pencere olarak açılsın
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FrmRaporlar fr = new FrmRaporlar();
+            fr.Show();
+            this.Hide();
+        }
+
+        private void btnCikisYap_Click(object sender, EventArgs e)
+        {
+            DialogResult secim = MessageBox.Show("Oturumu kapatmak istediğinize emin misiniz?", "Çıkış Yap", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (secim == DialogResult.Yes)
+            {
+                // 1. Giriş formunu oluştur ve göster
+                FrmAnaSayfa fr = new FrmAnaSayfa();
+                fr.Show();
+
+                // 2. Mevcut Yönetici Panelini kapat
+                this.Close();
+            }
         }
     }
 }

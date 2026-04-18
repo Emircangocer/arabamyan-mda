@@ -28,16 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel1 = new Panel();
+            panel2 = new Panel();
+            btnCikisYap = new Guna.UI2.WinForms.Guna2Button();
+            lblYoneticiAd = new Label();
+            pbYoneticiResim = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             button7 = new Button();
             button6 = new Button();
             button5 = new Button();
             button4 = new Button();
-            label1 = new Label();
             btnMusteri = new Button();
             button2 = new Button();
+            label1 = new Label();
             lblToplamKazanc = new Label();
-            button1 = new Button();
             dgvRezervasyonlar = new DataGridView();
             lblYoldakiAraclar = new Label();
             lblMusaitAraclar = new Label();
@@ -47,26 +53,77 @@
             label4 = new Label();
             label5 = new Label();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbYoneticiResim).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvRezervasyonlar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvYaklasanBakimlar).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(panel2);
             panel1.Controls.Add(button7);
             panel1.Controls.Add(button6);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button4);
-            panel1.Controls.Add(label1);
             panel1.Controls.Add(btnMusteri);
             panel1.Controls.Add(button2);
-            panel1.Controls.Add(lblToplamKazanc);
-            panel1.Controls.Add(button1);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(192, 1055);
             panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.Highlight;
+            panel2.Controls.Add(btnCikisYap);
+            panel2.Controls.Add(lblYoneticiAd);
+            panel2.Controls.Add(pbYoneticiResim);
+            panel2.Location = new Point(0, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(192, 260);
+            panel2.TabIndex = 12;
+            // 
+            // btnCikisYap
+            // 
+            btnCikisYap.BackColor = SystemColors.ControlLightLight;
+            btnCikisYap.CustomizableEdges = customizableEdges1;
+            btnCikisYap.DisabledState.BorderColor = Color.DarkGray;
+            btnCikisYap.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCikisYap.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCikisYap.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCikisYap.FillColor = SystemColors.ActiveCaption;
+            btnCikisYap.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            btnCikisYap.ForeColor = Color.Black;
+            btnCikisYap.Location = new Point(12, 200);
+            btnCikisYap.Name = "btnCikisYap";
+            btnCikisYap.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnCikisYap.Size = new Size(156, 47);
+            btnCikisYap.TabIndex = 12;
+            btnCikisYap.Text = "Çıkış yap";
+            btnCikisYap.Click += btnCikisYap_Click;
+            // 
+            // lblYoneticiAd
+            // 
+            lblYoneticiAd.AutoSize = true;
+            lblYoneticiAd.Location = new Point(12, 141);
+            lblYoneticiAd.Name = "lblYoneticiAd";
+            lblYoneticiAd.Size = new Size(65, 28);
+            lblYoneticiAd.TabIndex = 12;
+            lblYoneticiAd.Text = "label6";
+            // 
+            // pbYoneticiResim
+            // 
+            pbYoneticiResim.ImageRotate = 0F;
+            pbYoneticiResim.Location = new Point(23, 3);
+            pbYoneticiResim.Name = "pbYoneticiResim";
+            pbYoneticiResim.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            pbYoneticiResim.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            pbYoneticiResim.Size = new Size(145, 124);
+            pbYoneticiResim.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbYoneticiResim.TabIndex = 12;
+            pbYoneticiResim.TabStop = false;
             // 
             // button7
             // 
@@ -77,6 +134,7 @@
             button7.Text = "📊 Raporlar";
             button7.TextAlign = ContentAlignment.TopLeft;
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // button6
             // 
@@ -111,15 +169,6 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(23, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(142, 28);
-            label1.TabIndex = 6;
-            label1.Text = "Toplam Kazanç";
-            // 
             // btnMusteri
             // 
             btnMusteri.Location = new Point(3, 353);
@@ -142,24 +191,23 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(1060, 600);
+            label1.Name = "label1";
+            label1.Size = new Size(142, 28);
+            label1.TabIndex = 6;
+            label1.Text = "Toplam Kazanç";
+            // 
             // lblToplamKazanc
             // 
             lblToplamKazanc.AutoSize = true;
-            lblToplamKazanc.Location = new Point(48, 52);
+            lblToplamKazanc.Location = new Point(1085, 628);
             lblToplamKazanc.Name = "lblToplamKazanc";
             lblToplamKazanc.Size = new Size(65, 28);
             lblToplamKazanc.TabIndex = 3;
             lblToplamKazanc.Text = "label1";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(3, 235);
-            button1.Name = "button1";
-            button1.Size = new Size(189, 37);
-            button1.TabIndex = 1;
-            button1.Text = "🏠 Ana Sayfa";
-            button1.TextAlign = ContentAlignment.TopLeft;
-            button1.UseVisualStyleBackColor = true;
             // 
             // dgvRezervasyonlar
             // 
@@ -175,7 +223,7 @@
             // lblYoldakiAraclar
             // 
             lblYoldakiAraclar.AutoSize = true;
-            lblYoldakiAraclar.Location = new Point(1606, 198);
+            lblYoldakiAraclar.Location = new Point(1060, 759);
             lblYoldakiAraclar.Name = "lblYoldakiAraclar";
             lblYoldakiAraclar.Size = new Size(65, 28);
             lblYoldakiAraclar.TabIndex = 4;
@@ -184,7 +232,7 @@
             // lblMusaitAraclar
             // 
             lblMusaitAraclar.AutoSize = true;
-            lblMusaitAraclar.Location = new Point(1606, 381);
+            lblMusaitAraclar.Location = new Point(1072, 894);
             lblMusaitAraclar.Name = "lblMusaitAraclar";
             lblMusaitAraclar.Size = new Size(65, 28);
             lblMusaitAraclar.TabIndex = 5;
@@ -193,7 +241,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(1606, 167);
+            label2.Location = new Point(1060, 728);
             label2.Name = "label2";
             label2.Size = new Size(181, 28);
             label2.TabIndex = 7;
@@ -202,7 +250,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(1606, 353);
+            label3.Location = new Point(1072, 866);
             label3.Name = "label3";
             label3.Size = new Size(169, 28);
             label3.TabIndex = 8;
@@ -214,7 +262,7 @@
             dgvYaklasanBakimlar.Location = new Point(228, 600);
             dgvYaklasanBakimlar.Name = "dgvYaklasanBakimlar";
             dgvYaklasanBakimlar.RowHeadersWidth = 51;
-            dgvYaklasanBakimlar.Size = new Size(529, 336);
+            dgvYaklasanBakimlar.Size = new Size(598, 336);
             dgvYaklasanBakimlar.TabIndex = 9;
             // 
             // label4
@@ -247,8 +295,10 @@
             Controls.Add(label4);
             Controls.Add(dgvYaklasanBakimlar);
             Controls.Add(label3);
+            Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(lblMusaitAraclar);
+            Controls.Add(lblToplamKazanc);
             Controls.Add(lblYoldakiAraclar);
             Controls.Add(dgvRezervasyonlar);
             Controls.Add(panel1);
@@ -258,7 +308,9 @@
             Text = "FrmYoneticiPanel";
             Load += FrmYoneticiPanel_Load;
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbYoneticiResim).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvRezervasyonlar).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvYaklasanBakimlar).EndInit();
             ResumeLayout(false);
@@ -268,7 +320,6 @@
         #endregion
 
         private Panel panel1;
-        private Button button1;
         private Button btnMusteri;
         private Button button2;
         private Button button5;
@@ -285,5 +336,9 @@
         private DataGridView dgvYaklasanBakimlar;
         private Label label4;
         private Label label5;
+        private Panel panel2;
+        private Guna.UI2.WinForms.Guna2Button btnCikisYap;
+        private Label lblYoneticiAd;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox pbYoneticiResim;
     }
 }

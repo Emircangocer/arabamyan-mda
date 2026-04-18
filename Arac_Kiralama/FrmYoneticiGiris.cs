@@ -20,29 +20,45 @@ namespace Arac_Kiralama
         SqlBaglantisi bgl=new SqlBaglantisi();
         private void btnGirisYap_Click(object sender, EventArgs e)
         {
-            
 
-           
-            
-            SqlCommand cmd = new SqlCommand("SELECT * FROM TblYonetici WHERE YoneticiTC=@p1 AND YoneticiSifre=@p2", bgl.baglanti());
-            cmd.Parameters.AddWithValue("@p1", mskTC.Text);
-            cmd.Parameters.AddWithValue("@p2", txtSifre.Text);
-
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            if (dr.Read())
+            try
             {
-                MessageBox.Show("Giriş Başarılı!");
-                FrmYoneticiPanel fr=new FrmYoneticiPanel();
-                fr.Show();
-                this.Hide();
+                // Sorguda TC ve Sifre kontrolü yaparken aynı zamanda Ad-Soyad ve ResimYolu'nu alıyoruz
+                string sorgu = @"SELECT 
+                        YoneticiAd + ' ' + YoneticiSoyad, 
+                        YoneticiResimYolu 
+                     FROM TblYonetici 
+                     WHERE YoneticiTC = @p1 AND YoneticiSifre = @p2";
+
+                SqlCommand cmd = new SqlCommand(sorgu, bgl.baglanti());
+                cmd.Parameters.AddWithValue("@p1", mskTC.Text); // Kullanıcı adı yerine TC kutun
+                cmd.Parameters.AddWithValue("@p2", txtSifre.Text);
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    // 1. Giriş başarılı! Bilgileri ortak hafızaya (VeriDeposu) alıyoruz
+                    VeriDeposu.YoneticiAdSoyad = dr[0].ToString();
+
+                    // Resim yolu boşsa hata vermemesi için kontrol
+                    VeriDeposu.YoneticiResimYolu = dr[1] != DBNull.Value ? dr[1].ToString() : "";
+
+                    // 2. Paneli Aç
+                    FrmYoneticiPanel fr = new FrmYoneticiPanel();
+                    fr.Show();
+                    this.Hide(); // Giriş formunu gizle
+                }
+                else
+                {
+                    MessageBox.Show("TC Kimlik No veya Şifre hatalı kanka!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                bgl.baglanti().Close();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("TC veya Şifre yanlış!");
+                MessageBox.Show("Bağlantı hatası kanka: " + ex.Message);
             }
-            dr.Close();
-            bgl.baglanti().Close(); 
         }
     }
 }

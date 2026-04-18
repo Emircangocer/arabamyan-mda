@@ -40,6 +40,8 @@
             lblGuvenceTutari = new Label();
             lblIadeTarihi = new Label();
             panel1 = new Panel();
+            lblEkUcret = new Label();
+            label20 = new Label();
             lblDepozito = new Label();
             label16 = new Label();
             btnKupon = new Button();
@@ -83,6 +85,10 @@
             label27 = new Label();
             label28 = new Label();
             pictureBox1 = new PictureBox();
+            label21 = new Label();
+            label22 = new Label();
+            lblAlisOfis = new Label();
+            lblIadeOfis = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picSecilenArac).BeginInit();
             panel2.SuspendLayout();
@@ -95,7 +101,7 @@
             // lblAracAdi
             // 
             lblAracAdi.AutoSize = true;
-            lblAracAdi.Location = new Point(54, 132);
+            lblAracAdi.Location = new Point(54, 287);
             lblAracAdi.Margin = new Padding(4, 0, 4, 0);
             lblAracAdi.Name = "lblAracAdi";
             lblAracAdi.Size = new Size(86, 28);
@@ -105,7 +111,7 @@
             // lblYakit
             // 
             lblYakit.AutoSize = true;
-            lblYakit.Location = new Point(54, 327);
+            lblYakit.Location = new Point(54, 482);
             lblYakit.Margin = new Padding(4, 0, 4, 0);
             lblYakit.Name = "lblYakit";
             lblYakit.Size = new Size(53, 28);
@@ -116,7 +122,7 @@
             // lblVites
             // 
             lblVites.AutoSize = true;
-            lblVites.Location = new Point(240, 327);
+            lblVites.Location = new Point(240, 482);
             lblVites.Margin = new Padding(4, 0, 4, 0);
             lblVites.Name = "lblVites";
             lblVites.Size = new Size(54, 28);
@@ -126,7 +132,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(43, 399);
+            label4.Location = new Point(43, 541);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(194, 28);
@@ -136,7 +142,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(35, 24);
+            label5.Location = new Point(35, 179);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(98, 28);
@@ -146,7 +152,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(29, 62);
+            label6.Location = new Point(29, 217);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(104, 28);
@@ -156,7 +162,7 @@
             // lblAlisTarihi
             // 
             lblAlisTarihi.AutoSize = true;
-            lblAlisTarihi.Location = new Point(131, 24);
+            lblAlisTarihi.Location = new Point(131, 179);
             lblAlisTarihi.Margin = new Padding(4, 0, 4, 0);
             lblAlisTarihi.Name = "lblAlisTarihi";
             lblAlisTarihi.Size = new Size(53, 28);
@@ -167,7 +173,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(91, 441);
+            label8.Location = new Point(91, 583);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(146, 28);
@@ -177,7 +183,7 @@
             // lblGuvenceTutari
             // 
             lblGuvenceTutari.AutoSize = true;
-            lblGuvenceTutari.Location = new Point(240, 441);
+            lblGuvenceTutari.Location = new Point(240, 583);
             lblGuvenceTutari.Margin = new Padding(4, 0, 4, 0);
             lblGuvenceTutari.Name = "lblGuvenceTutari";
             lblGuvenceTutari.Size = new Size(0, 28);
@@ -186,7 +192,7 @@
             // lblIadeTarihi
             // 
             lblIadeTarihi.AutoSize = true;
-            lblIadeTarihi.Location = new Point(131, 62);
+            lblIadeTarihi.Location = new Point(131, 217);
             lblIadeTarihi.Margin = new Padding(4, 0, 4, 0);
             lblIadeTarihi.Name = "lblIadeTarihi";
             lblIadeTarihi.Size = new Size(53, 28);
@@ -195,6 +201,12 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(lblIadeOfis);
+            panel1.Controls.Add(lblAlisOfis);
+            panel1.Controls.Add(label22);
+            panel1.Controls.Add(label21);
+            panel1.Controls.Add(lblEkUcret);
+            panel1.Controls.Add(label20);
             panel1.Controls.Add(lblDepozito);
             panel1.Controls.Add(label16);
             panel1.Controls.Add(btnKupon);
@@ -217,14 +229,32 @@
             panel1.Controls.Add(lblYakit);
             panel1.Location = new Point(984, 68);
             panel1.Name = "panel1";
-            panel1.Size = new Size(471, 767);
+            panel1.Size = new Size(565, 994);
             panel1.TabIndex = 10;
             panel1.Paint += panel1_Paint;
+            // 
+            // lblEkUcret
+            // 
+            lblEkUcret.AutoSize = true;
+            lblEkUcret.Location = new Point(240, 724);
+            lblEkUcret.Name = "lblEkUcret";
+            lblEkUcret.Size = new Size(49, 28);
+            lblEkUcret.TabIndex = 23;
+            lblEkUcret.Text = "0,00";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(149, 724);
+            label20.Name = "label20";
+            label20.Size = new Size(88, 28);
+            label20.TabIndex = 22;
+            label20.Text = "Ek Ücret:";
             // 
             // lblDepozito
             // 
             lblDepozito.AutoSize = true;
-            lblDepozito.Location = new Point(243, 587);
+            lblDepozito.Location = new Point(243, 763);
             lblDepozito.Margin = new Padding(4, 0, 4, 0);
             lblDepozito.Name = "lblDepozito";
             lblDepozito.Size = new Size(155, 28);
@@ -234,7 +264,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(91, 587);
+            label16.Location = new Point(91, 763);
             label16.Margin = new Padding(4, 0, 4, 0);
             label16.Name = "label16";
             label16.Size = new Size(155, 28);
@@ -245,7 +275,7 @@
             // 
             btnKupon.BackColor = Color.FromArgb(255, 192, 128);
             btnKupon.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            btnKupon.Location = new Point(240, 526);
+            btnKupon.Location = new Point(240, 668);
             btnKupon.Name = "btnKupon";
             btnKupon.Size = new Size(138, 29);
             btnKupon.TabIndex = 19;
@@ -256,7 +286,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(30, 486);
+            label9.Location = new Point(30, 628);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(207, 28);
@@ -265,14 +295,14 @@
             // 
             // txtKuponKodu
             // 
-            txtKuponKodu.Location = new Point(240, 486);
+            txtKuponKodu.Location = new Point(240, 628);
             txtKuponKodu.Name = "txtKuponKodu";
             txtKuponKodu.Size = new Size(138, 34);
             txtKuponKodu.TabIndex = 17;
             // 
             // picSecilenArac
             // 
-            picSecilenArac.Location = new Point(54, 163);
+            picSecilenArac.Location = new Point(54, 318);
             picSecilenArac.Name = "picSecilenArac";
             picSecilenArac.Size = new Size(240, 144);
             picSecilenArac.TabIndex = 16;
@@ -280,7 +310,7 @@
             // 
             // btnKirala
             // 
-            btnKirala.Location = new Point(131, 708);
+            btnKirala.Location = new Point(131, 884);
             btnKirala.Name = "btnKirala";
             btnKirala.Size = new Size(200, 35);
             btnKirala.TabIndex = 15;
@@ -291,7 +321,7 @@
             // lblToplamTutar
             // 
             lblToplamTutar.AutoSize = true;
-            lblToplamTutar.Location = new Point(243, 636);
+            lblToplamTutar.Location = new Point(243, 812);
             lblToplamTutar.Name = "lblToplamTutar";
             lblToplamTutar.Size = new Size(0, 28);
             lblToplamTutar.TabIndex = 14;
@@ -300,7 +330,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(107, 636);
+            label14.Location = new Point(107, 812);
             label14.Name = "label14";
             label14.Size = new Size(130, 28);
             label14.TabIndex = 13;
@@ -309,7 +339,7 @@
             // lblKiralamaBedeli
             // 
             lblKiralamaBedeli.AutoSize = true;
-            lblKiralamaBedeli.Location = new Point(240, 399);
+            lblKiralamaBedeli.Location = new Point(240, 541);
             lblKiralamaBedeli.Name = "lblKiralamaBedeli";
             lblKiralamaBedeli.Size = new Size(76, 28);
             lblKiralamaBedeli.TabIndex = 10;
@@ -653,6 +683,42 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(37, 55);
+            label21.Name = "label21";
+            label21.Size = new Size(91, 28);
+            label21.TabIndex = 24;
+            label21.Text = "Alış Ofisi:";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(31, 98);
+            label22.Name = "label22";
+            label22.Size = new Size(97, 28);
+            label22.TabIndex = 25;
+            label22.Text = "İade Ofisi:";
+            // 
+            // lblAlisOfis
+            // 
+            lblAlisOfis.AutoSize = true;
+            lblAlisOfis.Location = new Point(134, 55);
+            lblAlisOfis.Name = "lblAlisOfis";
+            lblAlisOfis.Size = new Size(76, 28);
+            lblAlisOfis.TabIndex = 26;
+            lblAlisOfis.Text = "label29";
+            // 
+            // lblIadeOfis
+            // 
+            lblIadeOfis.AutoSize = true;
+            lblIadeOfis.Location = new Point(134, 98);
+            lblIadeOfis.Name = "lblIadeOfis";
+            lblIadeOfis.Size = new Size(76, 28);
+            lblIadeOfis.TabIndex = 27;
+            lblIadeOfis.Text = "label30";
+            // 
             // FrmOdeme
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -739,5 +805,11 @@
         private PictureBox pictureBox1;
         private Label label16;
         private Label lblDepozito;
+        private Label lblEkUcret;
+        private Label label20;
+        private Label lblIadeOfis;
+        private Label lblAlisOfis;
+        private Label label22;
+        private Label label21;
     }
 }
