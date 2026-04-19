@@ -52,6 +52,14 @@ namespace Arac_Kiralama
         }
         private void FrmYoneticiPanel_Load(object sender, EventArgs e)
         {
+            string bugunBakim = @"UPDATE TblAraclar SET AracStatu = 'Bakımda' 
+                      WHERE CAST(GelecekBakimTarihi AS DATE) = CAST(GETDATE() AS DATE) 
+                      AND AracStatu = 'Müsait'";
+
+            SqlCommand cmd = new SqlCommand(bugunBakim, bgl.baglanti());
+            cmd.ExecuteNonQuery();
+            bgl.baglanti().Close();
+
 
             this.WindowState = FormWindowState.Maximized;
 
@@ -80,14 +88,7 @@ namespace Arac_Kiralama
 
         private void dgvRezervasyonlar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                // 0. sütunda Kiralamaid olduğunu varsayıyoruz
-                VeriDeposu.SecilenRezervasyonID = Convert.ToInt32(dgvRezervasyonlar.Rows[e.RowIndex].Cells[0].Value);
-
-                // Bu ID'yi aldık, artık iade butonuna bastığımızda hangisini iade edeceğimizi biliyoruz!
-                MessageBox.Show("Rezervasyon seçildi kanka, iade işlemine hazırız!");
-            }
+            
         }
 
         private void button5_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace Arac_Kiralama
 {
     public partial class FrmAraclar : Form
@@ -24,67 +25,91 @@ namespace Arac_Kiralama
 
         private void FrmAraclar_Load(object sender, EventArgs e)
         {
+           
+        
             this.WindowState = FormWindowState.Maximized;
-
             flpAraclar.Controls.Clear(); // Ne olur ne olmaz temiz başla
-            UC_AracKart testKart = new UC_AracKart();
 
-
-            // Meşhur Müsaitlik Sorgusu
-            string sorgu = "SELECT * FROM TblAraclar WHERE AracStatu = 'Müsait'";
-
-            SqlCommand komut = new SqlCommand(sorgu, bgl.baglanti());
-            SqlDataReader dr = komut.ExecuteReader();
-
-            while (dr.Read())
+            try
             {
+                // 1. ADIM: SÜPÜRGE - Bakım günü bugün olanları pasife al (Müşteri görmesin)
+                string bakimGuncelleSorgu = @"UPDATE TblAraclar 
+                                     SET AracStatu = 'Bakımda' 
+                                     WHERE CAST(GelecekBakimTarihi AS DATE) <= CAST(GETDATE() AS DATE) 
+                                     AND AracStatu = 'Müsait'";
 
+                SqlCommand cmdBakim = new SqlCommand(bakimGuncelleSorgu, bgl.baglanti());
+                cmdBakim.ExecuteNonQuery();
+                bgl.baglanti().Close();
 
-                UC_AracKart kart = new UC_AracKart();
+                // 2. ADIM: LİSTELEME - Sadece müsait ve iade tarihinden sonra bakımı olanlar
+                // VeriDeposu'ndaki iade tarihini kullanıyoruz
+                string sorgu = @"SELECT * FROM TblAraclar 
+                         WHERE AracStatu = 'Müsait' 
+                         AND (CAST(GelecekBakimTarihi AS DATE) > CAST(@paramIade AS DATE) 
+                              OR GelecekBakimTarihi IS NULL)";
 
-                // SQL'den verileri değişkenlere alalım
-                int id = Convert.ToInt32(dr["Aracid"]);
-                string ad = dr["AracMarka"].ToString() + " " + dr["AracModel"].ToString();
-                string fiyat = dr["AracGunlukUcret"].ToString();
-                string vites = dr["AracSanziman"].ToString();
-                string yakit = dr["AracYakitTipi"].ToString();
+                SqlCommand komut = new SqlCommand(sorgu, bgl.baglanti());
+                komut.Parameters.AddWithValue("@paramIade", VeriDeposu.IadeTarihi);
 
-                string resim = dr["AracResim"].ToString(); // SQL'deki resim yolunu çekiyoruz
-                string km = dr["AracKm"].ToString();
+                SqlDataReader dr = komut.ExecuteReader();
 
-                // Karta gönderiyoruz (artık resim parametresi de var!)
-                kart.BilgiBas(id, ad, fiyat, vites, yakit, resim, km);
+                while (dr.Read())
+                {
+                    UC_AracKart kart = new UC_AracKart();
 
-                flpAraclar.Controls.Add(kart);
+                    int id = Convert.ToInt32(dr["Aracid"]);
+                    string ad = dr["AracMarka"].ToString() + " " + dr["AracModel"].ToString();
+                    string fiyat = dr["AracGunlukUcret"].ToString();
+                    string vites = dr["AracSanziman"].ToString();
+                    string yakit = dr["AracYakitTipi"].ToString();
+                    string resim = dr["AracResim"].ToString();
+                    string km = dr["AracKm"].ToString();
 
-
-
-
-
+                    // Karta gönderiyoruz
+                    kart.BilgiBas(id, ad, fiyat, vites, yakit, resim, km);
+                    flpAraclar.Controls.Add(kart);
+                }
             }
-            bgl.baglanti().Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata oluştu: " + ex.Message);
+            }
+            finally
+            {
+                bgl.baglanti().Close();
+            }
         }
 
         public void AracListele(string filtreSorgusu = "")
         {
             flpAraclar.Controls.Clear(); // Önce eskileri bir temizle
 
-            // Temel sorgumuz (Müsait olanlar)
-            string sql = "SELECT * FROM TblAraclar WHERE AracStatu = 'Müsait' " + filtreSorgusu;
+            // VeriDeposu'ndan müşterinin seçtiği iade tarihini alıyoruz
+            DateTime musteriIadeTarihi = VeriDeposu.IadeTarihi;
+
+            // SORGUMUZ: Müsait olan VE bakım tarihi müşterinin iade tarihinden SONRA olan araçlar
+            // Not: Bakım tarihi boş olan araçlar da gelsin diye IS NULL kontrolü ekledik
+            string sql = @"SELECT * FROM TblAraclar 
+               WHERE AracStatu = 'Müsait' 
+               AND (CAST(GelecekBakimTarihi AS DATE) > CAST(@paramIade AS DATE) 
+                    OR GelecekBakimTarihi IS NULL) " + filtreSorgusu;
 
             SqlCommand komut = new SqlCommand(sql, bgl.baglanti());
+            komut.Parameters.AddWithValue("@paramIade", musteriIadeTarihi);
+
             SqlDataReader dr = komut.ExecuteReader();
 
             while (dr.Read())
             {
                 UC_AracKart kart = new UC_AracKart();
 
-                // 1. Önce ID'yi alıyoruz (Hata buydu!)
+                // 1. Önce ID'yi alıyoruz
                 int aracID = Convert.ToInt32(dr["Aracid"]);
 
-                // 2. Metoda tam 6 tane bilgiyi sırasıyla gönderiyoruz
+                // 2. Metoda bilgileri sırasıyla gönderiyoruz
                 kart.BilgiBas(
-                    aracID, // Eksik olan birinci parametre
+                    aracID,
                     dr["AracMarka"].ToString() + " " + dr["AracModel"].ToString(),
                     dr["AracGunlukUcret"].ToString(),
                     dr["AracSanziman"].ToString(),
@@ -92,9 +117,6 @@ namespace Arac_Kiralama
                     dr["AracResim"].ToString(),
                     dr["AracKm"].ToString()
                 );
-                string sorgu = @"SELECT * FROM TblAraclar 
-                 WHERE AracStatu = 'Müsait' 
-                 AND (GelecekBakimTarihi > GETDATE() OR GelecekBakimTarihi IS NULL)";
 
                 flpAraclar.Controls.Add(kart);
             }

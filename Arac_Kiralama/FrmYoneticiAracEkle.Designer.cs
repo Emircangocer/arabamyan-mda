@@ -48,6 +48,12 @@
             pictureBox1 = new PictureBox();
             btnListele = new Button();
             button1 = new Button();
+            txtAracResim = new TextBox();
+            label8 = new Label();
+            txtYakitDurumu = new TextBox();
+            label9 = new Label();
+            txtBakimTarihi = new TextBox();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -180,7 +186,7 @@
             // 
             // btnAracEkle
             // 
-            btnAracEkle.Location = new Point(147, 593);
+            btnAracEkle.Location = new Point(147, 781);
             btnAracEkle.Name = "btnAracEkle";
             btnAracEkle.Size = new Size(182, 36);
             btnAracEkle.TabIndex = 16;
@@ -200,7 +206,7 @@
             // 
             // btnListele
             // 
-            btnListele.Location = new Point(147, 646);
+            btnListele.Location = new Point(147, 834);
             btnListele.Name = "btnListele";
             btnListele.Size = new Size(182, 34);
             btnListele.TabIndex = 18;
@@ -218,12 +224,66 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 
+            // txtAracResim
+            // 
+            txtAracResim.Location = new Point(147, 593);
+            txtAracResim.Name = "txtAracResim";
+            txtAracResim.Size = new Size(182, 34);
+            txtAracResim.TabIndex = 21;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(72, 596);
+            label8.Name = "label8";
+            label8.Size = new Size(67, 28);
+            label8.TabIndex = 20;
+            label8.Text = "Resim:";
+            // 
+            // txtYakitDurumu
+            // 
+            txtYakitDurumu.Location = new Point(147, 642);
+            txtYakitDurumu.Name = "txtYakitDurumu";
+            txtYakitDurumu.Size = new Size(182, 34);
+            txtYakitDurumu.TabIndex = 23;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(4, 642);
+            label9.Name = "label9";
+            label9.Size = new Size(133, 28);
+            label9.TabIndex = 22;
+            label9.Text = "Yakıt Durumu:";
+            // 
+            // txtBakimTarihi
+            // 
+            txtBakimTarihi.Location = new Point(147, 692);
+            txtBakimTarihi.Name = "txtBakimTarihi";
+            txtBakimTarihi.Size = new Size(182, 34);
+            txtBakimTarihi.TabIndex = 25;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(17, 692);
+            label10.Name = "label10";
+            label10.Size = new Size(120, 28);
+            label10.TabIndex = 24;
+            label10.Text = "Bakım Tarihi:";
+            // 
             // FrmYoneticiAracEkle
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1924, 1055);
+            Controls.Add(txtBakimTarihi);
+            Controls.Add(label10);
+            Controls.Add(txtYakitDurumu);
+            Controls.Add(label9);
+            Controls.Add(txtAracResim);
+            Controls.Add(label8);
             Controls.Add(button1);
             Controls.Add(btnListele);
             Controls.Add(pictureBox1);
@@ -276,5 +336,11 @@
         private PictureBox pictureBox1;
         private Button btnListele;
         private Button button1;
+        private TextBox txtAracResim;
+        private Label label8;
+        private TextBox txtYakitDurumu;
+        private Label label9;
+        private TextBox txtBakimTarihi;
+        private Label label10;
     }
 }

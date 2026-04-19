@@ -32,7 +32,7 @@
             label2 = new Label();
             txtSifre = new TextBox();
             mskTC = new MaskedTextBox();
-            button1 = new Button();
+            btnGirisYap = new Button();
             linkLabel1 = new LinkLabel();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -65,6 +65,7 @@
             txtSifre.Name = "txtSifre";
             txtSifre.Size = new Size(252, 38);
             txtSifre.TabIndex = 2;
+            txtSifre.UseSystemPasswordChar = true;
             // 
             // mskTC
             // 
@@ -75,16 +76,16 @@
             mskTC.Size = new Size(252, 38);
             mskTC.TabIndex = 1;
             // 
-            // button1
+            // btnGirisYap
             // 
-            button1.Location = new Point(151, 321);
-            button1.Margin = new Padding(4);
-            button1.Name = "button1";
-            button1.Size = new Size(168, 40);
-            button1.TabIndex = 3;
-            button1.Text = "Giriş Yap";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnGirisYap.Location = new Point(151, 321);
+            btnGirisYap.Margin = new Padding(4);
+            btnGirisYap.Name = "btnGirisYap";
+            btnGirisYap.Size = new Size(168, 40);
+            btnGirisYap.TabIndex = 3;
+            btnGirisYap.Text = "Giriş Yap";
+            btnGirisYap.UseVisualStyleBackColor = true;
+            btnGirisYap.Click += button1_Click;
             // 
             // linkLabel1
             // 
@@ -109,13 +110,14 @@
             // 
             // FrmMusteriGiris
             // 
+            AcceptButton = btnGirisYap;
             AutoScaleDimensions = new SizeF(13F, 31F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(449, 449);
             Controls.Add(pictureBox1);
             Controls.Add(linkLabel1);
-            Controls.Add(button1);
+            Controls.Add(btnGirisYap);
             Controls.Add(mskTC);
             Controls.Add(txtSifre);
             Controls.Add(label2);
@@ -135,7 +137,7 @@
         private Label label2;
         private TextBox txtSifre;
         private MaskedTextBox mskTC;
-        private Button button1;
+        private Button btnGirisYap;
         private LinkLabel linkLabel1;
         private PictureBox pictureBox1;
     }

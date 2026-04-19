@@ -76,6 +76,7 @@
             txtSifre.Name = "txtSifre";
             txtSifre.Size = new Size(211, 38);
             txtSifre.TabIndex = 2;
+            txtSifre.UseSystemPasswordChar = true;
             // 
             // label2
             // 

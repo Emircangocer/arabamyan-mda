@@ -25,7 +25,7 @@ namespace Arac_Kiralama
         {
 
 
-            SqlCommand komut = new SqlCommand("insert into TblAraclar (AracPlaka, AracMarka, AracModel, AracGunlukUcret, AracYakitTipi, AracSanziman, AracKm, AracStatu) values (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8)", bgl.baglanti());
+            SqlCommand komut = new SqlCommand("insert into TblAraclar (AracPlaka, AracMarka, AracModel, AracGunlukUcret, AracYakitTipi, AracSanziman, AracStatu, AracKm,AracResim,YakitDurumu,GelecekBakimTarihi) values (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11)", bgl.baglanti());
 
             komut.Parameters.AddWithValue("@p1", txtPlaka.Text);
             komut.Parameters.AddWithValue("@p2", txtMarka.Text);
@@ -33,8 +33,11 @@ namespace Arac_Kiralama
             komut.Parameters.AddWithValue("@p4", decimal.Parse(txtGunlukUcret.Text));
             komut.Parameters.AddWithValue("@p5", cmbYakitTipi.Text);
             komut.Parameters.AddWithValue("@p6", cmbSanzıman.Text);
-            komut.Parameters.AddWithValue("@p7", int.Parse(txtKm.Text));
-            komut.Parameters.AddWithValue("@p8", "Müsait");
+            komut.Parameters.AddWithValue("@p7", "Müsait");
+            komut.Parameters.AddWithValue("@p8", int.Parse(txtKm.Text));
+            komut.Parameters.AddWithValue("@p9",txtAracResim.Text);
+            komut.Parameters.AddWithValue("@p10", int.Parse(txtYakitDurumu.Text));
+            komut.Parameters.AddWithValue("@p11", txtBakimTarihi.Text);
 
             komut.ExecuteNonQuery();
             bgl.baglanti().Close();
@@ -61,6 +64,10 @@ namespace Arac_Kiralama
             dataGridView1.Columns["AracSanziman"].HeaderText = "Şanzıman";
             dataGridView1.Columns["AracStatu"].HeaderText = "Statü";
             dataGridView1.Columns["AracKm"].HeaderText = "Km";
+            dataGridView1.Columns["AracResim"].HeaderText = "Araç Resim ";
+            dataGridView1.Columns["YakitDurumu"].HeaderText = "Yakıt Durumu";
+            dataGridView1.Columns["GelecekBakimTarihi"].HeaderText = "Gelecek Bakım Tarihi";
+
 
 
 
