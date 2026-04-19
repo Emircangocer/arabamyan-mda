@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgvTumAraclar = new DataGridView();
             txtBakimAciklama = new TextBox();
             txtBakimMaliyet = new TextBox();
@@ -36,6 +38,7 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)dgvTumAraclar).BeginInit();
             SuspendLayout();
             // 
@@ -107,12 +110,31 @@
             label3.TabIndex = 6;
             label3.Text = "Açıklama:";
             // 
+            // guna2Button1
+            // 
+            guna2Button1.CustomizableEdges = customizableEdges1;
+            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.FillColor = Color.White;
+            guna2Button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            guna2Button1.ForeColor = Color.Black;
+            guna2Button1.Location = new Point(12, 789);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2Button1.Size = new Size(213, 66);
+            guna2Button1.TabIndex = 7;
+            guna2Button1.Text = "Geri Dön";
+            guna2Button1.Click += guna2Button1_Click;
+            // 
             // FrmBakimTakvimi
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1832, 909);
+            Controls.Add(guna2Button1);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -141,5 +163,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

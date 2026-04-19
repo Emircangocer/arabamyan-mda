@@ -572,6 +572,7 @@
             Margin = new Padding(4);
             Name = "FrmOfisler";
             Text = "FrmOfisler";
+            Load += FrmOfisler_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);

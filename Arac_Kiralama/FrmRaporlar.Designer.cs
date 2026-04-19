@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgvGelirRaporu = new DataGridView();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             btnToplamCiro = new Guna.UI2.WinForms.Guna2TileButton();
@@ -72,7 +72,7 @@
             // 
             // btnToplamCiro
             // 
-            btnToplamCiro.CustomizableEdges = customizableEdges13;
+            btnToplamCiro.CustomizableEdges = customizableEdges1;
             btnToplamCiro.DisabledState.BorderColor = Color.DarkGray;
             btnToplamCiro.DisabledState.CustomBorderColor = Color.DarkGray;
             btnToplamCiro.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -81,14 +81,14 @@
             btnToplamCiro.ForeColor = Color.White;
             btnToplamCiro.Location = new Point(-7, 180);
             btnToplamCiro.Name = "btnToplamCiro";
-            btnToplamCiro.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnToplamCiro.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnToplamCiro.Size = new Size(329, 83);
             btnToplamCiro.TabIndex = 1;
             btnToplamCiro.Text = "Toplam Ciro";
             // 
             // btnToplamKiralama
             // 
-            btnToplamKiralama.CustomizableEdges = customizableEdges15;
+            btnToplamKiralama.CustomizableEdges = customizableEdges3;
             btnToplamKiralama.DisabledState.BorderColor = Color.DarkGray;
             btnToplamKiralama.DisabledState.CustomBorderColor = Color.DarkGray;
             btnToplamKiralama.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -97,14 +97,14 @@
             btnToplamKiralama.ForeColor = Color.White;
             btnToplamKiralama.Location = new Point(328, 180);
             btnToplamKiralama.Name = "btnToplamKiralama";
-            btnToplamKiralama.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btnToplamKiralama.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnToplamKiralama.Size = new Size(329, 83);
             btnToplamKiralama.TabIndex = 2;
             btnToplamKiralama.Text = "Toplam Kiralama";
             // 
             // btnEnPopulerArac
             // 
-            btnEnPopulerArac.CustomizableEdges = customizableEdges17;
+            btnEnPopulerArac.CustomizableEdges = customizableEdges5;
             btnEnPopulerArac.DisabledState.BorderColor = Color.DarkGray;
             btnEnPopulerArac.DisabledState.CustomBorderColor = Color.DarkGray;
             btnEnPopulerArac.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -113,14 +113,14 @@
             btnEnPopulerArac.ForeColor = Color.White;
             btnEnPopulerArac.Location = new Point(663, 180);
             btnEnPopulerArac.Name = "btnEnPopulerArac";
-            btnEnPopulerArac.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnEnPopulerArac.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnEnPopulerArac.Size = new Size(329, 83);
             btnEnPopulerArac.TabIndex = 3;
             btnEnPopulerArac.Text = "En Popüler Araç";
             // 
             // btnYazdir
             // 
-            btnYazdir.CustomizableEdges = customizableEdges19;
+            btnYazdir.CustomizableEdges = customizableEdges7;
             btnYazdir.DisabledState.BorderColor = Color.DarkGray;
             btnYazdir.DisabledState.CustomBorderColor = Color.DarkGray;
             btnYazdir.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -129,7 +129,7 @@
             btnYazdir.ForeColor = Color.White;
             btnYazdir.Location = new Point(281, 784);
             btnYazdir.Name = "btnYazdir";
-            btnYazdir.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btnYazdir.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnYazdir.Size = new Size(329, 83);
             btnYazdir.TabIndex = 4;
             btnYazdir.Text = "Yazdır";
@@ -137,26 +137,26 @@
             // 
             // dgvHasarGecmisi
             // 
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dgvHasarGecmisi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvHasarGecmisi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dgvHasarGecmisi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvHasarGecmisi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvHasarGecmisi.ColumnHeadersHeight = 4;
             dgvHasarGecmisi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 162);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvHasarGecmisi.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvHasarGecmisi.DefaultCellStyle = dataGridViewCellStyle3;
             dgvHasarGecmisi.GridColor = Color.FromArgb(231, 229, 255);
             dgvHasarGecmisi.Location = new Point(1062, 283);
             dgvHasarGecmisi.Name = "dgvHasarGecmisi";
@@ -197,7 +197,7 @@
             // 
             // btnAracHasarOzet
             // 
-            btnAracHasarOzet.CustomizableEdges = customizableEdges21;
+            btnAracHasarOzet.CustomizableEdges = customizableEdges9;
             btnAracHasarOzet.DisabledState.BorderColor = Color.DarkGray;
             btnAracHasarOzet.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAracHasarOzet.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -206,14 +206,14 @@
             btnAracHasarOzet.ForeColor = Color.White;
             btnAracHasarOzet.Location = new Point(1062, 180);
             btnAracHasarOzet.Name = "btnAracHasarOzet";
-            btnAracHasarOzet.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            btnAracHasarOzet.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnAracHasarOzet.Size = new Size(329, 83);
             btnAracHasarOzet.TabIndex = 7;
             btnAracHasarOzet.Text = "Hasar Özeti";
             // 
             // btnAracRaporYazdir
             // 
-            btnAracRaporYazdir.CustomizableEdges = customizableEdges23;
+            btnAracRaporYazdir.CustomizableEdges = customizableEdges11;
             btnAracRaporYazdir.DisabledState.BorderColor = Color.DarkGray;
             btnAracRaporYazdir.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAracRaporYazdir.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -222,7 +222,7 @@
             btnAracRaporYazdir.ForeColor = Color.White;
             btnAracRaporYazdir.Location = new Point(1292, 784);
             btnAracRaporYazdir.Name = "btnAracRaporYazdir";
-            btnAracRaporYazdir.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            btnAracRaporYazdir.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnAracRaporYazdir.Size = new Size(329, 83);
             btnAracRaporYazdir.TabIndex = 8;
             btnAracRaporYazdir.Text = "Yazdır";
@@ -250,9 +250,10 @@
             // 
             // btnGeriDon
             // 
-            btnGeriDon.Location = new Point(12, 959);
+            btnGeriDon.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            btnGeriDon.Location = new Point(12, 942);
             btnGeriDon.Name = "btnGeriDon";
-            btnGeriDon.Size = new Size(217, 38);
+            btnGeriDon.Size = new Size(223, 55);
             btnGeriDon.TabIndex = 11;
             btnGeriDon.Text = "Geri Dön";
             btnGeriDon.UseVisualStyleBackColor = true;
@@ -278,6 +279,7 @@
             Controls.Add(dgvGelirRaporu);
             Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Name = "FrmRaporlar";
+            ShowInTaskbar = false;
             Text = "FrmRaporlar";
             Load += FrmRaporlar_Load;
             ((System.ComponentModel.ISupportInitialize)dgvGelirRaporu).EndInit();

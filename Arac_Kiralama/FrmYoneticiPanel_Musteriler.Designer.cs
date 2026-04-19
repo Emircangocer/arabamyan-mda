@@ -87,6 +87,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "FrmYoneticiPanel_Musteriler";
+            ShowInTaskbar = false;
             Text = "FrmYoneticiPanel_Musteriler";
             Load += FrmYoneticiPanel_Musteriler_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMusteriler).EndInit();

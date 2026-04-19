@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             label1 = new Label();
             txtDonusKm = new TextBox();
             label2 = new Label();
@@ -47,6 +49,7 @@
             lblMusteriAd = new Label();
             lblDepozitoBilgi = new Label();
             label9 = new Label();
+            btnGeriDon = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)dgvRezervasyonlar).BeginInit();
             SuspendLayout();
             // 
@@ -219,12 +222,31 @@
             label9.TabIndex = 16;
             label9.Text = "Depozito Bilgi:";
             // 
+            // btnGeriDon
+            // 
+            btnGeriDon.CustomizableEdges = customizableEdges1;
+            btnGeriDon.DisabledState.BorderColor = Color.DarkGray;
+            btnGeriDon.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnGeriDon.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnGeriDon.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnGeriDon.FillColor = Color.White;
+            btnGeriDon.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            btnGeriDon.ForeColor = Color.Black;
+            btnGeriDon.Location = new Point(13, 740);
+            btnGeriDon.Name = "btnGeriDon";
+            btnGeriDon.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnGeriDon.Size = new Size(225, 56);
+            btnGeriDon.TabIndex = 18;
+            btnGeriDon.Text = "Geri Dön";
+            btnGeriDon.Click += btnGeriDon_Click;
+            // 
             // FrmYoneticiIadeOnay
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1484, 770);
+            ClientSize = new Size(1484, 834);
+            Controls.Add(btnGeriDon);
             Controls.Add(lblDepozitoBilgi);
             Controls.Add(label9);
             Controls.Add(lblMusteriAd);
@@ -246,6 +268,7 @@
             Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "FrmYoneticiIadeOnay";
+            ShowInTaskbar = false;
             Text = "FrmYoneticiIadeOnay";
             Load += FrmYoneticiIadeOnay_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRezervasyonlar).EndInit();
@@ -274,5 +297,6 @@
         private Label lblMusteriAd;
         private Label lblDepozitoBilgi;
         private Label label9;
+        private Guna.UI2.WinForms.Guna2Button btnGeriDon;
     }
 }

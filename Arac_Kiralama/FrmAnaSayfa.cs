@@ -97,7 +97,7 @@ namespace Arac_Kiralama
         }
         private void FrmAnaSayfa_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
 
             if (VeriDeposu.GirisYapildiMi)
             {

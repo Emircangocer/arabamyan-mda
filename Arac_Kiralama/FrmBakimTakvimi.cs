@@ -13,6 +13,7 @@ namespace Arac_Kiralama
 {
     public partial class FrmBakimTakvimi : Form
     {
+        public Form anaForm;
         public FrmBakimTakvimi()
         {
             InitializeComponent();
@@ -102,6 +103,8 @@ namespace Arac_Kiralama
 
         private void FrmBakimTakvimi_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+
             TumBakimListesiniGetir();
         }
 
@@ -110,6 +113,15 @@ namespace Arac_Kiralama
             // Tıkladığın satırdaki plaka ve marka/modeli textbox'lara yazalım ki yönetici kimi seçtiğini görsün
             txtBakimAciklama.Text = dgvTumAraclar.CurrentRow.Cells["AracPlaka"].Value.ToString() + " Bakımı";
             txtBakimMaliyet.Text = "0"; // Başlangıç değeri
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            if (this.anaForm != null)
+            {
+                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+            }
+            this.Close();
         }
     }
 }

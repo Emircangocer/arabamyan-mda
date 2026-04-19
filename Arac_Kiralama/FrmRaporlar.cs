@@ -14,6 +14,7 @@ namespace Arac_Kiralama
 {
     public partial class FrmRaporlar : Form
     {
+        public Form anaForm;
         public FrmRaporlar()
         {
             InitializeComponent();
@@ -23,6 +24,8 @@ namespace Arac_Kiralama
 
         private void FrmRaporlar_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+
             RaporlariYukle();
             AraclarıGetir();
         }
@@ -219,9 +222,11 @@ namespace Arac_Kiralama
 
         private void btnGeriDon_Click(object sender, EventArgs e)
         {
-            FrmYoneticiPanel fr= new FrmYoneticiPanel();
-            fr.Show();
-            this.Hide();
+            if(this.anaForm != null)
+    {
+                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+            }
+            this.Close();
         }
     }
 }

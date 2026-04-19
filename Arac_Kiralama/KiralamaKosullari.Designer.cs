@@ -150,6 +150,7 @@
             Margin = new Padding(4);
             Name = "KiralamaKosullari";
             Text = "Form2";
+            Load += KiralamaKosullari_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }

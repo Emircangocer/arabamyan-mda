@@ -14,6 +14,7 @@ namespace Arac_Kiralama
 {
     public partial class FrmYoneticiPanel_Musteriler : Form
     {
+        public Form anaForm;
         public FrmYoneticiPanel_Musteriler()
         {
             InitializeComponent();
@@ -36,6 +37,9 @@ namespace Arac_Kiralama
         }
         private void FrmYoneticiPanel_Musteriler_Load(object sender, EventArgs e)
         {
+
+            this.WindowState = FormWindowState.Maximized;
+
             MusteriListele();
             dgvMusteriler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -60,9 +64,11 @@ namespace Arac_Kiralama
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmYoneticiPanel fr=new FrmYoneticiPanel();
-            fr.Show();
-            this.Hide();
+            if (this.anaForm != null)
+            {
+                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+            }
+            this.Close(); 
         }
     }
 }

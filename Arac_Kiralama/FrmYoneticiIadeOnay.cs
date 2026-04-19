@@ -13,6 +13,7 @@ namespace Arac_Kiralama
 {
     public partial class FrmYoneticiIadeOnay : Form
     {
+        public Form anaForm;
         public FrmYoneticiIadeOnay()
         {
             InitializeComponent();
@@ -184,6 +185,7 @@ namespace Arac_Kiralama
 
         private void FrmYoneticiIadeOnay_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             // VeriDeposu'ndaki ID ile müşteri ve plaka bilgisini çekiyoruz
             string sorgu = @"SELECT M.MusteriAd + ' ' + M.MusteriSoyad as AdSoyad, A.AracPlaka 
                     FROM TblRezervasyon R 
@@ -218,7 +220,7 @@ namespace Arac_Kiralama
                 lblAracPlaka.Text = dgvRezervasyonlar.Rows[e.RowIndex].Cells["Plaka"].Value.ToString();
 
                 // 3. (Opsiyonel) Dönüş yakıtı veya KM için başlangıç değerlerini de çekebilirsin
-                 MessageBox.Show(lblMusteriAd.Text + " seçildi, iade işlemine hazırız!");
+                MessageBox.Show(lblMusteriAd.Text + " seçildi, iade işlemine hazırız!");
             }
         }
 
@@ -252,12 +254,12 @@ namespace Arac_Kiralama
             // Burada iade butonunda hesapladığın 'yakitCezasi' değişkenini kullanacağız.
             // Eğer o değişkene buradan erişemiyorsan, yakıt cezasını bir Label'a yazdırıp oradan çekebilirsin.
             int dYakit = Convert.ToInt32(txtKalanYakit.Text);
-          
+
             int aYakit = 100;
 
             double yakitCezasiHesaplanan = (dYakit < aYakit) ? (aYakit - dYakit) * 50 : 0;
 
-           
+
             e.Graphics.DrawString("Yakıt Eksik Ücreti: " + yakitCezasiHesaplanan.ToString("N2") + " TL", new Font("Arial", 11), Brushes.Black, 120, y);
             y += 30;
 
@@ -279,6 +281,15 @@ namespace Arac_Kiralama
             e.Graphics.DrawString("Teslim Eden (Müşteri)", new Font("Arial", 10, FontStyle.Underline), Brushes.Black, 150, y + 100);
             e.Graphics.DrawString("Teslim Alan (Yetkili)", new Font("Arial", 10, FontStyle.Underline), Brushes.Black, 500, y + 100);
         }
+
+        private void btnGeriDon_Click(object sender, EventArgs e)
+        {
+            if (this.anaForm != null)
+            {
+                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+            }
+            this.Close();
+        }
     }
-    
+
 }

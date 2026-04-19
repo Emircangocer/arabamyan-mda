@@ -20,10 +20,10 @@ namespace Arac_Kiralama
 
         private void btnMusteri_Click(object sender, EventArgs e)
         {
-            FrmYoneticiPanel_Musteriler frm = new FrmYoneticiPanel_Musteriler();
-            // Eğer bu formun yönetici panelinin içinde (MDI) açılmasını istiyorsan panel ismini kullan
-            // Ama ayrı pencere olsun dersen sadece Show() yeterli:
-            frm.Show();
+            FrmYoneticiPanel_Musteriler fr = new FrmYoneticiPanel_Musteriler();
+            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
+            fr.Show();
+            this.Hide();
         }
         SqlBaglantisi bgl = new SqlBaglantisi();
         public void RezervasyonlariGetir()
@@ -52,6 +52,9 @@ namespace Arac_Kiralama
         }
         private void FrmYoneticiPanel_Load(object sender, EventArgs e)
         {
+
+            this.WindowState = FormWindowState.Maximized;
+
             lblYoneticiAd.Text = VeriDeposu.YoneticiAdSoyad;
 
             // 2. 🔥 Resmi Yükle
@@ -90,9 +93,9 @@ namespace Arac_Kiralama
         private void button5_Click(object sender, EventArgs e)
         {
             FrmYoneticiIadeOnay fr = new FrmYoneticiIadeOnay();
-            fr.ShowDialog(); // .Show() yerine .ShowDialog() kullan ki form kapanana kadar beklesin
-
-            // İade formu kapandığı an, bu satır çalışır ve listeyi tazeler:
+            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
+            fr.Show();
+            this.Hide();
             RezervasyonlariGetir();
         }
 
@@ -147,12 +150,15 @@ namespace Arac_Kiralama
         private void button6_Click(object sender, EventArgs e)
         {
             FrmBakimTakvimi fr = new FrmBakimTakvimi();
+            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
             fr.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             FrmYoneticiAracEkle fr = new FrmYoneticiAracEkle();
+            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
             fr.Show();
             this.Hide();
         }
@@ -160,12 +166,15 @@ namespace Arac_Kiralama
         private void button4_Click(object sender, EventArgs e)
         {
             FrmYoneticiPanel_Rezervasyonlar fr = new FrmYoneticiPanel_Rezervasyonlar();
-            fr.Show(); // Yeni pencere olarak açılsın
+            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
+            fr.Show();
+            this.Hide();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             FrmRaporlar fr = new FrmRaporlar();
+            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
             fr.Show();
             this.Hide();
         }
@@ -176,12 +185,21 @@ namespace Arac_Kiralama
 
             if (secim == DialogResult.Yes)
             {
-                // 1. Giriş formunu oluştur ve göster
-                FrmAnaSayfa fr = new FrmAnaSayfa();
-                fr.Show();
+                // 1. Zaten açık olan ama gizli bekleyen o ilk formu (Form1) buluyoruz
+                Form anaGirisFormu = Application.OpenForms["FrmAnaSayfa"]; // İsmi Form1 ise böyle kalmalı
 
-                // 2. Mevcut Yönetici Panelini kapat
-                this.Close();
+                if (anaGirisFormu != null)
+                {
+                    anaGirisFormu.Show(); // Gizli olan formu geri getir
+                    this.Close(); // Mevcut Yönetici Panelini imha et
+                }
+                else
+                {
+                    // Eğer bir aksilik olduysa ve o form kapandıysa mecbur yenisini açarız
+                    FrmAnaSayfa fr = new FrmAnaSayfa();
+                    fr.Show();
+                    this.Close();
+                }
             }
         }
     }

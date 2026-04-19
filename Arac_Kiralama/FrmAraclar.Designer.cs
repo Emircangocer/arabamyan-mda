@@ -35,6 +35,7 @@
             cmbYakit = new ComboBox();
             btnFiltrele = new Button();
             cmbVites = new ComboBox();
+            btnGeriDon = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1825, 75);
             panel1.TabIndex = 1;
+            panel1.Paint += panel1_Paint;
             // 
             // label2
             // 
@@ -103,12 +105,25 @@
             cmbVites.Size = new Size(116, 28);
             cmbVites.TabIndex = 0;
             // 
+            // btnGeriDon
+            // 
+            btnGeriDon.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            btnGeriDon.Location = new Point(0, 898);
+            btnGeriDon.Name = "btnGeriDon";
+            btnGeriDon.Size = new Size(225, 41);
+            btnGeriDon.TabIndex = 2;
+            btnGeriDon.Text = "Geri Dön";
+            btnGeriDon.UseVisualStyleBackColor = true;
+            btnGeriDon.Click += btnGeriDon_Click;
+            // 
             // FrmAraclar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1836, 828);
+            BackColor = SystemColors.ActiveCaption;
+            ClientSize = new Size(1836, 1016);
+            Controls.Add(btnGeriDon);
             Controls.Add(panel1);
             Controls.Add(flpAraclar);
             Name = "FrmAraclar";
@@ -128,5 +143,6 @@
         private ComboBox cmbYakit;
         private Label label2;
         private Label label1;
+        private Button btnGeriDon;
     }
 }

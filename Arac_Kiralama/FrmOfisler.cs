@@ -26,9 +26,14 @@ namespace Arac_Kiralama
 
         private void lnkLblMersin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
-            
-       
+
+
+
+        }
+
+        private void FrmOfisler_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

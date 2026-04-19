@@ -32,6 +32,9 @@ namespace Arac_Kiralama
 
         private void FrmOdeme_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+
+
             lblAracAdi.Text = VeriDeposu.SecilenAracAdi;
             lblVites.Text = "Vites: " + VeriDeposu.SecilenVites;
             lblYakit.Text = "Yakıt: " + VeriDeposu.SecilenYakit;

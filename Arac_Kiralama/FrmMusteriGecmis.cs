@@ -20,6 +20,8 @@ namespace Arac_Kiralama
         SqlBaglantisi bgl=new SqlBaglantisi();
         private void FrmMusteriGecmis_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+
             GecmisListele();
         }
         public void GecmisListele()

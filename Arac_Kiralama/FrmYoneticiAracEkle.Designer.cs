@@ -246,6 +246,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "FrmYoneticiAracEkle";
+            ShowInTaskbar = false;
             Text = "YöneticiAracEkle";
             Load += FrmYoneticiAracEkle_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

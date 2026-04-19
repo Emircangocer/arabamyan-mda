@@ -13,6 +13,7 @@ namespace Arac_Kiralama
 {
     public partial class FrmYoneticiPanel_Rezervasyonlar : Form
     {
+        public Form anaForm;
         public FrmYoneticiPanel_Rezervasyonlar()
         {
             InitializeComponent();
@@ -20,6 +21,8 @@ namespace Arac_Kiralama
         SqlBaglantisi bgl = new SqlBaglantisi();
         private void FrmYoneticiPanel_Rezervasyonlar_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+
             cmbFiltre.Text = "Hepsi"; // Başlangıçta hepsini seç
             RezervasyonlariListele("Hepsi");
             dgvTumRezervasyonlar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -64,6 +67,15 @@ namespace Arac_Kiralama
         private void cmbFiltre_SelectedIndexChanged(object sender, EventArgs e)
         {
             RezervasyonlariListele(cmbFiltre.Text);
+        }
+
+        private void btnGeriDon_Click(object sender, EventArgs e)
+        {
+            if (this.anaForm != null)
+            {
+                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+            }
+            this.Close();
         }
     }
 }

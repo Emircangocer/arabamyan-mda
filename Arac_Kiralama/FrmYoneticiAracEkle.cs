@@ -13,6 +13,8 @@ namespace Arac_Kiralama
 {
     public partial class FrmYoneticiAracEkle : Form
     {
+        public Form anaForm;
+
         public FrmYoneticiAracEkle()
         {
             InitializeComponent();
@@ -66,6 +68,9 @@ namespace Arac_Kiralama
 
         private void FrmYoneticiAracEkle_Load(object sender, EventArgs e)
         {
+
+            this.WindowState = FormWindowState.Maximized;
+
             SqlDataAdapter da = new SqlDataAdapter("Select * From TblAraclar", bgl.baglanti());
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -74,9 +79,11 @@ namespace Arac_Kiralama
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            FrmYoneticiPanel fr=new FrmYoneticiPanel();
-            fr.Show();
-            this.Hide();
+            if (this.anaForm != null)
+            {
+                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+            }
+            this.Close();
         }
     }
 }

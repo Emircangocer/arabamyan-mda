@@ -24,7 +24,7 @@ namespace Arac_Kiralama
 
         private void FrmAraclar_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
 
             flpAraclar.Controls.Clear(); // Ne olur ne olmaz temiz başla
             UC_AracKart testKart = new UC_AracKart();
@@ -48,12 +48,12 @@ namespace Arac_Kiralama
                 string fiyat = dr["AracGunlukUcret"].ToString();
                 string vites = dr["AracSanziman"].ToString();
                 string yakit = dr["AracYakitTipi"].ToString();
-                
+
                 string resim = dr["AracResim"].ToString(); // SQL'deki resim yolunu çekiyoruz
                 string km = dr["AracKm"].ToString();
 
                 // Karta gönderiyoruz (artık resim parametresi de var!)
-                kart.BilgiBas(id,ad, fiyat, vites, yakit,resim, km);
+                kart.BilgiBas(id, ad, fiyat, vites, yakit, resim, km);
 
                 flpAraclar.Controls.Add(kart);
 
@@ -129,6 +129,17 @@ namespace Arac_Kiralama
             // Hazırlanan tüm şartları tek seferde metoda gönderiyoruz
             AracListele(ekSorgu);
         }
-    
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnGeriDon_Click(object sender, EventArgs e)
+        {
+            FrmAnaSayfa fr=new FrmAnaSayfa();
+            fr.Show();
+            this.Dispose();
+        }
     }
 }
