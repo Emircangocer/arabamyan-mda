@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel2 = new Panel();
             label7 = new Label();
             swFarkliLokasyon = new Guna.UI2.WinForms.Guna2ToggleSwitch();
@@ -122,10 +122,10 @@
             swFarkliLokasyon.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
             swFarkliLokasyon.CheckedState.InnerBorderColor = Color.White;
             swFarkliLokasyon.CheckedState.InnerColor = Color.White;
-            swFarkliLokasyon.CustomizableEdges = customizableEdges15;
+            swFarkliLokasyon.CustomizableEdges = customizableEdges1;
             swFarkliLokasyon.Location = new Point(666, 92);
             swFarkliLokasyon.Name = "swFarkliLokasyon";
-            swFarkliLokasyon.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            swFarkliLokasyon.ShadowDecoration.CustomizableEdges = customizableEdges2;
             swFarkliLokasyon.Size = new Size(50, 25);
             swFarkliLokasyon.TabIndex = 33;
             swFarkliLokasyon.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
@@ -149,7 +149,7 @@
             // 
             cmbIadeNoktasi.BackColor = Color.Transparent;
             cmbIadeNoktasi.BorderThickness = 0;
-            cmbIadeNoktasi.CustomizableEdges = customizableEdges17;
+            cmbIadeNoktasi.CustomizableEdges = customizableEdges3;
             cmbIadeNoktasi.DrawMode = DrawMode.OwnerDrawFixed;
             cmbIadeNoktasi.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbIadeNoktasi.FillColor = Color.WhiteSmoke;
@@ -161,7 +161,7 @@
             cmbIadeNoktasi.Items.AddRange(new object[] { "Mersin Erdemli Şubesi", "İstanbul Sabiha Gökçen Havalimanı", "Konya Havalimanı", "Sakarya Serdivan Şubesi", "Ankara Esenboğa Havalimanı", "Kahramanmaraş Göksun Şubesi" });
             cmbIadeNoktasi.Location = new Point(6, 44);
             cmbIadeNoktasi.Name = "cmbIadeNoktasi";
-            cmbIadeNoktasi.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            cmbIadeNoktasi.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cmbIadeNoktasi.Size = new Size(210, 36);
             cmbIadeNoktasi.TabIndex = 31;
             cmbIadeNoktasi.Visible = false;
@@ -191,7 +191,7 @@
             // 
             cmbAlisSaati.BackColor = Color.Transparent;
             cmbAlisSaati.BorderThickness = 0;
-            cmbAlisSaati.CustomizableEdges = customizableEdges19;
+            cmbAlisSaati.CustomizableEdges = customizableEdges5;
             cmbAlisSaati.DrawMode = DrawMode.OwnerDrawFixed;
             cmbAlisSaati.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAlisSaati.FillColor = Color.WhiteSmoke;
@@ -203,7 +203,7 @@
             cmbAlisSaati.Items.AddRange(new object[] { "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00" });
             cmbAlisSaati.Location = new Point(3, 47);
             cmbAlisSaati.Name = "cmbAlisSaati";
-            cmbAlisSaati.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            cmbAlisSaati.ShadowDecoration.CustomizableEdges = customizableEdges6;
             cmbAlisSaati.Size = new Size(104, 36);
             cmbAlisSaati.TabIndex = 30;
             // 
@@ -250,7 +250,7 @@
             // 
             cmbAlisNoktasi.BackColor = Color.Transparent;
             cmbAlisNoktasi.BorderThickness = 0;
-            cmbAlisNoktasi.CustomizableEdges = customizableEdges21;
+            cmbAlisNoktasi.CustomizableEdges = customizableEdges7;
             cmbAlisNoktasi.DrawMode = DrawMode.OwnerDrawFixed;
             cmbAlisNoktasi.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAlisNoktasi.FillColor = Color.WhiteSmoke;
@@ -262,7 +262,7 @@
             cmbAlisNoktasi.Items.AddRange(new object[] { "Mersin Erdemli Şubesi", "İstanbul Sabiha Gökçen Havalimanı", "Konya Havalimanı", "Sakarya Serdivan Şubesi", "Ankara Esenboğa Havalimanı", "Kahramanmaraş Göksun Şubesi" });
             cmbAlisNoktasi.Location = new Point(6, 44);
             cmbAlisNoktasi.Name = "cmbAlisNoktasi";
-            cmbAlisNoktasi.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            cmbAlisNoktasi.ShadowDecoration.CustomizableEdges = customizableEdges8;
             cmbAlisNoktasi.Size = new Size(210, 36);
             cmbAlisNoktasi.TabIndex = 31;
             cmbAlisNoktasi.SelectedIndexChanged += guna2ComboBox1_SelectedIndexChanged;
@@ -292,7 +292,7 @@
             // 
             dtpAlis.BackColor = Color.Transparent;
             dtpAlis.Checked = true;
-            dtpAlis.CustomizableEdges = customizableEdges23;
+            dtpAlis.CustomizableEdges = customizableEdges9;
             dtpAlis.FillColor = Color.White;
             dtpAlis.Font = new Font("Segoe UI", 9F);
             dtpAlis.Format = DateTimePickerFormat.Long;
@@ -300,7 +300,7 @@
             dtpAlis.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpAlis.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpAlis.Name = "dtpAlis";
-            dtpAlis.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            dtpAlis.ShadowDecoration.CustomizableEdges = customizableEdges10;
             dtpAlis.Size = new Size(214, 39);
             dtpAlis.TabIndex = 3;
             dtpAlis.Value = new DateTime(2026, 3, 26, 14, 12, 8, 57);
@@ -332,7 +332,7 @@
             // 
             cmbiadeSaati.BackColor = Color.Transparent;
             cmbiadeSaati.BorderThickness = 0;
-            cmbiadeSaati.CustomizableEdges = customizableEdges25;
+            cmbiadeSaati.CustomizableEdges = customizableEdges11;
             cmbiadeSaati.DrawMode = DrawMode.OwnerDrawFixed;
             cmbiadeSaati.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbiadeSaati.FillColor = Color.WhiteSmoke;
@@ -344,7 +344,7 @@
             cmbiadeSaati.Items.AddRange(new object[] { "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00" });
             cmbiadeSaati.Location = new Point(216, 47);
             cmbiadeSaati.Name = "cmbiadeSaati";
-            cmbiadeSaati.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            cmbiadeSaati.ShadowDecoration.CustomizableEdges = customizableEdges12;
             cmbiadeSaati.Size = new Size(125, 36);
             cmbiadeSaati.TabIndex = 30;
             // 
@@ -372,7 +372,7 @@
             // 
             dtpIade.BackColor = Color.Transparent;
             dtpIade.Checked = true;
-            dtpIade.CustomizableEdges = customizableEdges27;
+            dtpIade.CustomizableEdges = customizableEdges13;
             dtpIade.FillColor = Color.White;
             dtpIade.Font = new Font("Segoe UI", 9F);
             dtpIade.Format = DateTimePickerFormat.Long;
@@ -380,7 +380,7 @@
             dtpIade.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpIade.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpIade.Name = "dtpIade";
-            dtpIade.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            dtpIade.ShadowDecoration.CustomizableEdges = customizableEdges14;
             dtpIade.Size = new Size(219, 39);
             dtpIade.TabIndex = 23;
             dtpIade.Value = new DateTime(2026, 3, 26, 14, 12, 8, 57);
@@ -389,7 +389,7 @@
             // 
             btnOfisler.BackColor = Color.Cyan;
             btnOfisler.ForeColor = SystemColors.ControlText;
-            btnOfisler.Location = new Point(962, 74);
+            btnOfisler.Location = new Point(1010, 70);
             btnOfisler.Margin = new Padding(4);
             btnOfisler.Name = "btnOfisler";
             btnOfisler.Size = new Size(157, 53);
@@ -402,7 +402,7 @@
             // 
             btnAraclar.BackColor = Color.Cyan;
             btnAraclar.ForeColor = SystemColors.ControlText;
-            btnAraclar.Location = new Point(797, 74);
+            btnAraclar.Location = new Point(845, 70);
             btnAraclar.Margin = new Padding(4);
             btnAraclar.Name = "btnAraclar";
             btnAraclar.Size = new Size(157, 53);
@@ -415,7 +415,7 @@
             // 
             BtnKilamaKosullari.BackColor = Color.Cyan;
             BtnKilamaKosullari.ForeColor = SystemColors.ControlText;
-            BtnKilamaKosullari.Location = new Point(548, 74);
+            BtnKilamaKosullari.Location = new Point(596, 70);
             BtnKilamaKosullari.Margin = new Padding(4);
             BtnKilamaKosullari.Name = "BtnKilamaKosullari";
             BtnKilamaKosullari.Size = new Size(241, 53);
@@ -428,7 +428,7 @@
             // 
             btnMusteriGiris.BackColor = Color.Cyan;
             btnMusteriGiris.ForeColor = SystemColors.ControlText;
-            btnMusteriGiris.Location = new Point(1127, 74);
+            btnMusteriGiris.Location = new Point(1175, 70);
             btnMusteriGiris.Margin = new Padding(4);
             btnMusteriGiris.Name = "btnMusteriGiris";
             btnMusteriGiris.Size = new Size(157, 53);
@@ -440,7 +440,7 @@
             // btnYoneticiGiris
             // 
             btnYoneticiGiris.BackColor = Color.OrangeRed;
-            btnYoneticiGiris.Location = new Point(1292, 74);
+            btnYoneticiGiris.Location = new Point(1340, 70);
             btnYoneticiGiris.Margin = new Padding(4);
             btnYoneticiGiris.Name = "btnYoneticiGiris";
             btnYoneticiGiris.Size = new Size(157, 53);
@@ -453,7 +453,7 @@
             // 
             btnHesabim.BackColor = SystemColors.HotTrack;
             btnHesabim.ForeColor = SystemColors.ButtonHighlight;
-            btnHesabim.Location = new Point(1126, 74);
+            btnHesabim.Location = new Point(1174, 70);
             btnHesabim.Name = "btnHesabim";
             btnHesabim.Size = new Size(157, 53);
             btnHesabim.TabIndex = 20;
@@ -471,7 +471,7 @@
             pnlHesabim.Controls.Add(lblBakiye);
             pnlHesabim.Controls.Add(label3);
             pnlHesabim.Controls.Add(lblMusteriAd);
-            pnlHesabim.Location = new Point(1292, 74);
+            pnlHesabim.Location = new Point(1340, 70);
             pnlHesabim.Name = "pnlHesabim";
             pnlHesabim.Size = new Size(287, 298);
             pnlHesabim.TabIndex = 21;

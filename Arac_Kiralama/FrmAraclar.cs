@@ -25,8 +25,14 @@ namespace Arac_Kiralama
 
         private void FrmAraclar_Load(object sender, EventArgs e)
         {
-           
-        
+            if (VeriDeposu.IadeTarihi < DateTime.Now.AddYears(-10))
+            {
+                // Eğer iade tarihi seçilmemişse veya hatalıysa varsayılan bugünü ata
+                VeriDeposu.IadeTarihi = DateTime.Now.AddDays(1);
+            }
+
+
+
             this.WindowState = FormWindowState.Maximized;
             flpAraclar.Controls.Clear(); // Ne olur ne olmaz temiz başla
 

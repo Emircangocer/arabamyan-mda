@@ -28,6 +28,8 @@ namespace Arac_Kiralama
         private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             dtpAlis.MinDate = DateTime.Today;
+            // Alış tarihi değiştiği an, iade tarihinin alt limitini alış tarihine eşitliyoruz
+            dtpIade.MinDate = dtpAlis.Value;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -119,7 +121,8 @@ namespace Arac_Kiralama
             }
 
                 BilgileriGuncelle();
-            
+
+            dtpIade.MinDate = DateTime.Now.AddDays(1);
         }
 
         private void btnAraclariKesfet_Click(object sender, EventArgs e)

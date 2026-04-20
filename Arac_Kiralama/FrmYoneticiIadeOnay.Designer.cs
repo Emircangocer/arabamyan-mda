@@ -245,6 +245,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
+            CancelButton = btnGeriDon;
             ClientSize = new Size(1484, 834);
             Controls.Add(btnGeriDon);
             Controls.Add(lblDepozitoBilgi);
@@ -270,6 +271,7 @@
             Name = "FrmYoneticiIadeOnay";
             ShowInTaskbar = false;
             Text = "FrmYoneticiIadeOnay";
+            FormClosing += FrmYoneticiIadeOnay_FormClosing_1;
             Load += FrmYoneticiIadeOnay_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRezervasyonlar).EndInit();
             ResumeLayout(false);

@@ -174,7 +174,7 @@ namespace Arac_Kiralama
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hata kanka: " + ex.Message);
+                MessageBox.Show("Hata: " + ex.Message);
             }
         }
 
@@ -289,6 +289,21 @@ namespace Arac_Kiralama
                 this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
             }
             this.Close();
+        }
+
+        private void FrmYoneticiIadeOnay_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void FrmYoneticiIadeOnay_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Sadece bu formu gizle, Application.Exit() yazma!
+                this.Hide();
+                e.Cancel = true; // Kapanma işlemini iptal edip sadece gizliyoruz
+            }
         }
     }
 
