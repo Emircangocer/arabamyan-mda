@@ -1,0 +1,36 @@
+# 'arabamyanımda' Projesi Derleme Yapılandırması (build.yaml)
+# Bu dosya otomatik derleme ve dağıtım süreçleri için tasarlanmıştır.
+
+project_info:
+  name: arabamyanımda
+  version: 1.0.0
+  type: CSharp_WinForms
+  target_framework: net472 # veya kullandığın .NET versiyonu
+
+build_config:
+  configuration: Release
+  platform: Any CPU
+  output_path: "./bin/Release/"
+  clean_before_build: true
+
+# Derleme sırasında dahil edilecek veya hariç tutulacak dosyalar
+assets:
+  include:
+    - "Resources/**"
+    - "Images/**"
+    - "*.config"
+  exclude:
+    - "obj/**"
+    - "bin/**"
+    - "*.user"
+
+# Veritabanı ve Bağlantı Ayarları (CI süreçleri için örnek)
+database_scripts:
+  - "Database/Tables.sql"
+  - "Database/SeedData.sql"
+
+# Yayınlama (Publish) Ayarları
+publish:
+  method: ClickOnce
+  install_url: "http://localhost/arabamyanimda"
+  update_enabled: true
