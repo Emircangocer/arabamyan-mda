@@ -1,36 +1,27 @@
-# 'arabamyanımda' Projesi Derleme Yapılandırması (build.yaml)
-# Bu dosya otomatik derleme ve dağıtım süreçleri için tasarlanmıştır.
+name: Arabam Yanımda Build
 
-project_info:
-  name: arabamyanımda
-  version: 1.0.0
-  type: CSharp_WinForms
-  target_framework: net472 # veya kullandığın .NET versiyonu
+on:
+  push:
+    branches: [ "main" ] # Kanka ana dalın adı 'master' ise burayı master yap
+  pull_request:
+    branches: [ "main" ]
 
-build_config:
-  configuration: Release
-  platform: Any CPU
-  output_path: "./bin/Release/"
-  clean_before_build: true
+jobs:
+  build:
+    runs-on: windows-latest # WinForms olduğu için Windows üzerinde çalışmalı
 
-# Derleme sırasında dahil edilecek veya hariç tutulacak dosyalar
-assets:
-  include:
-    - "Resources/**"
-    - "Images/**"
-    - "*.config"
-  exclude:
-    - "obj/**"
-    - "bin/**"
-    - "*.user"
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
 
-# Veritabanı ve Bağlantı Ayarları (CI süreçleri için örnek)
-database_scripts:
-  - "Database/Tables.sql"
-  - "Database/SeedData.sql"
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
 
-# Yayınlama (Publish) Ayarları
-publish:
-  method: ClickOnce
-  install_url: "http://localhost/arabamyanimda"
-  update_enabled: true
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1
+
+    - name: Restore NuGet Packages
+      run: nuget restore ArabamYanimda.sln # Çözüm dosyanın adı farklıysa onu yaz kanka
+
+    - name: Build Solution
+      run: msbuild ArabamYanimda.sln /p:Configuration=Release /p:Platform="Any CPU"
