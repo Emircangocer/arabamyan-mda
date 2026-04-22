@@ -21,7 +21,7 @@ jobs:
       uses: NuGet/setup-nuget@v1
 
     - name: Restore NuGet Packages
-      run: nuget restore ArabamYanimda.sln # Çözüm dosyanın adı farklıysa onu yaz kanka
+      run: nuget restore Arac_Kiralama.sln # Çözüm dosyanın adı farklıysa onu yaz kanka
 
     - name: Build Solution
-      run: msbuild ArabamYanimda.sln /p:Configuration=Release /p:Platform="Any CPU"
+      run: msbuild Arac_Kiralama.sln /p:Configuration=Release /p:Platform="Any CPU"
