@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmYoneticiPanel_Musteriler));
             dgvMusteriler = new DataGridView();
             label1 = new Label();
             txtMusteriAra = new TextBox();
@@ -85,6 +86,7 @@
             Controls.Add(label1);
             Controls.Add(dgvMusteriler);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FrmYoneticiPanel_Musteriler";
             ShowInTaskbar = false;

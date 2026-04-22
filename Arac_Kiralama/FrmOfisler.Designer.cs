@@ -569,6 +569,7 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FrmOfisler";
             Text = "Ofisler";

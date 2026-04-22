@@ -147,6 +147,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "KiralamaKosullari";
             Text = "Kiralama Koşulları";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMusteriKayıt));
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -277,6 +278,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FrmMusteriKayıt";
             Text = "Müşteri Kayıt";

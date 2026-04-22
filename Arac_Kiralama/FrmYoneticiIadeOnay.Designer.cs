@@ -30,6 +30,7 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmYoneticiIadeOnay));
             label1 = new Label();
             txtDonusKm = new TextBox();
             label2 = new Label();
@@ -267,6 +268,7 @@
             Controls.Add(txtDonusKm);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FrmYoneticiIadeOnay";
             ShowInTaskbar = false;

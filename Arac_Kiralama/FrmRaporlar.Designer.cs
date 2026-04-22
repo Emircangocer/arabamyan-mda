@@ -43,6 +43,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRaporlar));
             dgvGelirRaporu = new DataGridView();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             btnToplamCiro = new Guna.UI2.WinForms.Guna2TileButton();
@@ -278,6 +279,7 @@
             Controls.Add(btnToplamCiro);
             Controls.Add(dgvGelirRaporu);
             Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmRaporlar";
             ShowInTaskbar = false;
             Text = "Raporlar";

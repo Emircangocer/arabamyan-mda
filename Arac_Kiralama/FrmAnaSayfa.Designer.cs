@@ -42,6 +42,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAnaSayfa));
             panel2 = new Panel();
             label7 = new Label();
             swFarkliLokasyon = new Guna.UI2.WinForms.Guna2ToggleSwitch();
@@ -567,6 +568,7 @@
             Controls.Add(btnMusteriGiris);
             Controls.Add(btnYoneticiGiris);
             Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5);
             Name = "FrmAnaSayfa";
             Text = "Ana Sayfa";

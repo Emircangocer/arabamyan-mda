@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMusteriGecmis));
             dgvGecmis = new DataGridView();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvGecmis).BeginInit();
@@ -60,6 +61,7 @@
             ClientSize = new Size(1492, 755);
             Controls.Add(label1);
             Controls.Add(dgvGecmis);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmMusteriGecmis";
             Text = "Müşteri Geçmişi";
             Load += FrmMusteriGecmis_Load;

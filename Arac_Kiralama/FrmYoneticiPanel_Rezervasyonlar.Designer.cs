@@ -30,6 +30,7 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmYoneticiPanel_Rezervasyonlar));
             dgvTumRezervasyonlar = new DataGridView();
             label1 = new Label();
             cmbFiltre = new ComboBox();
@@ -94,6 +95,7 @@
             Controls.Add(cmbFiltre);
             Controls.Add(label1);
             Controls.Add(dgvTumRezervasyonlar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmYoneticiPanel_Rezervasyonlar";
             ShowInTaskbar = false;
             Text = "Yönetici Panel_Rezervasyonlar";

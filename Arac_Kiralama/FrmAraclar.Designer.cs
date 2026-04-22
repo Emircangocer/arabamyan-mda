@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAraclar));
             flpAraclar = new FlowLayoutPanel();
             panel1 = new Panel();
             label2 = new Label();
@@ -126,6 +127,7 @@
             Controls.Add(btnGeriDon);
             Controls.Add(panel1);
             Controls.Add(flpAraclar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmAraclar";
             Text = "Araçlar";
             Load += FrmAraclar_Load;

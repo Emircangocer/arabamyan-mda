@@ -30,6 +30,7 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBakimTakvimi));
             dgvTumAraclar = new DataGridView();
             txtBakimAciklama = new TextBox();
             txtBakimMaliyet = new TextBox();
@@ -144,6 +145,7 @@
             Controls.Add(txtBakimAciklama);
             Controls.Add(dgvTumAraclar);
             Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FrmBakimTakvimi";
             Text = "Bakım Takvimi";
