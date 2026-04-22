@@ -29,33 +29,48 @@
         private void InitializeComponent()
         {
             dgvGecmis = new DataGridView();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvGecmis).BeginInit();
             SuspendLayout();
             // 
             // dgvGecmis
             // 
             dgvGecmis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGecmis.Location = new Point(0, 100);
+            dgvGecmis.Location = new Point(250, 80);
             dgvGecmis.Name = "dgvGecmis";
             dgvGecmis.RowHeadersWidth = 51;
-            dgvGecmis.Size = new Size(1595, 482);
+            dgvGecmis.Size = new Size(945, 482);
             dgvGecmis.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
+            label1.Location = new Point(491, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(413, 54);
+            label1.TabIndex = 1;
+            label1.Text = "Kiralama Geçmişiniz";
             // 
             // FrmMusteriGecmis
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1492, 692);
+            BackColor = SystemColors.ActiveCaption;
+            ClientSize = new Size(1492, 755);
+            Controls.Add(label1);
             Controls.Add(dgvGecmis);
             Name = "FrmMusteriGecmis";
-            Text = "FrmMusteriGecmis";
+            Text = "Müşteri Geçmişi";
             Load += FrmMusteriGecmis_Load;
             ((System.ComponentModel.ISupportInitialize)dgvGecmis).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dgvGecmis;
+        private Label label1;
     }
 }

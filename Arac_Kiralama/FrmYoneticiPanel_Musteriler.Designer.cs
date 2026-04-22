@@ -88,7 +88,7 @@
             Margin = new Padding(4);
             Name = "FrmYoneticiPanel_Musteriler";
             ShowInTaskbar = false;
-            Text = "FrmYoneticiPanel_Musteriler";
+            Text = "Yönetici Panel_Müşteriler";
             Load += FrmYoneticiPanel_Musteriler_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMusteriler).EndInit();
             ResumeLayout(false);

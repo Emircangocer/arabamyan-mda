@@ -125,7 +125,7 @@
             Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(5);
             Name = "FrmMusteriGiris";
-            Text = "FrmMusteriGiris";
+            Text = "Müşteri Girişi";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

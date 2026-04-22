@@ -40,6 +40,10 @@
             lblGuvenceTutari = new Label();
             lblIadeTarihi = new Label();
             panel1 = new Panel();
+            lblIadeOfis = new Label();
+            lblAlisOfis = new Label();
+            label22 = new Label();
+            label21 = new Label();
             lblEkUcret = new Label();
             label20 = new Label();
             lblDepozito = new Label();
@@ -85,10 +89,6 @@
             label27 = new Label();
             label28 = new Label();
             pictureBox1 = new PictureBox();
-            label21 = new Label();
-            label22 = new Label();
-            lblAlisOfis = new Label();
-            lblIadeOfis = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picSecilenArac).BeginInit();
             panel2.SuspendLayout();
@@ -232,6 +232,42 @@
             panel1.Size = new Size(565, 994);
             panel1.TabIndex = 10;
             panel1.Paint += panel1_Paint;
+            // 
+            // lblIadeOfis
+            // 
+            lblIadeOfis.AutoSize = true;
+            lblIadeOfis.Location = new Point(134, 98);
+            lblIadeOfis.Name = "lblIadeOfis";
+            lblIadeOfis.Size = new Size(76, 28);
+            lblIadeOfis.TabIndex = 27;
+            lblIadeOfis.Text = "label30";
+            // 
+            // lblAlisOfis
+            // 
+            lblAlisOfis.AutoSize = true;
+            lblAlisOfis.Location = new Point(134, 55);
+            lblAlisOfis.Name = "lblAlisOfis";
+            lblAlisOfis.Size = new Size(76, 28);
+            lblAlisOfis.TabIndex = 26;
+            lblAlisOfis.Text = "label29";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(31, 98);
+            label22.Name = "label22";
+            label22.Size = new Size(97, 28);
+            label22.TabIndex = 25;
+            label22.Text = "İade Ofisi:";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(37, 55);
+            label21.Name = "label21";
+            label21.Size = new Size(91, 28);
+            label21.TabIndex = 24;
+            label21.Text = "Alış Ofisi:";
             // 
             // lblEkUcret
             // 
@@ -683,42 +719,6 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Location = new Point(37, 55);
-            label21.Name = "label21";
-            label21.Size = new Size(91, 28);
-            label21.TabIndex = 24;
-            label21.Text = "Alış Ofisi:";
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Location = new Point(31, 98);
-            label22.Name = "label22";
-            label22.Size = new Size(97, 28);
-            label22.TabIndex = 25;
-            label22.Text = "İade Ofisi:";
-            // 
-            // lblAlisOfis
-            // 
-            lblAlisOfis.AutoSize = true;
-            lblAlisOfis.Location = new Point(134, 55);
-            lblAlisOfis.Name = "lblAlisOfis";
-            lblAlisOfis.Size = new Size(76, 28);
-            lblAlisOfis.TabIndex = 26;
-            lblAlisOfis.Text = "label29";
-            // 
-            // lblIadeOfis
-            // 
-            lblIadeOfis.AutoSize = true;
-            lblIadeOfis.Location = new Point(134, 98);
-            lblIadeOfis.Name = "lblIadeOfis";
-            lblIadeOfis.Size = new Size(76, 28);
-            lblIadeOfis.TabIndex = 27;
-            lblIadeOfis.Text = "label30";
-            // 
             // FrmOdeme
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -732,7 +732,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "FrmOdeme";
-            Text = "FrmOdeme";
+            Text = "Ödeme ";
             Load += FrmOdeme_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

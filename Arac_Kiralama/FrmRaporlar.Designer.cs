@@ -280,7 +280,7 @@
             Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Name = "FrmRaporlar";
             ShowInTaskbar = false;
-            Text = "FrmRaporlar";
+            Text = "Raporlar";
             Load += FrmRaporlar_Load;
             ((System.ComponentModel.ISupportInitialize)dgvGelirRaporu).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvHasarGecmisi).EndInit();

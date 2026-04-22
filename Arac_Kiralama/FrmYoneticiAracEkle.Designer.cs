@@ -307,7 +307,7 @@
             Margin = new Padding(4);
             Name = "FrmYoneticiAracEkle";
             ShowInTaskbar = false;
-            Text = "YöneticiAracEkle";
+            Text = "Yönetici Araç Ekleme";
             Load += FrmYoneticiAracEkle_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

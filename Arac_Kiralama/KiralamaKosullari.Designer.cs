@@ -149,7 +149,7 @@
             Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "KiralamaKosullari";
-            Text = "Form2";
+            Text = "Kiralama Koşulları";
             Load += KiralamaKosullari_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

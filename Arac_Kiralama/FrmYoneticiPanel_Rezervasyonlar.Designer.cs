@@ -96,7 +96,7 @@
             Controls.Add(dgvTumRezervasyonlar);
             Name = "FrmYoneticiPanel_Rezervasyonlar";
             ShowInTaskbar = false;
-            Text = "FrmYoneticiPanel_Rezervasyonlar";
+            Text = "Yönetici Panel_Rezervasyonlar";
             Load += FrmYoneticiPanel_Rezervasyonlar_Load;
             ((System.ComponentModel.ISupportInitialize)dgvTumRezervasyonlar).EndInit();
             ResumeLayout(false);

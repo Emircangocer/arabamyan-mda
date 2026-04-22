@@ -168,7 +168,7 @@ namespace Arac_Kiralama
                     ppd.WindowState = FormWindowState.Maximized;
                     ppd.ShowDialog(); // İşlem bitince şak diye önizleme açılır
 
-                    this.Close();
+                    
                 }
                 bgl.baglanti().Close();
             }
@@ -214,12 +214,12 @@ namespace Arac_Kiralama
                 // 1. Önce ID'yi alıyoruz (Veritabanı işlemleri için)
                 VeriDeposu.SecilenRezervasyonID = Convert.ToInt32(dgvRezervasyonlar.Rows[e.RowIndex].Cells["Kiralamaid"].Value);
 
-                // 2. Seçilen satırdaki verileri Labellara aktarıyoruz (Görsel şov için)
-                // Tabloda "Müşteri" ve "Plaka" sütun isimlerini kullandığın için aynen öyle çağırıyoruz
+                // 2. Seçilen satırdaki verileri Labellara aktarıyoruz
+                
                 lblMusteriAd.Text = dgvRezervasyonlar.Rows[e.RowIndex].Cells["Müşteri"].Value.ToString();
                 lblAracPlaka.Text = dgvRezervasyonlar.Rows[e.RowIndex].Cells["Plaka"].Value.ToString();
 
-                // 3. (Opsiyonel) Dönüş yakıtı veya KM için başlangıç değerlerini de çekebilirsin
+                
                 MessageBox.Show(lblMusteriAd.Text + " seçildi, iade işlemine hazırız!");
             }
         }
@@ -243,7 +243,7 @@ namespace Arac_Kiralama
 
             e.Graphics.DrawLine(Pens.Gray, 100, 250, 750, 250);
 
-            // Finansal Döküm (İşin can alıcı kısmı)
+            // Finansal Döküm 
             e.Graphics.DrawString("FİNANSAL DETAYLAR", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, 100, 280);
 
             int y = 310;
@@ -251,8 +251,8 @@ namespace Arac_Kiralama
             y += 30;
 
             // 🔥 YAKIT CEZASINI BURAYA EKLE:
-            // Burada iade butonunda hesapladığın 'yakitCezasi' değişkenini kullanacağız.
-            // Eğer o değişkene buradan erişemiyorsan, yakıt cezasını bir Label'a yazdırıp oradan çekebilirsin.
+            
+           
             int dYakit = Convert.ToInt32(txtKalanYakit.Text);
 
             int aYakit = 100;
@@ -298,12 +298,7 @@ namespace Arac_Kiralama
 
         private void FrmYoneticiIadeOnay_FormClosing_1(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                // Sadece bu formu gizle, Application.Exit() yazma!
-                this.Hide();
-                e.Cancel = true; // Kapanma işlemini iptal edip sadece gizliyoruz
-            }
+           
         }
     }
 

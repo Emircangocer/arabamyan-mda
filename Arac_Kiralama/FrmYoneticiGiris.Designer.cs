@@ -114,7 +114,7 @@
             Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(5);
             Name = "FrmYoneticiGiris";
-            Text = "FrmYoneticiGiris";
+            Text = "Yonetici Giriş";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -17,7 +17,7 @@ namespace Arac_Kiralama
         {
             InitializeComponent();
         }
-        SqlBaglantisi bgl=new SqlBaglantisi();
+        SqlBaglantisi bgl = new SqlBaglantisi();
         private void FrmMusteriGecmis_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
@@ -46,6 +46,11 @@ namespace Arac_Kiralama
 
             dgvGecmis.DataSource = dt; // Verileri tabloya basıyoruz
             bgl.baglanti().Close();
+        }
+
+        private void btnGeriDon_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

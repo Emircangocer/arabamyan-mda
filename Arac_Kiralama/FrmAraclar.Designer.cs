@@ -127,7 +127,7 @@
             Controls.Add(panel1);
             Controls.Add(flpAraclar);
             Name = "FrmAraclar";
-            Text = "FrmAraclar";
+            Text = "Araçlar";
             Load += FrmAraclar_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

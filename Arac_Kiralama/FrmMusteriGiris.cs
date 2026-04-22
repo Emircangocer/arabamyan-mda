@@ -20,7 +20,7 @@ namespace Arac_Kiralama
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FrmMusteriKayıt fr = new FrmMusteriKayıt();
-            fr.Show();
+            fr.ShowDialog();
             this.Hide();
         }
 

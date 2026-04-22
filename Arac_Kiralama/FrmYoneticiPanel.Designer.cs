@@ -305,7 +305,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "FrmYoneticiPanel";
-            Text = "FrmYoneticiPanel";
+            Text = "Yönetici Panel";
             Load += FrmYoneticiPanel_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

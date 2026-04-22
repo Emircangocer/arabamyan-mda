@@ -569,7 +569,7 @@
             Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(5);
             Name = "FrmAnaSayfa";
-            Text = "Form1";
+            Text = "Ana Sayfa";
             Load += FrmAnaSayfa_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

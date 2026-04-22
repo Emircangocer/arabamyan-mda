@@ -146,7 +146,7 @@
             Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "FrmBakimTakvimi";
-            Text = "FrmBakimTakvimi";
+            Text = "Bakım Takvimi";
             Load += FrmBakimTakvimi_Load;
             ((System.ComponentModel.ISupportInitialize)dgvTumAraclar).EndInit();
             ResumeLayout(false);

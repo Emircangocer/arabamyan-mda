@@ -270,7 +270,7 @@
             Margin = new Padding(4);
             Name = "FrmYoneticiIadeOnay";
             ShowInTaskbar = false;
-            Text = "FrmYoneticiIadeOnay";
+            Text = "İade Onaylama";
             FormClosing += FrmYoneticiIadeOnay_FormClosing_1;
             Load += FrmYoneticiIadeOnay_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRezervasyonlar).EndInit();

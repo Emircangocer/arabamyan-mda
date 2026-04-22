@@ -571,7 +571,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Margin = new Padding(4);
             Name = "FrmOfisler";
-            Text = "FrmOfisler";
+            Text = "Ofisler";
             Load += FrmOfisler_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
