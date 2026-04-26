@@ -23,26 +23,26 @@ namespace Arac_Kiralama
         {
             try
             {
-                // 1. Kontroller: Araç seçili mi ve maliyet girilmiş mi?
+                // Araç seçili mi ve maliyet girilmiş mi
                 if (dgvTumAraclar.CurrentRow == null)
                 {
-                    MessageBox.Show("Kanka önce listeden bir araç seçmelisin!");
+                    MessageBox.Show("Önce listeden bir araç seçmelisin!");
                     return;
                 }
 
                 if (string.IsNullOrEmpty(txtBakimMaliyet.Text) || Convert.ToDecimal(txtBakimMaliyet.Text) <= 0)
                 {
-                    MessageBox.Show("Kanka bedavaya bakım olmaz, lütfen geçerli bir maliyet gir!");
+                    MessageBox.Show("Lütfen geçerli bir maliyet gir!");
                     return;
                 }
 
-                // 2. Değişkenleri Hazırla
+                
                 int seciliAracId = Convert.ToInt32(dgvTumAraclar.CurrentRow.Cells["Aracid"].Value);
                 decimal maliyet = Convert.ToDecimal(txtBakimMaliyet.Text);
                 string aciklama = txtBakimAciklama.Text;
 
-                // 3. TblBakim Tablosuna Kayıt (Arşiv ve Gider Takibi)
-                // Senin tablonun kolon isimlerine göre hazırladım: BakimMaaliyeti, BakimAciklama vb.
+                // Bakim Tablosuna Kayıt
+                
                 string sorguBakim = @"INSERT INTO TblBakim (Aracid, BakimBaslangicTarihi, BakimBitisTarihi, BakimAciklama, BakimMaaliyeti) 
                              VALUES (@id, GETDATE(), GETDATE(), @aciklama, @maliyet)";
 
@@ -52,7 +52,7 @@ namespace Arac_Kiralama
                 cmd1.Parameters.AddWithValue("@maliyet", maliyet);
                 cmd1.ExecuteNonQuery();
 
-                // 4. TblAraclar Tablosunu Güncelle (Alarm Kurma ve Kilidi Açma)
+                // Araclar Tablosunu Güncelle 
                 // Hem tarihi 1 ay ileri atar hem de durumu 'Müsait' yapar
                 string sorguAracGuncelle = @"UPDATE TblAraclar 
                                     SET GelecekBakimTarihi = DATEADD(month, 1, GETDATE()), 
@@ -63,12 +63,12 @@ namespace Arac_Kiralama
                 cmd2.Parameters.AddWithValue("@id", seciliAracId);
                 cmd2.ExecuteNonQuery();
 
-                // Bağlantıyı kapat ve kullanıcıya haber ver
+                
                 bgl.baglanti().Close();
 
-                MessageBox.Show("Bakım başarıyla tamamlandı kanka!\n- Masraf kasadan düşüldü.\n- Araç tekrar kiralamaya açıldı.\n- Bir sonraki bakım 1 ay sonraya kuruldu.");
+                MessageBox.Show("Bakım başarıyla tamamlandı!\n- Masraf kasadan düşüldü.\n- Araç tekrar kiralamaya açıldı.\n- Bir sonraki bakım 1 ay sonraya kuruldu.");
 
-                // 5. Listeyi Yenile (Metodun isminin bu olduğundan eminiz)
+                // Listeyi Yenile
                 TumBakimListesiniGetir();
 
                 // Formdaki kutuları temizle
@@ -77,17 +77,17 @@ namespace Arac_Kiralama
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hata oluştu kanka: " + ex.Message);
+                MessageBox.Show("Hata oluştu: " + ex.Message);
             }
             FrmYoneticiPanel frmYonetici = (FrmYoneticiPanel)Application.OpenForms["FrmYoneticiPanel"];
             if (frmYonetici != null)
             {
-                frmYonetici.IstatistikleriYukle(); // Kasayı anında günceller kanka!
+                frmYonetici.IstatistikleriYukle();
             }
         }
         public void TumBakimListesiniGetir()
         {
-            // Araçlar tablosundan plaka, marka, model ve o meşhur gelecek bakım tarihini çekiyoruz
+           
             string sorgu = @"SELECT Aracid, AracPlaka, AracMarka, AracModel, GelecekBakimTarihi 
                      FROM TblAraclar";
 
@@ -95,7 +95,7 @@ namespace Arac_Kiralama
             DataTable dt = new DataTable();
             da.Fill(dt);
 
-            // Tasarımdaki DataGridView ismin neyse onu yaz kanka (dgvTumAraclar diye varsaydım)
+            
             dgvTumAraclar.DataSource = dt;
 
             bgl.baglanti().Close();
@@ -110,16 +110,16 @@ namespace Arac_Kiralama
 
         private void dgvTumAraclar_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Tıkladığın satırdaki plaka ve marka/modeli textbox'lara yazalım ki yönetici kimi seçtiğini görsün
+            // Tıklanan satırdaki plaka ve marka/modeli textbox'lara yazar
             txtBakimAciklama.Text = dgvTumAraclar.CurrentRow.Cells["AracPlaka"].Value.ToString() + " Bakımı";
-            txtBakimMaliyet.Text = "0"; // Başlangıç değeri
+            txtBakimMaliyet.Text = "0"; 
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             if (this.anaForm != null)
             {
-                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+                this.anaForm.Show(); 
             }
             this.Close();
         }

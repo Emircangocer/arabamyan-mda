@@ -37,7 +37,17 @@ namespace Arac_Kiralama
             komut.Parameters.AddWithValue("@p8", int.Parse(txtKm.Text));
             komut.Parameters.AddWithValue("@p9",txtAracResim.Text);
             komut.Parameters.AddWithValue("@p10", int.Parse(txtYakitDurumu.Text));
-            komut.Parameters.AddWithValue("@p11", txtBakimTarihi.Text);
+
+
+            try
+            {
+                komut.Parameters.AddWithValue("@p11", DateTime.Parse(txtBakimTarihi.Text));
+            }
+            catch
+            {
+                // Eğer tarih yanlış girildiyse hata vermemesi için bugünü veya boş değeri atadık
+                komut.Parameters.AddWithValue("@p11", DateTime.Now);
+            }
 
             komut.ExecuteNonQuery();
             bgl.baglanti().Close();
@@ -88,7 +98,7 @@ namespace Arac_Kiralama
         {
             if (this.anaForm != null)
             {
-                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+                this.anaForm.Show(); 
             }
             this.Close();
         }

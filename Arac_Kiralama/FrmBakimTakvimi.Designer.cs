@@ -55,28 +55,28 @@
             // 
             // txtBakimAciklama
             // 
-            txtBakimAciklama.Location = new Point(1210, 114);
+            txtBakimAciklama.Location = new Point(1219, 115);
             txtBakimAciklama.Name = "txtBakimAciklama";
             txtBakimAciklama.Size = new Size(193, 31);
             txtBakimAciklama.TabIndex = 1;
             // 
             // txtBakimMaliyet
             // 
-            txtBakimMaliyet.Location = new Point(1210, 182);
+            txtBakimMaliyet.Location = new Point(1219, 183);
             txtBakimMaliyet.Name = "txtBakimMaliyet";
             txtBakimMaliyet.Size = new Size(193, 31);
             txtBakimMaliyet.TabIndex = 2;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(1210, 256);
+            textBox3.Location = new Point(1219, 257);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(193, 31);
             textBox3.TabIndex = 2;
             // 
             // btnBakimiTamamla
             // 
-            btnBakimiTamamla.Location = new Point(1210, 344);
+            btnBakimiTamamla.Location = new Point(1219, 342);
             btnBakimiTamamla.Name = "btnBakimiTamamla";
             btnBakimiTamamla.Size = new Size(193, 38);
             btnBakimiTamamla.TabIndex = 3;
@@ -87,7 +87,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(1117, 120);
+            label1.Location = new Point(1126, 121);
             label1.Name = "label1";
             label1.Size = new Size(87, 25);
             label1.TabIndex = 4;
@@ -96,7 +96,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(1074, 182);
+            label2.Location = new Point(1083, 183);
             label2.Name = "label2";
             label2.Size = new Size(130, 25);
             label2.TabIndex = 5;
@@ -105,7 +105,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(1082, 259);
+            label3.Location = new Point(1126, 260);
             label3.Name = "label3";
             label3.Size = new Size(87, 25);
             label3.TabIndex = 6;
