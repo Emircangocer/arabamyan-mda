@@ -89,12 +89,9 @@ namespace Arac_Kiralama
         }
         public void BilgileriGuncelle()
         {
-            // 1. Bakiyeyi SQL'den tekrar çekip label'a yaz
-            // Not: VeriDeposu'ndaki bakiye düştüğü için direkt oradan da yazdırabilirsin
+            
             lblBakiye.Text = VeriDeposu.MusteriBakiye.ToString("N2") + " TL";
 
-            // 2. Aktif kiralama panelini (o beyaz kartı) getiren metodunu buraya ekle
-            // Muhtemelen adı şöyledir (adını kontrol et kanka):
             AktifKiralamayiGetir();
         }
         private void FrmAnaSayfa_Load(object sender, EventArgs e)
@@ -107,11 +104,11 @@ namespace Arac_Kiralama
                 // Giriş yapıldıysa Giriş butonlarını gizle
                 btnMusteriGiris.Visible = false;
                 btnYoneticiGiris.Visible = false;
+                btnHesabim.Visible = true;
 
-                // Kullanıcı ismini göster
                 lblMusteriAd.Text = "Hoş geldin, " + VeriDeposu.GirisYapanMusteriAdSoyad;
                 lblMusteriAd.Visible = true;
-                btnCikis.Visible = true; // İstersen çıkış butonu da koyabilirsin
+                btnCikis.Visible = true; 
             }
             else
             {
@@ -129,19 +126,19 @@ namespace Arac_Kiralama
         {
             try
             {
-                // 1. Alış Tarihini al (Sadece Tarih Kısmı)
+               
                 DateTime alisTarihi = dtpAlis.Value.Date;
 
-                // 2. ComboBox'tan seçilen saati (Örn: "15:00") parçalara ayır
-                // ComboBox'ta tam olarak "15:00" yazdığından emin ol!
+                //  ComboBox'tan seçilen saati (Örn: "15:00") parçalara ayır
+                
                 string[] alisSaatParcalari = cmbAlisSaati.Text.Split(':');
                 int alisSaat = Convert.ToInt32(alisSaatParcalari[0]);
                 int alisDakika = Convert.ToInt32(alisSaatParcalari[1]);
 
-                // 3. Tarih ve Saati güvenli bir şekilde birleştir
+                //  Tarih ve Saati birleştir
                 VeriDeposu.AlisTarihi = new DateTime(alisTarihi.Year, alisTarihi.Month, alisTarihi.Day, alisSaat, alisDakika, 0);
 
-                // --- AYNI İŞLEMİ İADE İÇİN DE YAPIYORUZ ---
+                //  AYNI İŞLEMİ İADE İÇİN DE YAPIYORUZ 
                 DateTime iadeTarihi = dtpIade.Value.Date;
                 string[] iadeSaatParcalari = cmbiadeSaati.Text.Split(':');
                 int iadeSaat = Convert.ToInt32(iadeSaatParcalari[0]);
@@ -155,13 +152,13 @@ namespace Arac_Kiralama
 
                 VeriDeposu.IadeTarihi = new DateTime(iadeTarihi.Year, iadeTarihi.Month, iadeTarihi.Day, iadeSaat, iadeDakika, 0);
 
-                // 4. Formu Aç
+                
                 FrmAraclar fr = new FrmAraclar();
                 fr.Show();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Saat seçimi hatalı! Lütfen ComboBox'tan geçerli bir saat (Örn: 15:00) seçin.");
+                MessageBox.Show("Lütfen bilgileri eksiksiz girin!");
             }
         }
 
@@ -174,23 +171,23 @@ namespace Arac_Kiralama
 
         private void btnCikis_Click(object sender, EventArgs e)
         {
-            // 1. Giriş durumunu sıfırla
+            //  Giriş durumunu sıfırla
             VeriDeposu.GirisYapildiMi = false;
-            VeriDeposu.MusteriID = 0; // ID'yi de sıfırla ki çakışma olmasın kanka
+            VeriDeposu.MusteriID = 0; 
 
-            // 2. Panelleri gizle
+            
             pnlHesabim.Visible = false;
             btnHesabim.Visible = false;
 
-            // 🔥 İŞTE BURASI: Aktif araç panelini temizle ve gizle
-            pnlAktifArac.Controls.Clear(); // İçindeki kartı siliyoruz
-            pnlAktifArac.Visible = false;   // Paneli komple saklıyoruz
+            // Aktif araç panelini temizle ve gizle
+            pnlAktifArac.Controls.Clear(); 
+            pnlAktifArac.Visible = false;   
 
-            // 3. Giriş butonlarını geri getir
+            // Giriş butonlarını geri getir
             btnMusteriGiris.Visible = true;
             btnYoneticiGiris.Visible = true;
 
-            // İstersen kullanıcı adını da temizle
+           
             lblMusteriAd.Text = "";
 
             MessageBox.Show("Başarıyla çıkış yapıldı, yine bekleriz!");
@@ -211,12 +208,12 @@ namespace Arac_Kiralama
             {
                 string girilenMetin = txtYuklenecekTutar.Text.Trim();
 
-                // Eğer virgül yerine nokta girildiyse veya tam tersiyse diye ufak bir ayar
+              
                 girilenMetin = girilenMetin.Replace(".", ",");
 
                 double eklenenTutar = Convert.ToDouble(girilenMetin);
 
-                // 2. SQL'e ekle
+                
                 string sorgu = "UPDATE TblMusteri SET MusteriBakiye = MusteriBakiye + @p1 WHERE Musteriid = @p2";
                 SqlCommand komut = new SqlCommand(sorgu, bgl.baglanti());
                 komut.Parameters.AddWithValue("@p1", eklenenTutar);
@@ -224,13 +221,13 @@ namespace Arac_Kiralama
                 komut.ExecuteNonQuery();
                 bgl.baglanti().Close();
 
-                // 3. Hafızayı (VeriDeposu) güncelle
+               
                 VeriDeposu.MusteriBakiye += eklenenTutar;
 
-                // 4. Ekrandaki Label'ı hemen güncelle
+                
                 lblBakiye.Text = VeriDeposu.MusteriBakiye.ToString("N2") + " TL";
 
-                // 5. Temizlik ve geri bildirim
+              
                 txtYuklenecekTutar.Clear();
                 MessageBox.Show("Bakiye yüklendi!");
             }
@@ -244,11 +241,11 @@ namespace Arac_Kiralama
         public void AktifKiralamayiGetir()
         {
            
-            // Önce paneli bir temizleyelim, üst üste binmesinler
+            
             pnlAktifArac.Controls.Clear();
             pnlAktifArac.Visible = false;
 
-            // Kiralama detaylarını ve araç bilgilerini çekiyoruz
+            
             string sorgu = @"SELECT A.AracResim, A.AracPlaka, A.AracMarka, A.AracModel, R.PlanlananDonusTarihi 
                  FROM TblRezervasyon R
                  INNER JOIN TblAraclar A ON R.Aracid = A.Aracid
@@ -262,7 +259,7 @@ namespace Arac_Kiralama
             {
                 
 
-                pnlAktifArac.Visible = true; // Araç varmış, paneli aç kanka!
+                pnlAktifArac.Visible = true; 
 
                 // Yeni bir UC_AktifKiralama nesnesi oluşturuyoruz
                 UC_AktifKiralama aktifKart = new UC_AktifKiralama();
@@ -272,12 +269,12 @@ namespace Arac_Kiralama
                 string resimYolu = dr["AracResim"].ToString();
                 DateTime iadeTarihi = Convert.ToDateTime(dr["PlanlananDonusTarihi"]);
 
-                // UC içindeki metodu çağırıyoruz (BilgiBas gibi düşün)
+               
                 aktifKart.KiralamaBilgileriniYukle(plakaModel, resimYolu, iadeTarihi);
 
-                // KARTIN PANELE OTURMASI İÇİN:
+              
                 aktifKart.Dock = DockStyle.Fill; // Paneli tam kaplasın
-                pnlAktifArac.Controls.Add(aktifKart); // Ve bombayı panele bırakıyoruz!
+                pnlAktifArac.Controls.Add(aktifKart); 
             }
             
             bgl.baglanti().Close();
@@ -286,7 +283,7 @@ namespace Arac_Kiralama
         private void btnGecmisKiralamalar_Click(object sender, EventArgs e)
         {
             FrmMusteriGecmis fr = new FrmMusteriGecmis();
-            fr.Show(); // Geçmiş sayfasını aç !
+            fr.Show(); 
         }
 
         private void BtnKilamaKosullari_Click(object sender, EventArgs e)

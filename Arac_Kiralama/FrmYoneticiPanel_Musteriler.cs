@@ -22,7 +22,7 @@ namespace Arac_Kiralama
         SqlBaglantisi bgl = new SqlBaglantisi();
         void MusteriListele()
         {
-            // Kanka burada sadece yöneticiye lazım olan 4-5 kolonu çekersen daha şık durur
+            
             string sorgu = "SELECT Musteriid, MusteriAd, MusteriSoyad, MusteriTc, MusteriTelefon FROM TblMusteri";
             SqlDataAdapter da = new SqlDataAdapter(sorgu, bgl.baglanti());
             DataTable dt = new DataTable();
@@ -66,7 +66,7 @@ namespace Arac_Kiralama
         {
             if (this.anaForm != null)
             {
-                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+                this.anaForm.Show(); 
             }
             this.Close(); 
         }

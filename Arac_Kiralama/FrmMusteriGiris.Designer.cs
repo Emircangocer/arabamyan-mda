@@ -128,6 +128,7 @@
             Margin = new Padding(5);
             Name = "FrmMusteriGiris";
             Text = "Müşteri Girişi";
+            Load += FrmMusteriGiris_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

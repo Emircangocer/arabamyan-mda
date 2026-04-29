@@ -21,14 +21,14 @@ namespace Arac_Kiralama
         private void btnMusteri_Click(object sender, EventArgs e)
         {
             FrmYoneticiPanel_Musteriler fr = new FrmYoneticiPanel_Musteriler();
-            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
+            fr.anaForm = this;
             fr.Show();
             this.Hide();
         }
         SqlBaglantisi bgl = new SqlBaglantisi();
         public void RezervasyonlariGetir()
         {
-            // Inner Join kullanarak tabloları birleştiriyoruz
+           
             string sorgu = @"SELECT 
                         R.Kiralamaid, 
                         M.MusteriAd + ' ' + M.MusteriSoyad AS [Müşteri], 
@@ -42,7 +42,7 @@ namespace Arac_Kiralama
                      FROM TblRezervasyon R
                      INNER JOIN TblMusteri M ON R.Musteriid = M.Musteriid
                      INNER JOIN TblAraclar A ON R.Aracid = A.Aracid
-                     WHERE R.KiralamaStatu = 'Aktif / Depozito Alındı'"; // Sadece aktifleri görelim
+                     WHERE R.KiralamaStatu = 'Aktif / Depozito Alındı'"; 
 
             SqlDataAdapter da = new SqlDataAdapter(sorgu, bgl.baglanti());
             DataTable dt = new DataTable();
@@ -65,16 +65,14 @@ namespace Arac_Kiralama
 
             lblYoneticiAd.Text = VeriDeposu.YoneticiAdSoyad;
 
-            // 2. 🔥 Resmi Yükle
+           
             if (!string.IsNullOrEmpty(VeriDeposu.YoneticiResimYolu) && File.Exists(VeriDeposu.YoneticiResimYolu))
             {
-                // Eğer veritabanında resim yolu varsa ve dosya gerçekten oradaysa yükle
                 pbYoneticiResim.Image = Image.FromFile(VeriDeposu.YoneticiResimYolu);
             }
             else
             {
-                // Eğer resim yoksa varsayılan bir "profil" resmi koyabilirsin (Resources'tan)
-                // pbYoneticiResim.Image = Properties.Resources.default_profile;
+                
             }
             RezervasyonlariGetir();
             IstatistikleriYukle();
@@ -94,7 +92,7 @@ namespace Arac_Kiralama
         private void button5_Click(object sender, EventArgs e)
         {
             FrmYoneticiIadeOnay fr = new FrmYoneticiIadeOnay();
-            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
+            fr.anaForm = this; // 
             fr.Show();
             this.Hide();
             RezervasyonlariGetir();
@@ -104,8 +102,8 @@ namespace Arac_Kiralama
         {
             try
             {
-                // 1. TOPLAM KAZANÇ (Tamamlanmış kiralamalardan gelen ciro)
-                // NOT: Eğer tablonuzda 'KiralamaTutari' yerine farklı bir isim varsa onu yazın kanka.
+                // TOPLAM KAZANÇ 
+                
                 string ciroSorgu = @"SELECT 
                 (SELECT ISNULL(SUM(ToplamKiraBedeli), 0) FROM TblRezervasyon WHERE KiralamaStatu = 'Tamamlandı') - 
                 (SELECT ISNULL(SUM(BakimMaaliyeti), 0) FROM TblBakim) AS NetKazanc";
@@ -114,12 +112,12 @@ namespace Arac_Kiralama
                 object sonuc = cmd.ExecuteScalar();
                 lblToplamKazanc.Text = Convert.ToDouble(sonuc).ToString("N2") + " TL";
 
-                // 2. KAÇ ARAÇ MÜŞTERİDE? (Aktif veya İade Bekleyen durumdakiler)
+                //  KAÇ ARAÇ MÜŞTERİDE? 
                 string sorguYoldaki = "SELECT COUNT(*) FROM TblRezervasyon WHERE KiralamaStatu LIKE '%Aktif%' OR KiralamaStatu = 'İade Bekliyor'";
                 SqlCommand cmd2 = new SqlCommand(sorguYoldaki, bgl.baglanti());
                 lblYoldakiAraclar.Text = cmd2.ExecuteScalar().ToString() + " Araç Yolda";
 
-                // 3. KAÇ ARAÇ DÜKKANDA? (Müsait olanlar)
+                //  KAÇ ARAÇ DÜKKANDA? 
                 string sorguMusait = "SELECT COUNT(*) FROM TblAraclar WHERE AracStatu = 'Müsait'";
                 SqlCommand cmd3 = new SqlCommand(sorguMusait, bgl.baglanti());
                 lblMusaitAraclar.Text = cmd3.ExecuteScalar().ToString() + " Araç Müsait";
@@ -151,7 +149,7 @@ namespace Arac_Kiralama
         private void button6_Click(object sender, EventArgs e)
         {
             FrmBakimTakvimi fr = new FrmBakimTakvimi();
-            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
+            fr.anaForm = this; 
             fr.Show();
             this.Hide();
         }
@@ -159,7 +157,7 @@ namespace Arac_Kiralama
         private void button2_Click(object sender, EventArgs e)
         {
             FrmYoneticiAracEkle fr = new FrmYoneticiAracEkle();
-            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
+            fr.anaForm = this; 
             fr.Show();
             this.Hide();
         }
@@ -167,7 +165,7 @@ namespace Arac_Kiralama
         private void button4_Click(object sender, EventArgs e)
         {
             FrmYoneticiPanel_Rezervasyonlar fr = new FrmYoneticiPanel_Rezervasyonlar();
-            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
+            fr.anaForm = this;
             fr.Show();
             this.Hide();
         }
@@ -175,7 +173,7 @@ namespace Arac_Kiralama
         private void button7_Click(object sender, EventArgs e)
         {
             FrmRaporlar fr = new FrmRaporlar();
-            fr.anaForm = this; // "Beni bu form açtı" bilgisini gönderiyoruz
+            fr.anaForm = this;
             fr.Show();
             this.Hide();
         }
@@ -186,17 +184,17 @@ namespace Arac_Kiralama
 
             if (secim == DialogResult.Yes)
             {
-                // 1. Zaten açık olan ama gizli bekleyen o ilk formu (Form1) buluyoruz
-                Form anaGirisFormu = Application.OpenForms["FrmAnaSayfa"]; // İsmi Form1 ise böyle kalmalı
+                // Zaten açık olan ama gizli bekleyen o ilk formu  buluyoruz
+                Form anaGirisFormu = Application.OpenForms["FrmAnaSayfa"]; 
 
                 if (anaGirisFormu != null)
                 {
-                    anaGirisFormu.Show(); // Gizli olan formu geri getir
-                    this.Close(); // Mevcut Yönetici Panelini imha et
+                    anaGirisFormu.Show(); 
+                    this.Close(); 
                 }
                 else
                 {
-                    // Eğer bir aksilik olduysa ve o form kapandıysa mecbur yenisini açarız
+                    
                     FrmAnaSayfa fr = new FrmAnaSayfa();
                     fr.Show();
                     this.Close();

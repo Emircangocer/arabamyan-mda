@@ -40,21 +40,20 @@ namespace Arac_Kiralama
             if (dt.Rows.Count > 0) // Veri gelmiş mi kontrol edelim
             {
                 cmbAracSec.DataSource = dt;
-                // Ekranda ne görünecek?
+                
                 cmbAracSec.DisplayMember = "AracPlaka";
-                // Arkada hangi ID tutulacak?
                 cmbAracSec.ValueMember = "Aracid";
             }
             else
             {
-                MessageBox.Show("Sistemde kayıtlı araç bulunamadı kanka!");
+                MessageBox.Show("Sistemde kayıtlı araç bulunamadı!");
             }
             bgl.baglanti().Close();
         }
 
         public void RaporlariYukle()
         {
-            // 1. Tabloyu Doldur (Araç Performans Listesi)
+            
             string tabloSorgu = @"SELECT 
                             A.AracPlaka AS [PLAKA], 
                             A.AracMarka + ' ' + A.AracModel AS [ARAÇ], 
@@ -70,7 +69,7 @@ namespace Arac_Kiralama
             da.Fill(dt);
             dgvGelirRaporu.DataSource = dt;
 
-            // 2. TileButton'ları Doldur (İstatistikler)
+            //  TileButton'ları Doldur (İstatistikler)
 
             // Toplam Ciro Hesabı
             object toplamCiro = dt.Compute("SUM([TOPLAM GELİR])", "");
@@ -80,7 +79,7 @@ namespace Arac_Kiralama
             object toplamAdet = dt.Compute("SUM([KİRALAMA SAYISI])", "");
             btnToplamKiralama.Text = "TOPLAM KİRALAMA\n" + (toplamAdet != DBNull.Value ? toplamAdet.ToString() : "0") + " ADET";
 
-            // En Popüler Araç (Listenin en üstündeki araç)
+            // En Popüler Araç 
             if (dt.Rows.Count > 0)
             {
                 btnEnPopulerArac.Text = "LİDER ARAÇ\n" + dt.Rows[0]["PLAKA"].ToString();
@@ -125,20 +124,20 @@ namespace Arac_Kiralama
 
             PrintPreviewDialog ppd = new PrintPreviewDialog();
             ppd.Document = pd;
-            ppd.ShowDialog(); // Bu pencerede "Yazdır" deyip PDF seçebilirsin kanka.
+            ppd.ShowDialog(); 
         }
 
         private void cmbAracSec_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // 🔥 Burası koruma kalkanımız. DataRowView hatasını bu engelliyor:
+            //  Burası koruma kalkanımız. DataRowView hatasını bu engelliyor:
             if (cmbAracSec.SelectedValue != null && cmbAracSec.ValueMember != "" && cmbAracSec.SelectedValue.ToString() != "System.Data.DataRowView")
             {
                 try
                 {
-                    // Seçilen aracın ID'sini güvenle alıyoruz
+                    
                     int secilenID = Convert.ToInt32(cmbAracSec.SelectedValue);
 
-                    // SQL Sorgusuyla hasar geçmişini getiren kısım (Senin eski kodun buradaydı):
+                    // SQL Sorgusuyla hasar geçmişini getiren kısım 
                     string sorgu = @"SELECT 
                                 H.HasarliParca AS [PARÇA], 
                                 H.HasarAciklama AS [AÇIKLAMA], 
@@ -156,7 +155,7 @@ namespace Arac_Kiralama
                     da.Fill(dt);
                     dgvHasarGecmisi.DataSource = dt;
 
-                    // Özet Butonuna Toplam Hasarı Yazdır
+                  
                     object toplam = dt.Compute("SUM([MALİYET])", "");
                     btnAracHasarOzet.Text = "BU ARACIN TOPLAM HASARI\n" +
                                            (toplam != DBNull.Value ? Convert.ToDouble(toplam).ToString("N2") : "0") + " TL";
@@ -165,8 +164,7 @@ namespace Arac_Kiralama
                 }
                 catch (Exception ex)
                 {
-                    // Hata olursa uygulamayı kapatmasın, buraya düşsün
-                    // MessageBox.Show("Hata: " + ex.Message); 
+                  
                 }
             }
         }
@@ -183,7 +181,7 @@ namespace Arac_Kiralama
 
                 int y = 160;
 
-                // 2. Tablo Başlıkları (Çıktıda ne olduğu belli olsun kanka)
+                // 2. Tablo Başlıkları 
                 ev.Graphics.DrawString("Tarih          | Parça          | Maliyet", new Font("Arial", 11, FontStyle.Bold), Brushes.Black, 100, y);
                 y += 30;
 
@@ -192,8 +190,7 @@ namespace Arac_Kiralama
                     // Satırın boş olup olmadığını kontrol ediyoruz
                     if (row.Cells[0].Value != null)
                     {
-                        // 🔥 KRİTİK DÜZELTME: Tarih hücresi boşsa veya hatalıysa Substring patlar. 
-                        // O yüzden güvenli bir dönüşüm yapıyoruz:
+                        
                         string tarihStr = row.Cells[3].Value != null ? Convert.ToDateTime(row.Cells[3].Value).ToShortDateString() : "---";
 
                         string parca = row.Cells[0].Value.ToString();
@@ -203,19 +200,18 @@ namespace Arac_Kiralama
                         string satir = $"{tarihStr} | {parca} | {maliyet}";
 
                         ev.Graphics.DrawString(satir, new Font("Arial", 11), Brushes.Black, 100, y);
-                        // Notu bir alt satıra hafif gri ve eğik yazdırıyoruz (Şık durur)
+                        // Notu bir alt satıra hafif gri ve eğik yazdırıyoruz 
                         ev.Graphics.DrawString("Açıklama: " + not, new Font("Arial", 9, FontStyle.Italic), Brushes.Gray, 120, y + 20);
 
-                        y += 50; // Bir sonraki hasar kaydı için aşağı in
+                        y += 50; 
 
-                        // Sayfa sonuna gelip gelmediğini kontrol etmek istersen (opsiyonel)
                         if (y > 1000) break;
                     }
                 }
             };
 
             PrintPreviewDialog ppd = new PrintPreviewDialog { Document = pd };
-            // Pencereyi biraz büyük açalım ki rahat görelim
+            
             ppd.WindowState = FormWindowState.Maximized;
             ppd.ShowDialog();
         }
@@ -224,7 +220,7 @@ namespace Arac_Kiralama
         {
             if(this.anaForm != null)
     {
-                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+                this.anaForm.Show(); 
             }
             this.Close();
         }

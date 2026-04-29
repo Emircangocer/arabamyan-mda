@@ -68,10 +68,10 @@ namespace Arac_Kiralama
 
                 MessageBox.Show("Bakım başarıyla tamamlandı!\n- Masraf kasadan düşüldü.\n- Araç tekrar kiralamaya açıldı.\n- Bir sonraki bakım 1 ay sonraya kuruldu.");
 
-                // Listeyi Yenile
+               
                 TumBakimListesiniGetir();
 
-                // Formdaki kutuları temizle
+                
                 txtBakimMaliyet.Clear();
                 txtBakimAciklama.Clear();
             }

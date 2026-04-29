@@ -17,13 +17,13 @@ namespace Arac_Kiralama
         {
             InitializeComponent();
         }
-        SqlBaglantisi bgl=new SqlBaglantisi();
+        SqlBaglantisi bgl = new SqlBaglantisi();
         private void btnGirisYap_Click(object sender, EventArgs e)
         {
 
             try
             {
-                // Sorguda TC ve Sifre kontrolü yaparken aynı zamanda Ad-Soyad ve ResimYolu'nu alıyoruz
+                
                 string sorgu = @"SELECT 
                         YoneticiAd + ' ' + YoneticiSoyad, 
                         YoneticiResimYolu 
@@ -31,34 +31,39 @@ namespace Arac_Kiralama
                      WHERE YoneticiTC = @p1 AND YoneticiSifre = @p2";
 
                 SqlCommand cmd = new SqlCommand(sorgu, bgl.baglanti());
-                cmd.Parameters.AddWithValue("@p1", mskTC.Text); // Kullanıcı adı yerine TC kutun
+                cmd.Parameters.AddWithValue("@p1", mskTC.Text); 
                 cmd.Parameters.AddWithValue("@p2", txtSifre.Text);
 
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 if (dr.Read())
                 {
-                    // 1. Giriş başarılı! Bilgileri ortak hafızaya (VeriDeposu) alıyoruz
+                    
                     VeriDeposu.YoneticiAdSoyad = dr[0].ToString();
 
                     // Resim yolu boşsa hata vermemesi için kontrol
                     VeriDeposu.YoneticiResimYolu = dr[1] != DBNull.Value ? dr[1].ToString() : "";
 
-                    // 2. Paneli Aç
+                    
                     FrmYoneticiPanel fr = new FrmYoneticiPanel();
                     fr.Show();
-                    this.Hide(); // Giriş formunu gizle
+                    this.Hide(); 
                 }
                 else
                 {
-                    MessageBox.Show("TC Kimlik No veya Şifre hatalı kanka!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("TC Kimlik No veya Şifre hatalı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 bgl.baglanti().Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Bağlantı hatası kanka: " + ex.Message);
+                MessageBox.Show("Bağlantı hatası : " + ex.Message);
             }
+        }
+
+        private void FrmYoneticiGiris_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

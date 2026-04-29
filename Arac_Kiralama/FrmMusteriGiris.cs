@@ -15,7 +15,7 @@ namespace Arac_Kiralama
         {
             InitializeComponent();
         }
-        SqlBaglantisi bgl=new SqlBaglantisi();
+        SqlBaglantisi bgl = new SqlBaglantisi();
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -51,6 +51,11 @@ namespace Arac_Kiralama
                 MessageBox.Show("TC veya Şifre hatalı!");
             }
             bgl.baglanti().Close();
+        }
+
+        private void FrmMusteriGiris_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

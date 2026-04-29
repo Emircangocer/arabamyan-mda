@@ -26,7 +26,7 @@ namespace Arac_Kiralama
         }
         public void GecmisListele()
         {
-            // SQL sorgusu: Rezervasyon ve Araçlar tablolarını birleştiriyoruz
+            
             string sorgu = @"SELECT 
                         A.AracMarka + ' ' + A.AracModel AS [Araç], 
                         A.AracPlaka AS [Plaka], 
@@ -44,7 +44,7 @@ namespace Arac_Kiralama
             DataTable dt = new DataTable();
             da.Fill(dt);
 
-            dgvGecmis.DataSource = dt; // Verileri tabloya basıyoruz
+            dgvGecmis.DataSource = dt;
             bgl.baglanti().Close();
         }
 

@@ -23,7 +23,7 @@ namespace Arac_Kiralama
         {
             this.WindowState = FormWindowState.Maximized;
 
-            cmbFiltre.Text = "Hepsi"; // Başlangıçta hepsini seç
+            cmbFiltre.Text = "Hepsi";
             RezervasyonlariListele("Hepsi");
             dgvTumRezervasyonlar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -42,7 +42,7 @@ namespace Arac_Kiralama
                      INNER JOIN TblMusteri M ON R.Musteriid = M.Musteriid
                      INNER JOIN TblAraclar A ON R.Aracid = A.Aracid";
 
-            // Eğer "Hepsi" seçili değilse sorguya WHERE şartı ekliyoruz
+            
             if (durum != "Hepsi")
             {
                 sorgu += " WHERE R.KiralamaStatu = @p1";
@@ -73,7 +73,7 @@ namespace Arac_Kiralama
         {
             if (this.anaForm != null)
             {
-                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+                this.anaForm.Show(); 
             }
             this.Close();
         }

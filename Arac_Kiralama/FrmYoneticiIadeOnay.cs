@@ -44,7 +44,7 @@ namespace Arac_Kiralama
             da.Fill(dt);
             dgvRezervasyonlar.DataSource = dt;
 
-            // Kanka bu ID'ler tabloda çirkin durmasın dersen gizleyebilirsin:
+          
             dgvRezervasyonlar.Columns["Musteriid"].Visible = false;
             dgvRezervasyonlar.Columns["Aracid"].Visible = false;
 
@@ -56,15 +56,15 @@ namespace Arac_Kiralama
 
             try
             {
-                // 1. Formdaki verileri alalım
+                
                 int donusKm = Convert.ToInt32(txtDonusKm.Text);
                 int donusYakit = Convert.ToInt32(txtKalanYakit.Text);
                 string hasarliParca = cmbHasarDurumu.Text;
                 string hasarAciklama = txtHasarAciklama.Text;
                 double hasarMaliyeti = string.IsNullOrEmpty(txtHasarMaliyeti.Text) ? 0 : Convert.ToDouble(txtHasarMaliyeti.Text);
 
-                // 2. SQL'den başlangıç verilerini ve tarihleri çek
-                // PlanlananDonusTarihi ve GunlukFiyat'ı da çekiyoruz ki gecikmeyi hesaplayalım
+                //  SQL'den başlangıç verilerini ve tarihleri çek
+                
                 string cekSorgu = @"SELECT AlisKm, AlisYakitMiktar, AlinanDepozito, Musteriid, Aracid, 
                            PlanlananDonusTarihi, ToplamKiraBedeli / DATEDIFF(day, AracTeslimTarihi, PlanlananDonusTarihi) as GunlukFiyat 
                            FROM TblRezervasyon WHERE Kiralamaid = @id";
@@ -85,41 +85,40 @@ namespace Arac_Kiralama
 
                     dr.Close();
 
-                    // --- YENİ KURALLAR: CEZA VE HESAPLAMALAR ---
+                    
 
-                    // A) Gecikme Cezası (Belge Kuralı: 2 saatten fazla gecikme = +1 gün ücret)
+                    //  Gecikme Cezası ( 2 saatten fazla gecikme = +1 gün ücret)
                     double gecikmeCezasi = 0;
                     if (DateTime.Now > planlananDonus.AddHours(2))
                     {
                         gecikmeCezasi = gunlukFiyat;
                     }
 
-                    // B) Yakıt Cezası
+                    //  Yakıt Cezası
                     double yakitCezasi = (donusYakit < alisYakit) ? (alisYakit - donusYakit) * 50 : 0;
 
-                    // C) Hasar & Depozito Mahsuplaşması (Belge Kuralı: Kalan tutar borç yazılır)
+                    //  Hasar & Depozito  ( Kalan tutar borç yazılır)
                     double iadeEdilecekDepozito = 0;
                     double ekBorc = 0;
 
                     if (hasarMaliyeti > alinanDepozito)
                     {
-                        ekBorc = hasarMaliyeti - alinanDepozito; // Depozito bitti, üstü borç
+                        ekBorc = hasarMaliyeti - alinanDepozito; 
                         iadeEdilecekDepozito = 0;
                     }
                     else
                     {
-                        iadeEdilecekDepozito = alinanDepozito - hasarMaliyeti; // Hasar düştü, kalanı iade
+                        iadeEdilecekDepozito = alinanDepozito - hasarMaliyeti; 
                     }
 
-                    // D) Nihai Bakiye Değişimi
-                    // Müşteriye iade edilen depozitodan, yakıt ve gecikme cezaları ile varsa ek hasar borcu düşülür.
+                    
                     double netBakiyeDegisimi = iadeEdilecekDepozito - yakitCezasi - gecikmeCezasi - ekBorc;
 
                     lblDepozitoBilgi.Text = netBakiyeDegisimi.ToString("N2") + " TL";
 
-                    // --- SQL İŞLEMLERİ ---
+                    
 
-                    // 4. HASAR TABLOSUNA KAYIT
+                    //  HASAR TABLOSUNA KAYIT
                     if (hasarMaliyeti > 0)
                     {
                         string hasarSql = "INSERT INTO TblHasarlar (Kiralamaid, Aracid, HasarliParca, HasarAciklama, HasarMaliyeti, MusteriSorumlumu) VALUES (@h1, @h2, @h3, @h4, @h5, 1)";
@@ -132,21 +131,21 @@ namespace Arac_Kiralama
                         hKomut.ExecuteNonQuery();
                     }
 
-                    // 5. MÜŞTERİ BAKİYESİNİ GÜNCELLE
+                    //  MÜŞTERİ BAKİYESİNİ GÜNCELLE
                     string bakiyeSql = "UPDATE TblMusteri SET MusteriBakiye = MusteriBakiye + @degisim WHERE Musteriid = @mid";
                     SqlCommand bKomut = new SqlCommand(bakiyeSql, bgl.baglanti());
                     bKomut.Parameters.AddWithValue("@degisim", netBakiyeDegisimi);
                     bKomut.Parameters.AddWithValue("@mid", musteriId);
                     bKomut.ExecuteNonQuery();
 
-                    // 6. ARACI GÜNCELLE
+                    // ARACI GÜNCELLE
                     string aracSql = "UPDATE TblAraclar SET AracKm = @yeniKm, AracStatu = 'Müsait' WHERE Aracid = @aid";
                     SqlCommand aKomut = new SqlCommand(aracSql, bgl.baglanti());
                     aKomut.Parameters.AddWithValue("@yeniKm", donusKm);
                     aKomut.Parameters.AddWithValue("@aid", aracId);
                     aKomut.ExecuteNonQuery();
 
-                    // 7. REZERVASYONU KAPAT
+                    //  REZERVASYONU KAPAT
                     string rezKapatSql = "UPDATE TblRezervasyon SET KiralamaStatu = 'Tamamlandı', iadeKm = @ikm, iadeYakitMiktar = @iyakit WHERE Kiralamaid = @rid";
                     SqlCommand rKomut = new SqlCommand(rezKapatSql, bgl.baglanti());
                     rKomut.Parameters.AddWithValue("@ikm", donusKm);
@@ -154,7 +153,7 @@ namespace Arac_Kiralama
                     rKomut.Parameters.AddWithValue("@rid", VeriDeposu.SecilenRezervasyonID);
                     rKomut.ExecuteNonQuery();
 
-                    // 8. BİLGİLENDİRME
+                    //  BİLGİLENDİRME
                     string mesaj = $"İşlem Başarılı!\n\n" +
                                    $"Gecikme Cezası: {gecikmeCezasi} TL\n" +
                                    $"Yakıt Cezası: {yakitCezasi} TL\n" +
@@ -166,7 +165,7 @@ namespace Arac_Kiralama
                     PrintPreviewDialog ppd = new PrintPreviewDialog();
                     ppd.Document = printDocumentTutanak;
                     ppd.WindowState = FormWindowState.Maximized;
-                    ppd.ShowDialog(); // İşlem bitince şak diye önizleme açılır
+                    ppd.ShowDialog(); 
 
                     
                 }
@@ -186,7 +185,7 @@ namespace Arac_Kiralama
         private void FrmYoneticiIadeOnay_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-            // VeriDeposu'ndaki ID ile müşteri ve plaka bilgisini çekiyoruz
+            
             string sorgu = @"SELECT M.MusteriAd + ' ' + M.MusteriSoyad as AdSoyad, A.AracPlaka 
                     FROM TblRezervasyon R 
                     JOIN TblMusteri M ON R.Musteriid = M.Musteriid 
@@ -211,10 +210,10 @@ namespace Arac_Kiralama
         {
             if (e.RowIndex >= 0)
             {
-                // 1. Önce ID'yi alıyoruz (Veritabanı işlemleri için)
+                
                 VeriDeposu.SecilenRezervasyonID = Convert.ToInt32(dgvRezervasyonlar.Rows[e.RowIndex].Cells["Kiralamaid"].Value);
 
-                // 2. Seçilen satırdaki verileri Labellara aktarıyoruz
+               
                 
                 lblMusteriAd.Text = dgvRezervasyonlar.Rows[e.RowIndex].Cells["Müşteri"].Value.ToString();
                 lblAracPlaka.Text = dgvRezervasyonlar.Rows[e.RowIndex].Cells["Plaka"].Value.ToString();
@@ -250,7 +249,7 @@ namespace Arac_Kiralama
             e.Graphics.DrawString("Hasar Maliyeti: " + txtHasarMaliyeti.Text + " TL", new Font("Arial", 11), Brushes.Black, 120, y);
             y += 30;
 
-            // 🔥 YAKIT CEZASINI BURAYA EKLE:
+           
             
            
             int dYakit = Convert.ToInt32(txtKalanYakit.Text);
@@ -274,7 +273,7 @@ namespace Arac_Kiralama
             y += 20;
 
             e.Graphics.DrawString("NET İADE EDİLEN TUTAR:", new Font("Arial", 14, FontStyle.Bold), Brushes.DarkGreen, 100, y);
-            // Buradaki tutarı iade butonunda hesapladığın değişkenden çekebilirsin
+            
             e.Graphics.DrawString(lblDepozitoBilgi.Text, new Font("Arial", 14, FontStyle.Bold), Brushes.DarkGreen, 450, y);
 
             // İmzalar
@@ -286,7 +285,7 @@ namespace Arac_Kiralama
         {
             if (this.anaForm != null)
             {
-                this.anaForm.Show(); // Gizli olan o tek yönetici panelini geri getir
+                this.anaForm.Show(); 
             }
             this.Close();
         }

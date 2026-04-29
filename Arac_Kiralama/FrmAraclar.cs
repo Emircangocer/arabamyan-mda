@@ -34,11 +34,11 @@ namespace Arac_Kiralama
 
 
             this.WindowState = FormWindowState.Maximized;
-            flpAraclar.Controls.Clear(); // Ne olur ne olmaz temiz başla
+            flpAraclar.Controls.Clear(); 
 
             try
             {
-                // 1. ADIM: SÜPÜRGE - Bakım günü bugün olanları pasife al (Müşteri görmesin)
+                //  Bakım günü bugün olanları pasife al 
                 string bakimGuncelleSorgu = @"UPDATE TblAraclar 
                                      SET AracStatu = 'Bakımda' 
                                      WHERE CAST(GelecekBakimTarihi AS DATE) <= CAST(GETDATE() AS DATE) 
@@ -48,8 +48,8 @@ namespace Arac_Kiralama
                 cmdBakim.ExecuteNonQuery();
                 bgl.baglanti().Close();
 
-                // 2. ADIM: LİSTELEME - Sadece müsait ve iade tarihinden sonra bakımı olanlar
-                // VeriDeposu'ndaki iade tarihini kullanıyoruz
+                //  Sadece müsait ve iade tarihinden sonra bakımı olanları listele
+               
                 string sorgu = @"SELECT * FROM TblAraclar 
                          WHERE AracStatu = 'Müsait' 
                          AND (CAST(GelecekBakimTarihi AS DATE) > CAST(@paramIade AS DATE) 
@@ -72,7 +72,7 @@ namespace Arac_Kiralama
                     string resim = dr["AracResim"].ToString();
                     string km = dr["AracKm"].ToString();
 
-                    // Karta gönderiyoruz
+                    
                     kart.BilgiBas(id, ad, fiyat, vites, yakit, resim, km);
                     flpAraclar.Controls.Add(kart);
                 }
@@ -89,13 +89,13 @@ namespace Arac_Kiralama
 
         public void AracListele(string filtreSorgusu = "")
         {
-            flpAraclar.Controls.Clear(); // Önce eskileri bir temizle
+            flpAraclar.Controls.Clear(); 
 
-            // VeriDeposu'ndan müşterinin seçtiği iade tarihini alıyoruz
+            
             DateTime musteriIadeTarihi = VeriDeposu.IadeTarihi;
 
-            // SORGUMUZ: Müsait olan VE bakım tarihi müşterinin iade tarihinden SONRA olan araçlar
-            // Not: Bakım tarihi boş olan araçlar da gelsin diye IS NULL kontrolü ekledik
+            // Müsait olan vE bakım tarihi müşterinin iade tarihinden SONRA olan araçlar gelsin
+            
             string sql = @"SELECT * FROM TblAraclar 
                WHERE AracStatu = 'Müsait' 
                AND (CAST(GelecekBakimTarihi AS DATE) > CAST(@paramIade AS DATE) 
@@ -110,10 +110,10 @@ namespace Arac_Kiralama
             {
                 UC_AracKart kart = new UC_AracKart();
 
-                // 1. Önce ID'yi alıyoruz
+                
                 int aracID = Convert.ToInt32(dr["Aracid"]);
 
-                // 2. Metoda bilgileri sırasıyla gönderiyoruz
+              
                 kart.BilgiBas(
                     aracID,
                     dr["AracMarka"].ToString() + " " + dr["AracModel"].ToString(),
@@ -137,13 +137,13 @@ namespace Arac_Kiralama
         {
             string ekSorgu = "";
 
-            // 1. Vites Filtresi Kontrolü
+            //  Vites Filtresi Kontrolü
             if (cmbVites.Text == "Otomatik")
                 ekSorgu += " AND AracSanziman = 'Otomatik'";
             else if (cmbVites.Text == "Manuel")
                 ekSorgu += " AND AracSanziman = 'Manuel'";
 
-            // 2. Yakıt Tipi Filtresi Kontrolü (Yeni Eklediğin ComboBox)
+            // Yakıt Tipi Filtresi Kontrolü 
             if (cmbYakit.Text == "Benzin")
                 ekSorgu += " AND AracYakitTipi = 'Benzin'";
             else if (cmbYakit.Text == "Benzin/LPG")
@@ -154,7 +154,7 @@ namespace Arac_Kiralama
             else if (cmbYakit.Text == "Hibrit")
                 ekSorgu += " AND AracYakitTipi = 'Hibrit'";
 
-            // Hazırlanan tüm şartları tek seferde metoda gönderiyoruz
+            
             AracListele(ekSorgu);
         }
 
