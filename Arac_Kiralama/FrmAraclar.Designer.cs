@@ -36,6 +36,7 @@
             cmbYakit = new ComboBox();
             btnFiltrele = new Button();
             cmbVites = new ComboBox();
+            btnGeriDon = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -105,6 +106,17 @@
             cmbVites.Size = new Size(116, 28);
             cmbVites.TabIndex = 0;
             // 
+            // btnGeriDon
+            // 
+            btnGeriDon.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            btnGeriDon.Location = new Point(21, 888);
+            btnGeriDon.Name = "btnGeriDon";
+            btnGeriDon.Size = new Size(198, 45);
+            btnGeriDon.TabIndex = 2;
+            btnGeriDon.Text = "Geri Dön";
+            btnGeriDon.UseVisualStyleBackColor = true;
+            btnGeriDon.Click += btnGeriDon_Click_1;
+            // 
             // FrmAraclar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -112,6 +124,7 @@
             AutoScroll = true;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1836, 1016);
+            Controls.Add(btnGeriDon);
             Controls.Add(panel1);
             Controls.Add(flpAraclar);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -132,5 +145,6 @@
         private ComboBox cmbYakit;
         private Label label2;
         private Label label1;
+        private Button btnGeriDon;
     }
 }

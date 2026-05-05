@@ -140,6 +140,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             Controls.Add(lblKm);
             Controls.Add(picArac);
             Controls.Add(button1);

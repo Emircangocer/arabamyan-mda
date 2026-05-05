@@ -34,7 +34,7 @@ namespace Arac_Kiralama
 
 
             this.WindowState = FormWindowState.Maximized;
-            flpAraclar.Controls.Clear(); 
+            flpAraclar.Controls.Clear();
 
             try
             {
@@ -49,7 +49,7 @@ namespace Arac_Kiralama
                 bgl.baglanti().Close();
 
                 //  Sadece müsait ve iade tarihinden sonra bakımı olanları listele
-               
+
                 string sorgu = @"SELECT * FROM TblAraclar 
                          WHERE AracStatu = 'Müsait' 
                          AND (CAST(GelecekBakimTarihi AS DATE) > CAST(@paramIade AS DATE) 
@@ -72,7 +72,7 @@ namespace Arac_Kiralama
                     string resim = dr["AracResim"].ToString();
                     string km = dr["AracKm"].ToString();
 
-                    
+
                     kart.BilgiBas(id, ad, fiyat, vites, yakit, resim, km);
                     flpAraclar.Controls.Add(kart);
                 }
@@ -89,13 +89,13 @@ namespace Arac_Kiralama
 
         public void AracListele(string filtreSorgusu = "")
         {
-            flpAraclar.Controls.Clear(); 
+            flpAraclar.Controls.Clear();
 
-            
+
             DateTime musteriIadeTarihi = VeriDeposu.IadeTarihi;
 
             // Müsait olan vE bakım tarihi müşterinin iade tarihinden SONRA olan araçlar gelsin
-            
+
             string sql = @"SELECT * FROM TblAraclar 
                WHERE AracStatu = 'Müsait' 
                AND (CAST(GelecekBakimTarihi AS DATE) > CAST(@paramIade AS DATE) 
@@ -110,10 +110,10 @@ namespace Arac_Kiralama
             {
                 UC_AracKart kart = new UC_AracKart();
 
-                
+
                 int aracID = Convert.ToInt32(dr["Aracid"]);
 
-              
+
                 kart.BilgiBas(
                     aracID,
                     dr["AracMarka"].ToString() + " " + dr["AracModel"].ToString(),
@@ -154,7 +154,7 @@ namespace Arac_Kiralama
             else if (cmbYakit.Text == "Hibrit")
                 ekSorgu += " AND AracYakitTipi = 'Hibrit'";
 
-            
+
             AracListele(ekSorgu);
         }
 
@@ -165,9 +165,17 @@ namespace Arac_Kiralama
 
         private void btnGeriDon_Click(object sender, EventArgs e)
         {
-            FrmAnaSayfa fr=new FrmAnaSayfa();
+            FrmAnaSayfa fr = new FrmAnaSayfa();
             fr.Show();
             this.Dispose();
         }
+
+        private void btnGeriDon_Click_1(object sender, EventArgs e)
+        {
+            FrmAnaSayfa fr = new FrmAnaSayfa();
+            fr.Show();
+            this.Dispose();
+        
+    }
     }
 }
